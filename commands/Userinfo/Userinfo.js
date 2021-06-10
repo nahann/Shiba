@@ -10,20 +10,15 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const member = message.mentions.members.first() || message.member;
-        console.log(member.user.id)
         const data = await UserinfoConfig.findOne({ userId: member.user.id })
         const info = [];
-        if(data) {
-            info.push(data.get('Bio'))
-        }
-        if(!data) {
-            info.push(`Bio Not Set`)
-        }
+        if(data) info.push(data.get('Bio'))
+        if(!data) info.push(`Bio Not Set`)
         const roles = member.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString()).slice(0, -1)
         const embed = new MessageEmbed()
         .setAuthor(member.user.tag, member.user.displayAvatarURL())
         .setThumbnail(member.user.displayAvatarURL())
-        .setColor('RANDOM')
+        .setColor("RANDOM")
         .setFooter(`ID: ` + member.user.id)
         .setTimestamp()
         .addFields(

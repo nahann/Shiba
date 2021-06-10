@@ -11,7 +11,7 @@ module.exports = {
     run: async(client, message, args) => {
         const bio = args.join(" ")
         const data = await UserinfoConfig.findOne({ userId: message.author.id })
-        if(data) date.delte()
+        if(data) await UserinfoConfig.findOneAndUpdate({ userId: message.author.id }, { Bio: bio })
         if(!data) await UserinfoConfig.create({
             userId: message.author.id,
             Bio: bio,
