@@ -10,11 +10,12 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const bio = args.join(" ")
-        const data = await UserinfoConfig.findOne({ userId: message.author.id})
+        const data = await UserinfoConfig.findOne({ userId: message.author.id })
         if(data) date.delte()
-        if(!data) UserinfoConfig.create({
+        if(!data) await UserinfoConfig.create({
             userId: message.author.id,
             Bio: bio,
         })
+        message.lineReplyNoMention(client.embed({ description: `Bio set to: \`${bio}\``}, message))
     }
 }

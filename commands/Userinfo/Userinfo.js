@@ -11,13 +11,13 @@ module.exports = {
     run: async(client, message, args) => {
         const member = message.mentions.members.first() || message.member;
         console.log(member.user.id)
-         const data = await UserinfoConfig.findOne({ userId: member.user.id})
-        const data1 = [];
+        const data = await UserinfoConfig.findOne({ userId: member.user.id })
+        const info = [];
         if(data) {
-            data1.push(data.get('Bio'))
+            info.push(data.get('Bio'))
         }
         if(!data) {
-            data1.push(`Bio Not Set`)
+            info.push(`Bio Not Set`)
         }
         const roles = member.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString()).slice(0, -1)
         const embed = new MessageEmbed()
@@ -43,7 +43,7 @@ module.exports = {
             },
             {
                 name: `» User Bio`,
-                value: `Bio: ${data1}`
+                value: `Bio: ${info}`
             }
 
         )
