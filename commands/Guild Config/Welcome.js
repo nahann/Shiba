@@ -1,5 +1,5 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
-const WelcomeConfig = require("../../databse/Welcome");
+const WelcomeConfig = require("../../database/Welcome");
 
 module.exports = {
   name: "welcome",

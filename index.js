@@ -7,9 +7,9 @@ const client = new Discord.Client({
 const config = require("./config.json");
 const fs = require("fs");
 const commandFolders = fs.readdirSync("./commands");
-const GuildConfig = require("./databse/GuildConfig");
-const WelcomeConfig = require("./databse/Welcome");
-const UserinfoConfig = require('./databse/Userinfo')
+const GuildConfig = require("./database/GuildConfig");
+const WelcomeConfig = require("./database/Welcome");
+const UserinfoConfig = require("./database/Userinfo");
 const mongoose = require("mongoose");
 require("discord-reply");
 
@@ -47,11 +47,19 @@ client.on("ready", () => {
   console.log(`${client.user.username} is now online.`);
 });
 
-client.on("message", async(message) => {
-  if(message.author.bot) return;
+client.on("message", async (message) => {
+  if (message.author.bot) return;
   const data = await GuildConfig.findOne({ guildId: message.guild.id });
-  if(!data) return message.lineReplyNoMention(client.embed({ description: `If you are seeing this message it is because Shibu has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shibu to your server.\nIf this issue keeps happening contact \`nahan#6480\``}, message))
-  const prefix = data.get('prefix')
+  if (!data)
+    return message.lineReplyNoMention(
+      client.embed(
+        {
+          description: `If you are seeing this message it is because Shibu has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shibu to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
+        },
+        message
+      )
+    );
+  const prefix = data.get("prefix");
   if (!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
@@ -138,9 +146,9 @@ client.on("guildMemberAdd", async (member) => {
   }
 });
 
-client.on('error', (error) => {
+client.on("error", (error) => {
   throw error;
-  console.log(error)
-})
+  console.log(error);
+});
 
 client.login(config.token);

@@ -1,5 +1,5 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
-const GuildConfig = require("../../databse/GuildConfig");
+const GuildConfig = require("../../database/GuildConfig");
 
 module.exports = {
   name: "prefix",
