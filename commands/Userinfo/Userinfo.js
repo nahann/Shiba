@@ -22,17 +22,17 @@ module.exports = {
       .setAuthor(member.user.tag, member.user.displayAvatarURL())
       .setThumbnail(member.user.displayAvatarURL())
       .setColor("RANDOM")
-      .setFooter(`ID: ` + member.user.id)
+      .setFooter(` ID: ` + member.user.id)
       .setTimestamp()
       .addFields(
         {
           name: `» Joined At`,
-          value: `${member.joinedAt.toDateString()}`,
+          value: `${member.joinedAt.toDateString()} ${member.joinedAt.toLocaleTimeString()}`,
           inline: true,
         },
         {
           name: `» Account Created`,
-          value: `${member.user.createdAt.toDateString()}`,
+          value: `${member.user.createdAt.toDateString()} ${member.user.createdAt.toLocaleTimeString()}`,
           inline: true,
         },
         {
@@ -48,6 +48,10 @@ module.exports = {
         {
           name: `» User Bio`,
           value: `Bio: ${info}`,
+        },
+        {
+            name: `» User Avatar`,
+            value: `[[Avatar Link]](${member.user.displayAvatarURL()})`
         },
         {
           name: `» Logged In On Devices [${
