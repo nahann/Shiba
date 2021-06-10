@@ -46,13 +46,8 @@ client.on("ready", () => {
   console.log(`${client.user.username} is now online.`);
 });
 
-client.on("message", async (message) => {
-  await GuildConfig.findOne({ guildId: message.guild.id });
-  if (!data)
-    await GuildConfig.create({
-      guildName: message.guild.name,
-      guildId: message.guild.id,
-    });
+client.on("message", async(message) => {
+  const data = await GuildConfig.findOne({ guildId: message.guild.id });
   const prefix = data.get("prefix");
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -73,13 +68,13 @@ client.on("message", async (message) => {
     return message.channel.send(`This is a guild only command.`);
   }
 
-  if (command.permissions) {
+  if (command.userPermissions) {
     const authorPerms = message.channel.permissionsFor(message.author);
-    if (!authorPerms || !authorPerms.has(command.permissions)) {
+    if (!authorPerms || !authorPerms.has(command.userPermissions)) {
       return message.channel.send(
         client.embed(
           {
-            description: `You require the permission: \`${command.permissions}\``,
+            description: `You require the permission: \`${command.userPermissions}\``,
           },
           message
         )

@@ -6,7 +6,7 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: "*prefix [prefix]",
-  permissions: ["MANAGE_GUILD"],
+  userPermissions: ["MANAGE_GUILD"],
   /**
    * @param {Client} client
    * @param {Message} message

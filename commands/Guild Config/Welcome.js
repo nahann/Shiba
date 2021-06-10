@@ -4,7 +4,7 @@ const WelcomeConfig = require("../../databse/Welcome");
 module.exports = {
   name: "welcome",
   guildOnly: true,
-  permissions: ["MANAGE_GUILD"],
+  userPermissions: ["MANAGE_GUILD"],
   /**
    * @param {Client} client
    * @param {Message} message
