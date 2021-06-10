@@ -11,6 +11,7 @@ const GuildConfig = require("./database/GuildConfig");
 const WelcomeConfig = require("./database/Welcome");
 const UserinfoConfig = require("./database/Userinfo");
 const mongoose = require("mongoose");
+const voiceCollection = new Discord.Collection()
 require("discord-reply");
 
 mongoose
@@ -144,11 +145,6 @@ client.on("guildMemberAdd", async (member) => {
   } catch (err) {
     console.log(err);
   }
-});
-
-client.on("error", (error) => {
-  throw error;
-  console.log(error);
 });
 
 client.login(config.token);

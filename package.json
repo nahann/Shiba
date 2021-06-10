@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.21.1",
     "discord-reply": "^0.1.2",
     "discord.js": "^12.5.3",
     "fs": "^0.0.1-security",

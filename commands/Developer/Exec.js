@@ -1,4 +1,4 @@
-const { Client, Message, MessageEmbed, User } = require('discord.js');
+const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'exec',
@@ -14,6 +14,7 @@ module.exports = {
         message.author = user
         message.content = content;
         message.mentions.users.delete(message.mentions.users.first().id)
-		client.emit('message', message);
+		await client.emit('message', message)
+        message.react('🧃')
     }
 }
