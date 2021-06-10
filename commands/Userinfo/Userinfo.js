@@ -11,9 +11,19 @@ module.exports = {
   run: async (client, message, args) => {
     const member = message.mentions.members.first() || message.member;
     const data = await UserinfoConfig.findOne({ userId: member.user.id });
-    const info = [];
-    if (data) info.push(data.get("Bio"));
-    if (!data) info.push(`Bio Not Set`);
+    const bio = [];
+    const color = [];
+    const bday = [];
+    if (data) {
+      bio.push(data.get("Bio"));
+      color.push(data.get("Color"))
+      bday.push(data.get("Bday"))
+    }
+    if (!data) {
+      color.push('WHITE')
+      bio.push(`Bio Not Set`);
+      bday.push(`Bday Not Set`)
+    }
     const roles = member.roles.cache
       .sort((a, b) => b.position - a.position)
       .map((role) => role.toString())
@@ -21,7 +31,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor(member.user.tag, member.user.displayAvatarURL())
       .setThumbnail(member.user.displayAvatarURL())
-      .setColor("RANDOM")
+      .setColor(`${color}`)
       .setFooter(` ID: ` + member.user.id)
       .setTimestamp()
       .addFields(
@@ -47,7 +57,11 @@ module.exports = {
         },
         {
           name: `» User Bio`,
-          value: `Bio: ${info}`,
+          value: `Bio: ${bio}`,
+        },
+        {
+          name: `» User Birthday`,
+          value: bday,
         },
         {
             name: `» User Avatar`,
