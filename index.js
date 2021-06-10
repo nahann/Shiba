@@ -9,6 +9,7 @@ const fs = require("fs");
 const commandFolders = fs.readdirSync("./commands");
 const GuildConfig = require("./databse/GuildConfig");
 const WelcomeConfig = require("./databse/Welcome");
+const UserinfoConfig = require('./databse/Userinfo')
 const mongoose = require("mongoose");
 require("discord-reply");
 
@@ -47,9 +48,11 @@ client.on("ready", () => {
 });
 
 client.on("message", async(message) => {
+  if(message.author.bot) return;
   const data = await GuildConfig.findOne({ guildId: message.guild.id });
-  const prefix = data.get("prefix");
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if(!data) return message.lineReplyNoMention(client.embed({ description: `If you are seeing this message it is because Shibu has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shibu to your server.\nIf this issue keeps happening contact \`nahan#6480\``}, message))
+  const prefix = data.get('prefix')
+  if (!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
 
@@ -118,15 +121,15 @@ client.on("guildDelete", async (guild) => {
 });
 
 client.on("guildMemberAdd", async (member) => {
-  const data = await WelcomeConfig.findOne({ guildId: member.guild.id });
-  if (data.toggled === false) return;
-  const message = data.message;
+  const dataa = await WelcomeConfig.findOne({ guildId: member.guild.id });
+  if (dataa.toggled === false) return;
+  const message = dataa.message;
   const newmsg = message
     .replace("{guild}", member.guild.name)
     .replace("{user}", `<@${member.user.id}>`);
-  const channel = data.channelId;
+  const channel = dataa.channelId;
   const channeltosend = member.guild.channels.cache.get(channel);
-  const role = data.roleId;
+  const role = dataa.roleId;
   try {
     channeltosend.send(newmsg);
     if (role) member.roles.add(role);
@@ -134,5 +137,10 @@ client.on("guildMemberAdd", async (member) => {
     console.log(err);
   }
 });
+
+client.on('error', (error) => {
+  throw error;
+  console.log(error)
+})
 
 client.login(config.token);

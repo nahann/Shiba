@@ -13,7 +13,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const prefix = args.length();
+    const prefix = args.join(" ");
     await GuildConfig.findOneAndUpdate(
       { guildId: message.guild.id },
       { prefix: prefix }
