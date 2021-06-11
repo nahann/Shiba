@@ -4,6 +4,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 module.exports = {
   name: "set-color",
   category: `Userinfo`,
+  description: `Sets a color for the embed of your userinfo. Default is random.`,
   /**
    * @param {Client} client
    * @param {Message} message

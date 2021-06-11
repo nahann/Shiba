@@ -4,6 +4,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 module.exports = {
   name: "userinfo",
   category: `Userinfo`,
+  description: `Displays info on a user.`,
   /**
    * @param {Client} client
    * @param {Message} message

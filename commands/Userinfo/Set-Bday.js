@@ -4,6 +4,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 module.exports = {
   name: "set-bday",
   category: `Userinfo`,
+  description: `Sets a birthday to be viewed on your userinfo.`,
   /**
    * @param {Client} client
    * @param {Message} message

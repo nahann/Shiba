@@ -7,6 +7,7 @@ module.exports = {
   guildOnly: true,
   category: `Moderation`,
   usage: "*ban [user]",
+  description: `Bans a member from the guild.`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -17,7 +18,7 @@ module.exports = {
       return message.reply({ embed: 
         client.embed(
           {
-            description: `Shibu does not have the \`BAN_MEMBERS\` permission.`,
+            description: `Shiba does not have the \`BAN_MEMBERS\` permission.`,
           },
           message
       )})

@@ -4,6 +4,7 @@ const prefix = '*'
 module.exports = {
     name: 'help',
     category: `Info`,
+    description: `Shows all the commands?`,
     /** 
      * @param {Client} client 
      * @param {Message} message 
@@ -22,18 +23,36 @@ module.exports = {
           categories.set(command.category, new Collection().set(command.name, command))
         }
       })
+
+      const dirEmojis = {
+        "Developer": "🍁",
+        "Fun": "🦢",
+        "Guild Config": "🔧",
+        "Info": "📝",
+        "Moderation": "🦚",
+        "Userinfo": "🧦",
+      }
       const lines = categories.map(
-        (category, name) =>
-          `${name}: ${category
+        (category, name) => 
+          `${dirEmojis[name]} **${name}: **  ${category
             .map((command) => `\`${command.name}\``)
-            .join(", ")}`
+            .join(" ")}`
+
       );
+
+
       if(!args.length) {
-        embed.setAuthor(`Shibu Help Menu`)
+        embed.setAuthor(`Shiba Command List`, message.author.displayAvatarURL())
         embed.setDescription(lines.join("\n"))
         embed.setThumbnail(client.user.displayAvatarURL())
         embed.setFooter(`You can send \`${prefix}help [command name]\` to get info on a specific command!`)
-        .setColor('RANDOM')
+        embed.setColor('RANDOM')
+        embed.addFields(
+          {
+            name: `Notice: For a chance to recieve premium perks for Shiba vote on top.gg, then send proof in the support server.`,
+            value: `**[Vote](https://top.gg/) | [Invite](https://discord.com/api/oauth2/authorize?client_id=838254815225970739&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&scope=bot%20applications.commands) | [Support](https://discord.gg/dpspC6JvUZ)**`,
+          }
+        )
         return message.channel.send({ embed: embed })
     }
     const embed2 = new MessageEmbed()
@@ -58,10 +77,11 @@ module.exports = {
       data.push(`**Permissions:** ${command.userPermissions}`)
       if(command.guildOnly)
       data.push(`**Guild Only:** ${command.guildOnly}`)
+      if(command.ownerOnly)
+      data.push(`**Owner Only:** ${command.guildOnly}`)
 
-      embed2.setAuthor(`Shibu Help Menu`)
+      embed2.setAuthor(`Shiba Help Menu`)
       embed2.setDescription(data.join("\n"))
-      embed2.setThumbnail(client.user.displayAvatarURL())
       embed2.setFooter(`Syntax: [] = required, {} = optional.`)
       .setColor('RANDOM')
 

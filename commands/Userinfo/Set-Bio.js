@@ -4,6 +4,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 module.exports = {
   name: "set-bio",
   category: `Userinfo`,
+  description: `Sets a bio to be viewed on your userinfo.`,
   /**
    * @param {Client} client
    * @param {Message} message

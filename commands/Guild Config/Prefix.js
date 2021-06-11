@@ -8,6 +8,7 @@ module.exports = {
   usage: "*prefix [prefix]",
   userPermissions: ["MANAGE_GUILD"],
   category: `Guild Config`,
+  description: `Change the prefix for the guild.`,
   /**
    * @param {Client} client
    * @param {Message} message

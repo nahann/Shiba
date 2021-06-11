@@ -56,7 +56,7 @@ client.on("message", async (message) => {
     return message.reply({ embed:
       client.embed(
         {
-          description: `If you are seeing this message it is because Shibu has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shibu to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
+          description: `If you are seeing this message it is because Shiba has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shiba to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
         },
         message
     )
@@ -120,12 +120,12 @@ client.on("guildCreate", async (guild) => {
     guildName: guild.name,
     guildId: guild.id,
   });
-  console.log(`Shibu has joined ${guild.name}. Saved to base`);
+  console.log(`Shiba has joined ${guild.name}. Saved to base`);
 });
 
 client.on("guildDelete", async (guild) => {
   await GuildConfig.findOneAndDelete({ guildId: guild.id });
-  console.log(`Shibu has left ${guild.name}. Deleted from base`);
+  console.log(`Shiba has left ${guild.name}. Deleted from base`);
   await WelcomeConfig.findOneAndDelete({ guildId: guild.id });
   console.log(`Welcome config deleted from base.`);
 });
@@ -144,7 +144,7 @@ client.on("guildMemberAdd", async (member) => {
   const embed = new Discord.MessageEmbed()
   .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
   .setDescription(newmsg)
-  .setFooter(`Shibu Welcome System`, client.user.displayAvatarURL())
+  .setFooter(`Shiba Welcome System`, client.user.displayAvatarURL())
   .setThumbnail(member.guild.iconURL())
   .setColor('RANDOM')
   try {

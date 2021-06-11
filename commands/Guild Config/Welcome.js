@@ -6,6 +6,7 @@ module.exports = {
   guildOnly: true,
   userPermissions: ["MANAGE_GUILD"],
   category: `Guild Config`,
+  description: `Update the welcome system for the guild.`,
   /**
    * @param {Client} client
    * @param {Message} message

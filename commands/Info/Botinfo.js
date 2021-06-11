@@ -5,6 +5,7 @@ module.exports = {
   name: "bot-info",
   aliases: ["botinfo"],
   category: `Info`,
+  description: `Get info on the bot.`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -12,9 +13,9 @@ module.exports = {
    */
   run: async (client, message, args) => {
     const embed = new MessageEmbed()
-      .setAuthor(`Shibu Bot Info`, client.user.displayAvatarURL())
+      .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .setDescription(
-        `[[Support Server]](https://discord.gg/kxt4GsrEE6) [[Vote For Shibu]](https://top.gg/)`
+        `[[Support Server]](https://discord.gg/kxt4GsrEE6) [[Vote For Shiba]](https://top.gg/)`
       )
       .addFields(
         {

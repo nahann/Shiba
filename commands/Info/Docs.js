@@ -4,6 +4,7 @@ module.exports = {
   name: "docs",
   aliases: ["docs"],
   category: `Info`,
+  description: `Get something from the discord.js docs.`,
   /**
    * @param {Client} client
    * @param {Message} message

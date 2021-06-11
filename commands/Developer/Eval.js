@@ -5,6 +5,7 @@ module.exports = {
   guildOnly: true,
   ownerOnly: true,
   category: `Developer`,
+  description: `Evaluate a piece of code.`,
   /**
    * @param {Client} client
    * @param {Message} message
