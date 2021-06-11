@@ -3,6 +3,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 
 module.exports = {
   name: "set-bio",
+  category: `Userinfo`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -21,8 +22,9 @@ module.exports = {
         userId: message.author.id,
         Bio: bio,
       });
-    message.lineReplyNoMention(
-      client.embed({ description: `Bio set to: \`${bio}\`` }, message)
-    );
+      message.reply({allowedMentions: {    
+        parse: ['everyone', 'users', 'roles'],    
+        repliedUser: false,
+        }, embed: client.embed({ description: `Bio set to: \`${bio}\``}, message)})
   },
 };

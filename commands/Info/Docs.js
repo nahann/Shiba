@@ -1,9 +1,9 @@
-
 const { Client, Message, MessageEmbed } = require("discord.js");
 const axios = require("axios");
 module.exports = {
-  name: "djs",
+  name: "docs",
   aliases: ["docs"],
+  category: `Info`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -19,6 +19,11 @@ module.exports = {
     axios.get(url).then(({ data }) => {
       if (data) {
         message.channel.send({ embed: data });
+      } else {
+        message.reply({allowedMentions: {    
+          parse: ['everyone', 'users', 'roles'],    
+          repliedUser: false,
+          }, embed: client.embed({ description: `Not Found.`}, message)})
       }
     });
   },

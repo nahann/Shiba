@@ -7,6 +7,7 @@ module.exports = {
   args: true,
   usage: "*prefix [prefix]",
   userPermissions: ["MANAGE_GUILD"],
+  category: `Guild Config`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -18,8 +19,9 @@ module.exports = {
       { guildId: message.guild.id },
       { prefix: prefix }
     );
-    message.lineReplyNoMention(
-      client.embed({ description: `Prefix updated to: \`${prefix}\`` }, message)
-    );
+    message.reply({allowedMentions: {    
+      parse: ['everyone', 'users', 'roles'],    
+      repliedUser: false,
+      }, embed: client.embed({ description: `Prefix updated to: \`${prefix}\``}, message)})
   },
 };

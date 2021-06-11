@@ -3,6 +3,7 @@ const UserinfoConfig = require("../../database/Userinfo");
 
 module.exports = {
   name: "userinfo",
+  category: `Userinfo`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -16,13 +17,13 @@ module.exports = {
     const bday = [];
     if (data) {
       bio.push(data.get("Bio"));
-      color.push(data.get("Color"))
-      bday.push(data.get("Bday"))
+      color.push(data.get("Color"));
+      bday.push(data.get("Bday"));
     }
     if (!data) {
-      color.push('WHITE')
+      color.push("WHITE");
       bio.push(`Bio Not Set`);
-      bday.push(`Bday Not Set`)
+      bday.push(`Bday Not Set`);
     }
     const roles = member.roles.cache
       .sort((a, b) => b.position - a.position)
@@ -47,7 +48,7 @@ module.exports = {
         },
         {
           name: `» Roles [${roles.length}]`,
-          value: `${
+          value: `Roles: ${
             roles.length < 10
               ? roles.join(" ,")
               : roles.lenth > 10
@@ -61,11 +62,11 @@ module.exports = {
         },
         {
           name: `» User Birthday`,
-          value: bday,
+          value: `Bday: ${bday}`,
         },
         {
-            name: `» User Avatar`,
-            value: `[[Avatar Link]](${member.user.displayAvatarURL()})`
+          name: `» User Avatar`,
+          value: `[[Avatar Link]](${member.user.displayAvatarURL()})`,
         },
         {
           name: `» Logged In On Devices [${
@@ -89,7 +90,6 @@ ${Object.entries(member.user.presence?.clientStatus || {})
                     `.trim(),
         }
       );
-
-    message.lineReplyNoMention(embed);
+    message.channel.send({ embed: embed });
   },
 };
