@@ -131,6 +131,7 @@ client.on("guildDelete", async (guild) => {
 
 client.on("guildMemberAdd", async (member) => {
   const dataa = await WelcomeConfig.findOne({ guildId: member.guild.id });
+  if(!data) return;
   if (dataa.toggled === false) return;
   const message = dataa.message;
   const newmsg = message

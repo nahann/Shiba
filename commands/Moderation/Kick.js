@@ -4,6 +4,7 @@ module.exports = {
     name: 'kick',
     userPermissions: 'KICK_MEMBERS',
     args: true,
+    guildOnly: true,
     usage: '*kick [user]',
     /** 
      * @param {Client} client 

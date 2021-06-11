@@ -2,6 +2,7 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'eval',
+    guildOnly: true,
     ownerOnly: true,
     /** 
      * @param {Client} client 

@@ -3,6 +3,9 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'purge',
     aliases: ['clear'],
+    guildOnly: true,
+    args: true,
+    usage: `*purge [number of messages]`,
     /** 
      * @param {Client} client 
      * @param {Message} message 

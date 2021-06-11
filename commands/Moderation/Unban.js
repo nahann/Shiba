@@ -4,6 +4,7 @@ module.exports = {
     name: 'unban',
     userPermissions: 'BAN_MEMBERS',
     args: true,
+    guildOnly: true,
     usage: '*unban [user id]',
     /** 
      * @param {Client} client 
