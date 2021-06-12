@@ -14,6 +14,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    await message.delete()
     const purge = args[0];
     if (isNaN(purge))
       return message.reply({ embed:
