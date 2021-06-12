@@ -17,6 +17,6 @@ module.exports = {
       embed: client.embed({ description: `Pushed Successfully` }, message),
       allowedMentions: { repliedUser: false },
     });
-    exec(`git push -m "h"`);
+    exec(`git push`);
   },
 };
