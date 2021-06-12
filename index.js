@@ -1,20 +1,19 @@
-const Discord = require("discord.js");
-const client = new Discord.Client({
+const Discord = require("discord.js"),
+client = new Discord.Client({
   ws: { properties: { $browser: "Discord iOS" } },
   intents: require("discord.js").Intents.ALL,
   allowedMentions: {
     repliedUser: false,
     parse: ["users","roles"]
   },
-});
-
-const config = require("./config.json");
-const fs = require("fs");
-const commandFolders = fs.readdirSync("./commands");
-const GuildConfig = require("./database/GuildConfig");
-const WelcomeConfig = require("./database/Welcome");
-const UserinfoConfig = require("./database/Userinfo");
-const mongoose = require("mongoose");
+}),
+config = require("./config.json"),
+fs = require("fs"),
+commandFolders = fs.readdirSync("./commands"),
+GuildConfig = require("./database/GuildConfig"),
+WelcomeConfig = require("./database/Welcome"),
+UserinfoConfig = require("./database/Userinfo"),
+mongoose = require("mongoose");
 
 mongoose
   .connect(config.mongouri, {
