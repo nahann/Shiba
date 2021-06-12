@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 const client = new Discord.Client({
   ws: { properties: { $browser: "Discord iOS" } },
-  disableMentions: "everyone",
   intents: require("discord.js").Intents.ALL,
   allowedMentions: {
     repliedUser: false,
+    parse: ["users","roles"]
   },
 });
 
