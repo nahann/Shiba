@@ -1,5 +1,5 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
-
+const { Client, Message, MessageEmbed, splitMessage } = require("discord.js");
+const { inspect } = require("util")
 module.exports = {
   name: "eval",
   guildOnly: true,
@@ -15,6 +15,8 @@ module.exports = {
     const result = args.join(" ");
     try {
       const evaled = await eval(result);
+      const split = splitMessage(inspect(evaled))[0]
+      message.reply({embed: client.embed({title: "Eval Success!",description: `\`\`\`\n${split}\`\`\``},message)})
     } catch (err) {
       // message.reply({allowedMentions: {
       //   parse: ['everyone', 'users', 'roles'],
