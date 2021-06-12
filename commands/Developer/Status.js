@@ -14,7 +14,7 @@ module.exports = {
    const stype = args.join(" ").split(" --type=")
    const status = stype[0]
    stype[1] == stype[1] || "PLAYING"
-   if(!["WATCHING","PLAYING"].includes(stype[1].toUpperCase())) return message.reply("That's not a valid type ya nerd")
+   if(!["WATCHING","PLAYING","STREAMING","LISTENING","COMPETING"].includes(stype[1].toUpperCase())) return message.reply("That's not a valid type ya nerd")
    client.user.setActivity(status,{type: stype[1].toUpperCase()})
   },
 };
