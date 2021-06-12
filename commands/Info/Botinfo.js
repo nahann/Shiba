@@ -1,7 +1,5 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
 const ms = require("ms");
-const get = require("../../get_files")
-const { readdirSync } = require("fs")
 module.exports = {
   name: "bot-info",
   aliases: ["botinfo"],
@@ -13,10 +11,6 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    let i = 0
-    get().forEach(file =>{
-      i += readdirSync(file).split("\n").length
-    })
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .setDescription(
@@ -27,11 +21,6 @@ module.exports = {
           name: `Tag`,
           value: `\`\`\`${client.user.tag}\`\`\``,
           inline: true,
-        },
-        {
-          name: "Number of codelines",
-          value: i,
-          inline: true
         },
         {
           name: `Ping`,
