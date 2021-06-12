@@ -15,7 +15,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .setDescription(
-        `[[Support Server]](https://discord.gg/kxt4GsrEE6) [[Vote For Shiba]](https://top.gg/)`
+        `[Support Server](https://discord.gg/kxt4GsrEE6)   [Vote For Shiba](https://top.gg/)`
       )
       .addFields(
         {
