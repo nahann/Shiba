@@ -16,7 +16,7 @@ module.exports = {
     const embed = new MessageEmbed();
     const categories = new Collection();
     commands
-      .filter((cmd) => cmd.category !== "developer")
+      .filter((cmd) => cmd.category !== "Developer")
       .forEach((command) => {
         const category = categories.get(command.category);
         if (category) {
