@@ -13,13 +13,13 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-      await exec('git pull')
-            message.reply({
+           await message.reply({
       embed: client.embed(
         { description: `Pulled Successfully`` },
         message
       ),
       allowedMentions: { repliedUser: false },
     });
+           exec("git pull")
     }
 }
