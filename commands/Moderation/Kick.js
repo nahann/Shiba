@@ -14,7 +14,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    if (!message.guild.me.hasPermission("KICK_MEMBERS"))
+    if (!message.guild.me.permissions.has("KICK_MEMBERS"))
       return message.reply({ embed:
         client.embed(
           {
