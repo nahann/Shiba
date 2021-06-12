@@ -87,7 +87,6 @@ module.exports = {
     embed2
       .setFooter(`Syntax: [] = required, {} = optional.`)
       .setColor("RANDOM");
-    const cmdperms = command.userPermissions.slice(1).toLowerCase();
     message.reply({ embed: embed2,
       allowedMentions: { repliedUser: false }, });
    }catch(e){
