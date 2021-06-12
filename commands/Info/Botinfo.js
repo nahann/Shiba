@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           name: `Channels`,
-          value: `\`\`\`${client.users.channels.size}\`\`\``,
+          value: `\`\`\`${client.channels.cache.size}\`\`\``,
           inline: true,
         },
         {
