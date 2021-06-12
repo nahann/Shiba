@@ -11,9 +11,11 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const query = args.join(" ");
+    const sq = args.join(" ").split(" --src=")
+    const query = sq[0]
+    const sr = sq[1] || "stable"
     if (!query) return message.reply("Please specify a query!");
-    const url = `https://djsdocs.sorta.moe/v2/embed?src=stable&q=${encodeURIComponent(
+    const url = `https://djsdocs.sorta.moe/v2/embed?src=${sr}&q=${encodeURIComponent(
       query
     )}`;
 
