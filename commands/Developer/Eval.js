@@ -12,13 +12,13 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const result = args.join(" ");
+    const result = args.join(" ").replace(/”/g,"\"").replace(/“/g,"\"");
     try {
       const evaled = await eval(result);
       const split = splitMessage(inspect(evaled))[0];
       message.reply({
         embed: client.embed(
-          { title: "Eval Success!", description: `\`\`\`\n${split}\`\`\`` },
+          { title: "Eval Success!", description: `\`\`\`\n${split.replace(client.token,"h")}\`\`\`` },
           message
         ),
       });
