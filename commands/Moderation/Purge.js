@@ -7,7 +7,7 @@ module.exports = {
   args: true,
   usage: `*purge [number of messages]`,
   category: `Moderation`,
-  userPermissions: 'MANAGE_GUILD'
+  userPermissions: 'MANAGE_GUILD',
   description: `Bulk deletes a maximum of 99 messages within a channel.`,
   /**
    * @param {Client} client
