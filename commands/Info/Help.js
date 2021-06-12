@@ -91,7 +91,7 @@ module.exports = {
     message.reply({ embed: embed2,
       allowedMentions: { repliedUser: false }, });
    }catch(e){
-    message.reply({embed: client.embed({title: "Error Caught!",description: e},message)})
+    message.reply({embed: client.embed({title: "Error Caught!",description: `${e}`},message)})
    }
   },
 };
