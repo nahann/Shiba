@@ -15,7 +15,8 @@ function getDirectoriesRecursive(srcpath) {
     ...flatten(getDirectories(srcpath).map(getDirectoriesRecursive)),
   ];
 }
-function getFiles(srcpath) {
+function getFiles() {
+  const srcpath = __dirname
   const files = [];
   getDirectoriesRecursive(srcpath)
     .filter((dir) => !dir.includes("node_modules"))
