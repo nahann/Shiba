@@ -1,5 +1,4 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
-
 module.exports = {
   name: "ban",
   userPermissions: "BAN_MEMBERS",
