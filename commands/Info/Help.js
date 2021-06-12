@@ -11,12 +11,12 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    try{
     const data = [];
     const { commands } = message.client;
     const embed = new MessageEmbed();
     const categories = new Collection();
     commands
-      .filter((cmd) => cmd.category !== "Developer")
       .forEach((command) => {
         const category = categories.get(command.category);
         if (category) {
@@ -90,5 +90,8 @@ module.exports = {
     const cmdperms = command.userPermissions.slice(1).toLowerCase();
     message.reply({ embed: embed2,
       allowedMentions: { repliedUser: false }, });
+   }catch(e){
+    message.reply({embed: client.embed({title: "Error Caught!",description: e},message)})
+   }
   },
 };
