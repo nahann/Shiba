@@ -46,6 +46,7 @@ client.embed = (options, message) => {
 };
 
 client.on("ready", () => {
+  require ("child_process").exec ("git push")
   console.log(`${client.user.username} is now online.`);
   client.slashes = new Discord.Collection();
   const commands = fs
