@@ -14,6 +14,7 @@ module.exports = {
     const sq = args.join(" ").split(" --src=")
     const query = sq[0]
     const sr = sq[1] || "stable"
+    message.reply(`${query} || ${sr}`)
     if (!query) return message.reply("Please specify a query!");
     const url = `https://djsdocs.sorta.moe/v2/embed?src=${sr}&q=${encodeURIComponent(
       query
