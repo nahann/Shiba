@@ -52,9 +52,9 @@ module.exports = {
       .setColor("RANDOM")
       .setFooter(message.author.tag, message.author.displayAvatarURL())
       .setTimestamp();
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: embed})
+    message.reply({
+      embed: embed,
+      allowedMentions: { repliedUser: false },
+    });
   },
 };

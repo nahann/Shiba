@@ -21,10 +21,14 @@ module.exports = {
       if (data) {
         message.channel.send({ embed: data });
       } else {
-        message.reply({allowedMentions: {    
-          parse: ['everyone', 'users', 'roles'],    
-          repliedUser: false,
-          }, embed: client.embed({ description: `Not Found.`}, message)})
+        message.reply({
+          allowedMentions: {
+            parse: ["everyone", "users", "roles"],
+            repliedUser: false,
+          },
+          embed: client.embed({ description: `Not Found.` }, message),
+          allowedMentions: { repliedUser: false },
+        });
       }
     });
   },

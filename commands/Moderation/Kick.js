@@ -15,27 +15,37 @@ module.exports = {
    */
   run: async (client, message, args) => {
     if (!message.guild.me.hasPermission("KICK_MEMBERS"))
-      return message.reply(
+      return message.reply({ embed:
         client.embed(
           {
             description: `Shiba does not have the \`KICK_MEMBERS\` permission.`,
           },
           message
-        )
-      );
+        ),
+        allowedMentions: { repliedUser: false },
+      });
     const member = message.mentions.members.first();
     const reason = args.slice(1).join(" ") || "No Reason Provided";
     if (member.kickable) {
       await member.kick({ reason: reason });
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `${member.user.tag} has been kicked`}, message)})
+      message.reply({
+        allowedMentions: {
+          parse: ["everyone", "users", "roles"],
+          repliedUser: false,
+        },
+        embed: client.embed(
+          { description: `${member.user.tag} has been kicked` },
+          message
+        ),
+      });
     } else {
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `I cannot kick this member.`}, message)})
+      message.reply({
+        embed: client.embed(
+          { description: `I cannot kick this member.` },
+          message
+        ),
+        allowedMentions: { repliedUser: false },
+      });
     }
   },
 };

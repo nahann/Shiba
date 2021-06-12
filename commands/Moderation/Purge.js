@@ -16,20 +16,25 @@ module.exports = {
   run: async (client, message, args) => {
     const purge = args[0];
     if (isNaN(purge))
-      return message.reply(
-        client.embed({ description: `Provide a real number.` }, message)
-      );
+      return message.reply({ embed:
+        client.embed({ description: `Provide a real number.` }, message),
+        allowedMentions: { repliedUser: false },
+      })
     if (purge > 99)
-      return message.reply(
+      return message.reply({ embed:
         client.embed(
           { description: `You cannot delete more than 99 memssages` },
           message
-        )
-      );
+      ),
+      allowedMentions: { repliedUser: false },
+    });
     message.channel.bulkDelete(purge);
-    message.reply({allowedMentions: {    
-      parse: ['everyone', 'users', 'roles'],    
-      repliedUser: false,
-      }, embed: client.embed({ description: `${purge} messages have been deleted.`}, message)})
+    message.reply({
+      embed: client.embed(
+        { description: `${purge} messages have been deleted.` },
+        message
+      ),
+      allowedMentions: { repliedUser: false },
+    });
   },
 };

@@ -16,9 +16,12 @@ module.exports = {
       { userId: message.author.id },
       { Color: color }
     );
-    message.reply({allowedMentions: {    
-      parse: ['everyone', 'users', 'roles'],    
-      repliedUser: false,
-      }, embed: client.embed({ description: `Color set to: \`${color}\``}, message)})
+    message.reply({
+      embed: client.embed(
+        { description: `Color set to: \`${color}\`` },
+        message
+      ),
+      allowedMentions: { repliedUser: false },
+    });
   },
 };

@@ -6,9 +6,10 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: "*prefix [prefix]",
-  userPermissions: ["MANAGE_GUILD"],
+  // userPermissions: ["MANAGE_GUILD"],
   category: `Guild Config`,
   description: `Change the prefix for the guild.`,
+  userPermissions: `MANAGE_GUILD`,
   /**
    * @param {Client} client
    * @param {Message} message
@@ -20,9 +21,12 @@ module.exports = {
       { guildId: message.guild.id },
       { prefix: prefix }
     );
-    message.reply({allowedMentions: {    
-      parse: ['everyone', 'users', 'roles'],    
-      repliedUser: false,
-      }, embed: client.embed({ description: `Prefix updated to: \`${prefix}\``}, message)})
+    message.reply({
+      embed: client.embed(
+        { description: `Prefix updated to: \`${prefix}\`` },
+        message
+      ),
+      allowedMentions: { repliedUser: false },
+    });
   },
 };

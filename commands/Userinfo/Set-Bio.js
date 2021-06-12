@@ -23,9 +23,9 @@ module.exports = {
         userId: message.author.id,
         Bio: bio,
       });
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `Bio set to: \`${bio}\``}, message)})
+    message.reply({
+      embed: client.embed({ description: `Bio set to: \`${bio}\`` }, message),
+      allowedMentions: { repliedUser: false },
+    });
   },
 };

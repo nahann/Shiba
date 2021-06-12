@@ -3,6 +3,9 @@ const client = new Discord.Client({
   ws: { properties: { $browser: "Discord iOS" } },
   disableMentions: "everyone",
   intents: require("discord.js").Intents.ALL,
+  allowedMentions: {
+    repliedUser: false,
+  },
 });
 
 const config = require("./config.json");
@@ -12,8 +15,6 @@ const GuildConfig = require("./database/GuildConfig");
 const WelcomeConfig = require("./database/Welcome");
 const UserinfoConfig = require("./database/Userinfo");
 const mongoose = require("mongoose");
-const voiceCollection = new Discord.Collection();
-require('./Extend')
 
 mongoose
   .connect(config.mongouri, {
@@ -43,24 +44,44 @@ client.embed = (options, message) => {
       message.author.displayAvatarURL({ dynamic: true, format: "png" })
     )
     .setTimestamp();
-  };
+};
 
 client.on("ready", () => {
   console.log(`${client.user.username} is now online.`);
-})
+  client.slashes = new Discord.Collection();
+  const commands = fs
+    .readdirSync(`./commands-slash`)
+    .filter((comd) => comd.endsWith(".js"));
+  //Makes sure there are commands so it doesn't error
+  if (commands.length) {
+    commands.forEach((command) => {
+      const cmd = require(`./commands-slash/${command}`);
+
+      if (!cmd.name || !cmd.description || !cmd.run) return;
+
+      client.guilds.cache.get("849131192275566613").commands.create(cmd);
+      client.slashes.set(cmd.name, cmd);
+    });
+  }
+});
+
+client.on("interaction", (command) => {
+  if (!command.isCommand()) return;
+  client.slashes.get(command.commandName)?.run(client, command);
+});
 
 client.on("message", async (message) => {
   if (message.author.bot) return;
   const data = await GuildConfig.findOne({ guildId: message.guild.id });
   if (!data)
-    return message.reply({ embed:
-      client.embed(
+    return message.reply({
+      embed: client.embed(
         {
           description: `If you are seeing this message it is because Shiba has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shiba to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
         },
         message
-    )
-      });
+      ),
+    });
   const prefix = data.get("prefix");
   if (!message.content.startsWith(prefix)) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -72,10 +93,7 @@ client.on("message", async (message) => {
       (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
     );
 
-  if (!command)
-    return message.reply({ embed:
-      client.embed({ description: `Invalid Command.` }, message)
-    });
+  if (!command) return;
 
   if (command.guildOnly && message.channel.type === "dm") {
     return message.channel.send(`This is a guild only command.`);
@@ -84,13 +102,13 @@ client.on("message", async (message) => {
   if (command.userPermissions) {
     const authorPerms = message.channel.permissionsFor(message.author);
     if (!authorPerms || !authorPerms.has(command.userPermissions)) {
-      return message.channel.send({ embed: 
-        client.embed(
+      return message.channel.send({
+        embed: client.embed(
           {
             description: `You require the permission: \`${command.userPermissions}\``,
           },
           message
-        )
+        ),
       });
     }
   }
@@ -102,7 +120,9 @@ client.on("message", async (message) => {
       reply += `\nCorrect Usage: \`${command.usage}\``;
     }
 
-    return message.channel.send({ embed: client.embed({ description: reply }, message)});
+    return message.channel.send({
+      embed: client.embed({ description: reply }, message),
+    });
   }
 
   if (command.ownerOnly && message.author.id !== "243845797643419658") return;
@@ -142,13 +162,14 @@ client.on("guildMemberAdd", async (member) => {
   const channeltosend = member.guild.channels.cache.get(channel);
   const role = dataa.roleId;
   const embed = new Discord.MessageEmbed()
-  .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
-  .setDescription(newmsg)
-  .setFooter(`Shiba Welcome System`, client.user.displayAvatarURL())
-  .setThumbnail(member.guild.iconURL())
-  .setColor('RANDOM')
+    .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
+    .setDescription(newmsg)
+    .setFooter(`Shiba Welcome System`, client.user.displayAvatarURL())
+    .setThumbnail(member.guild.iconURL())
+    .setColor("RANDOM")
+    .setTimestamp();
   try {
-    channeltosend.send({ embed: embed })
+    channeltosend.send({ embed: embed });
     if (role) member.roles.add(role);
   } catch (err) {
     console.log(err);

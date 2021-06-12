@@ -15,25 +15,29 @@ module.exports = {
    */
   run: async (client, message, args) => {
     if (!message.guild.me.hasPermission("BAN_MEMBERS"))
-      return message.reply(
+      return message.reply({ embed:
         client.embed(
           {
             description: `Shiba does not have the \`BAN_MEMBERS\` permission.`,
           },
           message
-        )
-      );
+        ),
+        allowedMentions: { repliedUser: false },
+      });
     try {
       await message.guild.members.unban(args[0]);
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `User has been unbanned`}, message)})
+      message.reply({
+        embed: client.embed({ description: `User has been unbanned` }, message),
+        allowedMentions: { repliedUser: false },
+      });
     } catch (err) {
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `An error has occured` + err}, message)})
+      message.reply({
+        embed: client.embed(
+          { description: `An error has occured` + err },
+          message
+        ),
+        allowedMentions: { repliedUser: false },
+      });
     }
   },
 };

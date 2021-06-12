@@ -16,10 +16,17 @@ module.exports = {
     try {
       const evaled = await eval(result);
     } catch (err) {
-      message.reply({allowedMentions: {    
-        parse: ['everyone', 'users', 'roles'],    
-        repliedUser: false,
-        }, embed: client.embed({ description: `AN ERROR HAS OCCURED: ${err}`}, message)})
+      // message.reply({allowedMentions: {
+      //   parse: ['everyone', 'users', 'roles'],
+      //   repliedUser: false,
+      //   }, embed: client.embed({ description: `AN ERROR HAS OCCURED: ${err}`}, message)})
+      message.reply({
+        embed: client.embed(
+          { description: `AN ERROR HAS OCCURED: ${err}` },
+          message
+        ),
+        allowedMentions: { repliedUser: false },
+      });
     }
   },
 };
