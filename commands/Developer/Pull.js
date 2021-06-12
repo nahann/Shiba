@@ -15,7 +15,7 @@ module.exports = {
     run: async(client, message, args) => {
            await message.reply({
       embed: client.embed(
-        { description: `Pulled Successfully`` },
+        { description: `Pulled Successfully` },
         message
       ),
       allowedMentions: { repliedUser: false },
