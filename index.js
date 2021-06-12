@@ -125,7 +125,7 @@ client.on("message", async (message) => {
     });
   }
 
-  if (command.ownerOnly && message.author.id !== "243845797643419658") return;
+  if (command.ownerOnly && !["243845797643419658","520797108257816586"].includes(message.author.id)) return;
 
   try {
     command.run(client, message, args);
