@@ -37,7 +37,7 @@ return join
 */
   return files.filter(
     (file) =>
-      ![`${__dirname}/package.json`, `${__dirname}/package-lock.json`].includes(
+      ![`${__dirname}/.gitignore`,`${__dirname}/package.json`, `${__dirname}/package-lock.json`].includes(
         file
       )
   );
