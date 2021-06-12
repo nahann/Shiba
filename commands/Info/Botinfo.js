@@ -11,6 +11,11 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    const [members,channels] = [0,0]
+    client.guilds.cache.forEach(guild=>{
+    members += guild.members.cache.size
+    channels += guild.channels.cache.size
+})
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .setDescription(
@@ -34,12 +39,12 @@ module.exports = {
         },
         {
           name: `Users`,
-          value: `\`\`\`${client.users.cache.size}\`\`\``,
+          value: `\`\`\`${members}\`\`\``,
           inline: true,
         },
         {
           name: `Channels`,
-          value: `\`\`\`${client.channels.cache.size}\`\`\``,
+          value: `\`\`\`${channels}\`\`\``,
           inline: true,
         },
         {
