@@ -32,7 +32,7 @@ module.exports = {
             ]
         : ["Hasn't started yet", "Hasn't started yet so can't end"];
     e.setDescription(
-      `${fetched.synopsis} \n **Airing**: ${fetched.airing}\n **Query ID**: ${
+      `${require ("discord.js").splitMessage(fetched.synopsis)} \n **Airing**: ${fetched.airing}\n **Query ID**: ${
         fetched.mal_id
       } \n **Started At**: ${timear[0]} \n **Ended at**: ${
         timear[1]
