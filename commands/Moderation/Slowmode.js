@@ -3,7 +3,7 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "slowmode", 
   guildOnly: true,
-  userPermissions: 'MANAGE_MESSAGES'
+  userPermissions: 'MANAGE_MESSAGES',
   args: true,
   usage: `*slowmode [number in seconds]`,
   category: `Moderation`,
