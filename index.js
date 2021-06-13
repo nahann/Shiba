@@ -1,4 +1,3 @@
-
 const Discord = require("discord.js"),
 client = new Discord.Client({
   ws: { properties: { $browser: "Discord iOS" } },
@@ -10,7 +9,6 @@ client = new Discord.Client({
 }),
 config = require("./config.json"),
 fs = require("fs"),
-commandFolders = fs.readdirSync("./commands"),
 GuildConfig = require("./database/GuildConfig"),
 WelcomeConfig = require("./database/Welcome"),
 UserinfoConfig = require("./database/Userinfo"),
@@ -26,7 +24,8 @@ mongoose
   });
 
 client.commands = new Discord.Collection();
-
+client.loadCommands = function(){
+const commandFolders = readdirSync(`${__dirname}/commands`)
 for (const folder of commandFolders) {
   const commandFiles = fs
     .readdirSync(`./commands/${folder}`)
@@ -37,7 +36,8 @@ for (const folder of commandFolders) {
     client.commands.set(command.name, command);
   }
 }
-
+}
+client.loadCommands()
 client.embed = (options, message) => {
   return new Discord.MessageEmbed({ ...options, color: "RANDOM" })
     .setFooter(
