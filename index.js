@@ -32,7 +32,7 @@ for (const folder of commandFolders) {
     .filter((file) => file.endsWith(".js"));
   for (const file of commandFiles) {
     const command = require(`./commands/${folder}/${file}`);
-    command.category = folder
+    if(!command.category)command.category = folder
     client.commands.set(command.name, command);
   }
 }
