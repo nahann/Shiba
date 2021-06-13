@@ -4,6 +4,7 @@ module.exports = {
   name: "anime",
   description: "Search for any anime",
   run: async(client, message, args) => {
+    try{
     if (!args.length) return;
     const q = encodeURIComponent(args.join(" "));
     const s = `https://api.jikan.moe/v3/search/anime?q=${q}&limit=1`;
@@ -56,5 +57,6 @@ module.exports = {
       .setTimestamp()
       .setFooter("h");
     message.reply({embed: e});
+   }catch(e) { message.reply(`${e}`,{code: true})
   },
 };
