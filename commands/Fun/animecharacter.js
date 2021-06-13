@@ -7,13 +7,12 @@ module.exports = {
   description: "Search for any anime/manga character",
   run: async (bot, message, args) => {
     if (!args.length) return;
-    const ar = args.join(" ");
-    const arg = encodeURIComponent(ar);
+    const arg1 = args.join(" ");
+    const arg = encodeURIComponent(arg1);
     const s = `https://api.jikan.moe/v3/search/character?q=${arg}&limit=1`;
-    console.log(s);
     const f = await fetch(s).then((res) => res.json());
-    let fee;
-    let feeu;
+    let fetch1;
+    let fetch2;
     console.log(
       [f.results[0].name.split(",")[1], f.results[0].name.split(",")[0]].join(
         " "
@@ -28,7 +27,7 @@ module.exports = {
         )
       ) > 6
     ) {
-      feeu = await fetch(
+      fetch2 = await fetch(
         `https://api.jikan.moe/v3/search/character?q=${encodeURIComponent(
           ar
             .replace(/o/g, "ou")
@@ -37,54 +36,54 @@ module.exports = {
             .replace("suuke", "suke")
         )}`
       ).then((e) => e.json());
-      if (feeu.status && feeu.status == "404") {
+      if (fetch2.status && fetch2.status == "404") {
         message.channel.send("Character not found");
       } else {
-        fee = feeu.results[0].mal_id;
+        fetch1 = fetch2.results[0].mal_id;
       }
     } else {
-      fee = f.results[0].mal_id;
+      fetch1 = f.results[0].mal_id;
     }
-    const fe = await fetch(`https://api.jikan.moe/v3/character/${fee}`).then(
+    const fetch3 = await fetch(`https://api.jikan.moe/v3/character/${fee}`).then(
       (u) => u.json()
     );
 
     const e = new MessageEmbed()
-      .setTitle(`**${fe.name}**`)
+      .setTitle(`**${fetch3.name}**`)
       .setDescription(
         `Nicknames: \n ${
-          fe.nicknames.length >= 1
-            ? fe.nicknames.map((nick) => `**""${nick}**`).join("\n")
+          fetch3.nicknames.length >= 1
+            ? fetch3.nicknames.map((nick) => `**""${nick}**`).join("\n")
             : "None"
         } \n Anime's: \n ${
-          fe.animeography.length >= 1
-            ? fe.animeography.map((anime) => `**${anime.name}**`).join("\n")
+          fetch3.animeography.length >= 1
+            ? fetch3.animeography.map((anime) => `**${anime.name}**`).join("\n")
             : "**None**"
         } \n Mangas: \n ${
-          fe.mangaography.length >= 1
-            ? fe.mangaography.map((manga) => `**${manga.name}**`).join("\n")
+          fetch3.mangaography.length >= 1
+            ? fetch3.mangaography.map((manga) => `**${manga.name}**`).join("\n")
             : "**Unknown**"
         }`
       )
-      .setThumbnail(fe.image_url)
+      .setThumbnail(fetch3.image_url)
       .setColor("RANDOM");
-    const fdejd = fe.about.length - 2039;
+    const fetch4 = fetch3.about.length - 2039;
     let bioemb = new MessageEmbed()
       .setDescription(
         `Biography: **${
           fe.about.length > 2048
-            ? `${fe.about
+            ? `${fetch3.about
                 .slice(0, -fdejd)
                 .split("\\r")
                 .join("\r")
                 .split("\\n")
                 .join("\n")}...`
-            : fe.about.split("\\r").join("\r").split("\\n").join("\n")
+            : fetch3.about.split("\\r").join("\r").split("\\n").join("\n")
         }**`
       )
       .setColor("RANDOM");
     e.description += `\n ${bioemb.description}`;
-
-    message.send(e);
+    e.description = require("discord.js").splitMessage(e.description)[0]
+    message.reply({embed: e});
   },
 };
