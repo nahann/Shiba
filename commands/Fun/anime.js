@@ -6,17 +6,14 @@ module.exports = {
   async run(bot, message, args) {
     if (!args.length) return;
     const q = encodeURIComponent(args.join(" "));
-    console.log(q);
     const s = `https://api.jikan.moe/v3/search/anime?q=${q}&limit=1`;
     console.log(s);
-    const fetche = await fetch(s).then((res) => res.json());
+    const fetch1 = await fetch(s).then((res) => res.json());
 
-    const fetc = fetche.results[0].mal_id;
-    const fetched = await fetch(`https://api.jikan.moe/v3/anime/${fetc}`).then(
+    const fetch2 = fetch1.results[0].mal_id;
+    const fetched = await fetch(`https://api.jikan.moe/v3/anime/${fetch2}`).then(
       (res) => res.json()
     );
-    console;
-    console.log(fetc);
     const e = new MessageEmbed()
       .setTitle(fetched.title)
       .setURL(fetched.url)
@@ -58,6 +55,6 @@ module.exports = {
 
       .setTimestamp()
       .setFooter("h");
-    message.channel.send(e);
+    message.reply({embed: e});
   },
 };
