@@ -57,6 +57,6 @@ module.exports = {
       .setTimestamp()
       .setFooter("h");
     message.reply({embed: e});
-   }catch(e) { message.reply(`${e}`,{code: true})
+   }catch(e) { message.reply(`${e}`,{code: true}) }
   },
 };
