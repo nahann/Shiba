@@ -1,4 +1,4 @@
-require("./Extend.js")
+
 const Discord = require("discord.js"),
 client = new Discord.Client({
   ws: { properties: { $browser: "Discord iOS" } },
