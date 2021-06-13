@@ -178,11 +178,4 @@ client.on("guildMemberAdd", async (member) => {
   }
 });
 
-client.on('error', (err) => {
-  const erroreCode = Math.floor(Math.random() * (10000 - 1 + 1)) + 1
-  const channel = client.channels.cache.get('853033512500461613')
-  message.reply(`An error has occured. Contact \`nahan#6480\` or \`Lesiiii#0876\` for more info.\nError Code: ${erroreCode}`)
-  channel.send(err + `Error Code: ${erroreCode}`)
-})
-
 client.login(config.token);
