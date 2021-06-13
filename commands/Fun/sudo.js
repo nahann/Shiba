@@ -1,14 +1,14 @@
 module.exports = {
   name: "sudo",
   description: "talk as your friends!",
-  async run(bot, message, args) {
+  run: async(client, message, args) => {
     const me = args.splice(0, 1);
     console.log(me);
     const member =
       message.guild.members.cache.find((m) => m.user.tag.includes(me)) !==
         undefined || null
         ? message.guild.members.cache.find((m) => m.user.tag.includes(me)).user
-        : await bot.users.fetch(me);
+        : await client.users.fetch(me);
     console.log(member);
     if (!member) return message.reply("That person doesn't exist!");
     const user = {

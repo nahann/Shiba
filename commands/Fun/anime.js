@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "anime",
   description: "Search for any anime",
-  async run(bot, message, args) {
+  run: async(client, message, args) => {
     if (!args.length) return;
     const q = encodeURIComponent(args.join(" "));
     const s = `https://api.jikan.moe/v3/search/anime?q=${q}&limit=1`;

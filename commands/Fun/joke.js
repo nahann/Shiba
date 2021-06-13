@@ -8,11 +8,10 @@ module.exports = {
     fetch("https://official-joke-api.appspot.com/random_joke")
       .then((joke) => joke.json())
       .then((json) => {
-        console.log(json);
         const e = new MessageEmbed()
           .setTitle(json.setup)
           .setDescription(json.punchline);
-        message.channel.send(e);
+        message.channel.send({ embed: e });
       });
   },
 };
