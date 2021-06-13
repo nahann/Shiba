@@ -25,7 +25,7 @@ mongoose
 
 client.commands = new Discord.Collection();
 client.loadCommands = function(){
-const commandFolders = readdirSync(`${__dirname}/commands`)
+const commandFolders = fs.readdirSync(`${__dirname}/commands`)
 for (const folder of commandFolders) {
   const commandFiles = fs
     .readdirSync(`./commands/${folder}`)
