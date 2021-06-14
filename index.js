@@ -53,6 +53,19 @@ for (const folder of commandFolders) {
   }
 }
 }
+client.loadEvents = function(){
+    const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.run(...args,client));
+	} else {
+		client.on(event.name, (...args) => event.run(...args,client));
+	}
+}
+}
+client.loadEvents()
 client.loadCommands()
 client.embed = (options, message) => {
   return new Discord.MessageEmbed({ ...options, color: "RANDOM" })
