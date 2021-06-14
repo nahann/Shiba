@@ -34,7 +34,10 @@ mongoose
               type: Number,
               default: 500,
             },
-            daily: Number,
+            Passive: {
+              type: Boolean,
+              default: false
+            }
         }
     }
 ] });
