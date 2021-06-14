@@ -72,7 +72,7 @@ module.exports={
     });
   }
 
-  if (command.ownerOnly && !["243845797643419658","520797108257816586"].includes(message.author.id)) return;
+  if (command.ownerOnly && !["243845797643419658","520797108257816586", "447680195604774922"].includes(message.author.id)) return;
 
   try {
     command.run(client, message, args);
