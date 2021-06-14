@@ -10,7 +10,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         const Schema = await client.db.load('userEcos')
-        const data = await Schema.findOne({ userId: message.author.id }) || await Schema.create({ userId: user.id })
+        const data = await Schema.findOne({ userId: message.author.id }) || await Schema.create({ userId: message.author.id })
         const Jobs = [
             "cashier",
             "fast food worker",

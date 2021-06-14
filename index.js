@@ -117,7 +117,7 @@ client.on("message", async (message) => {
   }
 
   if (command.beta) {
-    const betaTesters = ["243845797643419658", "520797108257816586"]
+    const betaTesters = ["243845797643419658", "520797108257816586", "427181678704984064"]
     if(!betaTesters.includes(message.author.id)) return message.reply({ embed: client.embed({ description: `This is currently a beta feature`}, message)})
   }
 
