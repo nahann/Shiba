@@ -52,7 +52,7 @@ module.exports = {
           value: `Roles: ${
             roles.length < 10
               ? roles.join(" ,")
-              : roles.lenth > 10
+              : roles.length > 10
               ? client.utils.trimArray(roles)
               : "None"
           }`,
