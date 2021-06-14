@@ -59,7 +59,7 @@ module.exports = {
         },
         {
           name: `» User Bio`,
-          value: `Bio: ${JSON.stringify(await bio)}`,
+          value: `Bio: ${bio}}`,
         },
         {
           name: `» User Birthday`,
