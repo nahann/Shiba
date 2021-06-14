@@ -1,3 +1,5 @@
+const ms = require('ms')
+
 module.exports={
   name: "message",
   run: async(message,client)=>{

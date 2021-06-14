@@ -1,4 +1,5 @@
 const GuildConfig = require("../database/GuildConfig")
+const WelcomeConfig = require('../database/Welcome')
 
 module.exports={
     name: "guildDelete",
