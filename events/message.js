@@ -3,7 +3,10 @@ module.exports={
   run: async(message,client)=>{
   const GuildConfig = require("../database/GuildConfig")
   if (message.author.bot) return;
-  const data = await GuildConfig.findOne({ guildId: message.guild.id });
+  const data = await GuildConfig.findOne({ guildId: message.guild.id }) || await GuildConfig.create({
+    guildName: message.guild.name,
+    guildId: message.guild.id,
+  });
   if (!data)
     return message.reply({
       embed: client.embed(

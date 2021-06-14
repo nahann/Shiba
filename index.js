@@ -79,45 +79,4 @@ client.embed = (options, message) => {
     .setTimestamp();
 };
 
-client.on("guildCreate", async (guild) => {
-  await GuildConfig.create({
-    guildName: guild.name,
-    guildId: guild.id,
-  });
-  console.log(`Shiba has joined ${guild.name}. Saved to base`);
-});
-
-client.on("guildDelete", async (guild) => {
-  await GuildConfig.findOneAndDelete({ guildId: guild.id });
-  console.log(`Shiba has left ${guild.name}. Deleted from base`);
-  await WelcomeConfig.findOneAndDelete({ guildId: guild.id });
-  console.log(`Welcome config deleted from base.`);
-});
-
-client.on("guildMemberAdd", async (member) => {
-  const dataa = await WelcomeConfig.findOne({ guildId: member.guild.id });
-  if (!dataa) return;
-  if (dataa.toggled === false) return;
-  const message = dataa.message;
-  const newmsg = message
-    .replace("{guild}", member.guild.name)
-    .replace("{user}", `<@${member.user.id}>`);
-  const channel = dataa.channelId;
-  const channeltosend = member.guild.channels.cache.get(channel);
-  const role = dataa.roleId;
-  const embed = new Discord.MessageEmbed()
-    .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL())
-    .setDescription(newmsg)
-    .setFooter(`Shiba Welcome System`, client.user.displayAvatarURL())
-    .setThumbnail(member.guild.iconURL())
-    .setColor("RANDOM")
-    .setTimestamp();
-  try {
-    channeltosend.send({ embed: embed });
-    if (role) member.roles.add(role);
-  } catch (err) {
-    console.log(err);
-  }
-});
-
 client.login(config.token);
