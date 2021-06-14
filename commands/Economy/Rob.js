@@ -6,6 +6,7 @@ module.exports = {
     beta: true,
     args: true,
     usage: '*passive [true or false]',
+    cooldown: 3600000,
     /** 
      * @param {Client} client 
      * @param {Message} message 

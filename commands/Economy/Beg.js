@@ -2,6 +2,7 @@ module.exports={
    name: "beg",
    beta: true,
    description: "idk beg",
+   cooldown: 300000,
    run: async(client,message)=>{
      const schema = await client.db.load("userEcos")
      const user = await schema.findOne({ userId: message.author.id }) || await schema.create({userId: message.author.id })
