@@ -113,7 +113,6 @@ client.on("message", async (message) => {
     );
 
   if (!command) return;
-  if(command.cooldown){
   const { cooldowns } = client;
 
   if (!cooldowns.has(command.name)) {
@@ -134,7 +133,6 @@ client.on("message", async (message) => {
  }
 timestamps.set(message.author.id, now);
 setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
- }
   if (command.guildOnly && message.channel.type === "dm") {
     return message.channel.send(`This is a guild only command.`);
   }

@@ -12,7 +12,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const reg = new RegExp(client.token,"g")
+    const reg = new RegExp("client.token","g")
     const result = args.join(" ").replace(/”/g,"\"").replace(/“/g,"\"").replace(reg,"you thought");
     try {
       const evaled = await eval(result);
