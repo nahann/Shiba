@@ -3,7 +3,7 @@ const { get } = require("axios");
 module.exports = {
   name: "changmymind",
   description: "make changemymind text!",
-  run: async (bot, message, args) => {
+  run: async (client, message, args) => {
     if (!args.length) return message.reply("you need some text there!");
     try {
       const { data } = await get(
@@ -11,7 +11,7 @@ module.exports = {
           .slice(0)
           .join(" ")}`
       );
-      message.reply(client.embed({ image: data.message }, message));
+      message.reply({ embed: client.embed({ image: data.message }, message)});
     } catch (err) {
       return console.error(err.message);
     }

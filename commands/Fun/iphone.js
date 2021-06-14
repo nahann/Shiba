@@ -3,7 +3,7 @@ const { get } = require("axios");
 module.exports = {
   name: "iphone",
   description: "make your avatar a iphone!",
-  run: async (bot, message, args) => {
+  run: async (client, message, args) => {
     const avatar = message.mentions.users.first().displayAvatarURL({ dynamic: false }) || message.author.displayAvatarURL({ dynamic: false }) 
     try {
       const { data } = await get(
