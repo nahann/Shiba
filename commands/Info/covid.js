@@ -16,9 +16,9 @@ module.exports = {
 
         const e = client.embed({title: `COVID-19 stats of ${json.country}`},message)
           .setThumbnail(json.countryInfo.flag)
-          .setDescription(
-            ` Cases today: \`\`\`${json.todayCases}\`\`\`\nDeaths today: \`\`\`${json.todayDeaths}\`\`\`\nAll cases: ${json.cases}\n All deaths: ${json.deaths}\n All recoveries: ${json.recovered}\n Active cases right now: ${json.active} `
-          )
+          .addField(
+            `Cases today`,`\`\`\`${json.todayCases}\`\`\``,true).addField(`Deaths today`,`\`\`\`${json.todayDeaths}\`\`\`,true).addField(`All cases`,`\`\`\`${json.cases}\`\`\``,true).addField(`All deaths`,`${json.deaths}`,true).addField(`All recoveries`,`\`\`\`${json.recovered}\`\`\``,true).addField(`Active cases right now`,`\`\`\`${json.active}\`\`\``,true)
+      
         message.reply({embed: e});
       });
   },
