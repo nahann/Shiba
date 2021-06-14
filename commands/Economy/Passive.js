@@ -4,7 +4,7 @@ module.exports = {
     name: 'passive',
     beta: true,
     args: true,
-    usage: '*passive [true or false]',
+    usage: '*passive [enable or disable]',
     /** 
      * @param {Client} client 
      * @param {Message} message 
