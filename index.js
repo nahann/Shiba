@@ -13,6 +13,7 @@ GuildConfig = require("./database/GuildConfig"),
 WelcomeConfig = require("./database/Welcome"),
 UserinfoConfig = require("./database/Userinfo"),
 mongoose = require("mongoose"),
+ms = require('ms'),
 { Database } = require('zapmongo')
 
 mongoose
@@ -111,26 +112,31 @@ client.on("message", async (message) => {
     );
 
   if (!command) return;
-  const { cooldowns } = client;
 
-  if (!cooldowns.has(command.name)) {
-	cooldowns.set(command.name, new Discord.Collection());
+  if(client.cooldowns.has(`${message.author.id}-${command.name}`)) {
+    return message.reply({ embed: client.embed({ description: `Try this command in ${ms(client.cooldowns.get(`${message.author.id}-${command.name}`) - Date.now(), { long: true })}`}, message)})
   }
 
-  const now = Date.now();
-  const timestamps = cooldowns.get(command.name);
-  const cooldownAmount = (command.cooldown || 3) * 1000;
+//   if (!cooldowns.has(command.name)) {
+// 	cooldowns.set(command.name, new Discord.Collection());
+//   }
 
-  if (timestamps.has(message.author.id)) {
-	const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+//   const now = Date.now();
+//   const timestamps = cooldowns.get(command.name);
+//   const cooldownAmount = (command.cooldown || 3) * 1000;
 
-	if (now < expirationTime) {
-		const timeLeft = (expirationTime - now) / 1000;
-		return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
-	}
- }
-timestamps.set(message.author.id, now);
-setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+//   if (timestamps.has(message.author.id)) {
+// 	const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+
+// 	if (now < expirationTime) {
+// 		const timeLeft = (expirationTime - now) / 1000;
+// 		return message.reply(`please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+// 	}
+//  }
+// timestamps.set(message.author.id, now);
+// setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+
+
   if (command.guildOnly && message.channel.type === "dm") {
     return message.channel.send(`This is a guild only command.`);
   }
@@ -169,7 +175,20 @@ setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   if (command.ownerOnly && !["243845797643419658","520797108257816586"].includes(message.author.id)) return;
 
   try {
-    await command.run(client, message, args);
+    command.run(client, message, args);
+    if(command.cooldown) {
+      client.cooldowns.set(`${message.author.id}-${command.name}`, Date.now() + command.cooldown)
+      setTimeout(() => {
+        client.cooldowns.delete(`${message.author.id}-${command.name}`)
+      }, command.cooldown)
+    }
+
+    if(!command.cooldown) {
+      client.cooldowns.set(`${message.author.id}-${command.name}`, Date.now() + 3000)
+      setTimeout(() => {
+        client.cooldowns.delete(`${message.author.id}-${command.name}`)
+      }, 3000)
+    }
   } catch (error) {
     console.log(error);
     message.channel.send(`${error}`);
