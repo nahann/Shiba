@@ -173,7 +173,7 @@ setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   if (command.ownerOnly && !["243845797643419658","520797108257816586"].includes(message.author.id)) return;
 
   try {
-    command.run(client, message, args);
+    await command.run(client, message, args);
   } catch (error) {
     console.log(error);
     message.channel.send(`${error}`);
