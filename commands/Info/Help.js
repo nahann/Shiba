@@ -36,6 +36,7 @@ module.exports = {
       Info: "📝",
       Moderation: "🦚",
       Userinfo: "🧦",
+      "Economy": ":coin:"
     };
     const lines = categories.map(
       (category, name) =>
