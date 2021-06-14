@@ -1,4 +1,5 @@
 const { get } = require("axios");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "changmymind",
@@ -11,7 +12,12 @@ module.exports = {
           .slice(0)
           .join(" ")}`
       );
-      message.reply(client.embed({ image: data.message }, message));
+      message.reply({ embed: new MessageEmbed()
+
+        .setImage(data.message)
+        .setColor('RANDOM')
+
+      });
     } catch (err) {
       return console.error(err.message);
     }

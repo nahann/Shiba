@@ -1,4 +1,5 @@
 const { get } = require("axios");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "deepfry",
@@ -9,7 +10,12 @@ module.exports = {
       const { data } = await get(
         `https://nekobot.xyz/api/imagegen?type=deepfry&url=${avatar}`
       );
-      message.reply(client.embed({ image: data.message }, message));
+      message.reply({ embed: new MessageEmbed()
+
+        .setImage(data.message)
+        .setColor('RANDOM')
+
+      });
     } catch (err) {
       return console.error(err.message);
     }
