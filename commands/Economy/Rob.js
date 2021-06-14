@@ -15,6 +15,7 @@ module.exports = {
     run: async(client, message, args) => {
         const schema = await client.db.load("userEcos")
         const user = message.mentions.users.first();
+        if(message.author.id === user.id) return message.reply({ embed: client.embed({ description: `You cannot rob yourself.`}, message)})
         const authorData = await schema.findOne({ userId: message.author.id })
         const userData = await schema.findOne({ userId: user.id })
         const authorPassive = authorData.get('Passive')
