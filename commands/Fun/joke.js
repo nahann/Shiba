@@ -4,7 +4,7 @@ module.exports = {
   name: "joke",
   aliases: ["jk", "textmeme", "j"],
   description: "seriously are you this dumb the name explains it all",
-  run: async (bot, message, args) => {
+  run: async (client, message, args) => {
     fetch("https://official-joke-api.appspot.com/random_joke")
       .then((joke) => joke.json())
       .then((json) => {

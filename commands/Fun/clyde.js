@@ -3,7 +3,7 @@ const { get } = require("axios");
 module.exports = {
   name: "clyde",
   description: "make clyde text!",
-  run: async (bot, message, args) => {
+  run: async (client, message, args) => {
     if (!args.length) return message.reply("you need some text there!");
     try {
       const { data } = await get(
