@@ -32,7 +32,8 @@ mongoose
             shibaToken: {
               type: Number,
               default: 500,
-            }
+            },
+            daily: Number,
         }
     }
 ] });
@@ -113,6 +114,11 @@ client.on("message", async (message) => {
 
   if (command.guildOnly && message.channel.type === "dm") {
     return message.channel.send(`This is a guild only command.`);
+  }
+
+  if (command.beta) {
+    const betaTesters = ["243845797643419658", "520797108257816586"]
+    if(!betaTesters.includes(message.author.id)) return message.reply({ embed: client.embed({ description: `This is currently a beta feature`}, message)})
   }
 
   if (command.userPermissions) {

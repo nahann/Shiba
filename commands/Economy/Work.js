@@ -1,0 +1,33 @@
+const { Client, Message, MessageEmbed } = require('discord.js');
+
+module.exports = {
+    name: 'work',
+    beta: true,
+    /** 
+     * @param {Client} client 
+     * @param {Message} message 
+     * @param {String[]} args 
+     */
+    run: async(client, message, args) => {
+        const Schema = await client.db.load('userEcos')
+        const data = await Schema.findOne({ userId: message.author.id }) || await Schema.create({ userId: user.id })
+        const Jobs = [
+            "cashier",
+            "fast food worker",
+            "janitor",
+            "bartender",
+            "server",
+            "nurse",
+            "construction worker",
+            "carpenter",
+            "electrician",
+            "police officer",
+            "truck driver",
+            "lawyer",
+        ]
+        const job = Jobs[Math.floor(Math.random() * Jobs.length)]
+        const token = Math.floor(Math.random() * 300);
+        await Schema.increment({ userId: message.author.id }, 'shibaToken', token);
+        return message.reply({ embed: client.embed({ description: `You made \`${token}\` Shiba Token as a \`${job}\``}, message)})
+    }
+}
