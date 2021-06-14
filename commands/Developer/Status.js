@@ -21,7 +21,7 @@ module.exports = {
      "COMPETING": "Competing at"
    }
    .replace("{guilds.size}", client.guilds.cache.size)
-   const typ == stype[1] || "PLAYING"
+   const typ = stype[1] || "PLAYING"
    if(!["WATCHING","PLAYING","STREAMING","LISTENING","COMPETING"].includes(stype[1].toUpperCase())) return message.reply("That's not a valid type ya nerd")
    client.user.setActivity(status,{type: typ.toUpperCase()})
    message.reply({embed: client.embed({description: `Changed status to ${types[typ.toUpperCase()]} ${status}`},message)})
