@@ -9,12 +9,12 @@ module.exports={
   console.log(`${client.user.username} is now online.`);
   client.slashes = new Discord.Collection();
   const commands = fs
-    .readdirSync(`../commands-slash`)
+    .readdirSync(`${__dirname}/../commands-slash`)
     .filter((comd) => comd.endsWith(".js"));
   //Makes sure there are commands so it doesn't error
   if (commands.length) {
     commands.forEach((command) => {
-      const cmd = require(`../commands-slash/${command}`);
+      const cmd = require(`${__dirname}/../commands-slash/${command}`);
 
       if (!cmd.name || !cmd.description || !cmd.run) return;
 
