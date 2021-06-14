@@ -37,7 +37,7 @@ mongoose
         }
     }
 ] });
-
+client.cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
 client.loadCommands = function(){
 const commandFolders = fs.readdirSync(`${__dirname}/commands`)
