@@ -12,7 +12,8 @@ fs = require("fs"),
 GuildConfig = require("./database/GuildConfig"),
 WelcomeConfig = require("./database/Welcome"),
 UserinfoConfig = require("./database/Userinfo"),
-mongoose = require("mongoose");
+mongoose = require("mongoose"),
+{ Database } = require('zapmongo')
 
 mongoose
   .connect(config.mongouri, {
@@ -22,6 +23,19 @@ mongoose
   .then(() => {
     console.log("Connected to database.");
   });
+
+  client.db = new Database({ mongoURI: config.mongouri, schemas: [
+    {
+        name: 'userEcos',
+        data: {
+            userId: String,
+            shibaToken: {
+              type: Number,
+              default: 500,
+            }
+        }
+    }
+] });
 
 client.commands = new Discord.Collection();
 client.loadCommands = function(){
