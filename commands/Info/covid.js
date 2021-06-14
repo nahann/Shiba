@@ -14,7 +14,7 @@ module.exports = {
           );
         }
 
-        const e = client.embed({title: `COVID-19 stats of ${json.country}`},mesaage)
+        const e = client.embed({title: `COVID-19 stats of ${json.country}`},message)
           .setThumbnail(json.countryInfo.flag)
           .setDescription(
             ` Cases today: \`\`\`${json.todayCases}\`\`\`\nDeaths today: \`\`\`${json.todayDeaths}\`\`\`\nAll cases: ${json.cases}\n All deaths: ${json.deaths}\n All recoveries: ${json.recovered}\n Active cases right now: ${json.active} `
