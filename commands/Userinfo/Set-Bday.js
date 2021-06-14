@@ -11,7 +11,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const bday = args[0];
+    const bday = args.join(" ")
     await UserinfoConfig.findOneAndUpdate(
       { userId: message.author.id },
       { Bday: bday }
