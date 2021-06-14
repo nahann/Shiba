@@ -53,6 +53,19 @@ for (const folder of commandFolders) {
   }
 }
 }
+client.loadEvents = function(){
+    const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.run(...args,client));
+	} else {
+		client.on(event.name, (...args) => event.run(...args,client));
+	}
+}
+}
+client.loadEvents()
 client.loadCommands()
 client.embed = (options, message) => {
   return new Discord.MessageEmbed({ ...options, color: "RANDOM" })
@@ -62,32 +75,6 @@ client.embed = (options, message) => {
     )
     .setTimestamp();
 };
-
-client.on("ready", async() => {
-  require ("child_process").exec ("git push")
-  console.log(`${client.user.username} is now online.`);
-  client.slashes = new Discord.Collection();
-  const commands = fs
-    .readdirSync(`./commands-slash`)
-    .filter((comd) => comd.endsWith(".js"));
-  //Makes sure there are commands so it doesn't error
-  if (commands.length) {
-    commands.forEach((command) => {
-      const cmd = require(`./commands-slash/${command}`);
-
-      if (!cmd.name || !cmd.description || !cmd.run) return;
-
-      client.guilds.cache.get("849131192275566613").commands.create(cmd);
-      client.slashes.set(cmd.name, cmd);
-    });
-  }
-});
-
-client.on("interaction", (command) => {
-  if (!command.isCommand()) return;
-  client.slashes.get(command.commandName)?.run(client, command);
-});
-
 client.on("message", async (message) => {
   if (message.author.bot) return;
   const data = await GuildConfig.findOne({ guildId: message.guild.id });
