@@ -47,16 +47,12 @@ module.exports = {
 
     if (!args.length) {
       embed.setAuthor(`Shiba Command List`, message.author.displayAvatarURL());
-      embed.setDescription(lines.join("\n"));
-      embed.setThumbnail(client.user.displayAvatarURL());
-      embed.setFooter(
+      .setDescription(lines.join("\n"));
+      .setThumbnail(client.user.displayAvatarURL());
+      .setFooter(
         `You can send \`${prefix}help [command name]\` to get info on a specific command!`
       );
-      embed.setColor("RANDOM");
-      embed.addFields({
-        name: `Notice: For a chance to recieve premium perks for Shiba vote on top.gg, then send proof in the support server.`,
-        value: `**[Vote](https://top.gg/) | [Invite](https://discord.com/api/oauth2/authorize?client_id=838254815225970739&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&scope=bot%20applications.commands) | [Support](https://discord.gg/dpspC6JvUZ)**`,
-      });
+      .setColor("RANDOM");
       return message.reply({ embed: embed,
         allowedMentions: { repliedUser: false }, });
     }
