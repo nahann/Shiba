@@ -12,7 +12,7 @@ module.exports = {
    */
   run: async (client, message, args) => {
    const stype = args.join(" ").split(" --type=")
-   const status = stype[0]
+   const status = stype[0].replace("{guilds.size}", client.guilds.cache.size)
    const types={
      "PLAYING": "Playing",
      "WATCHING": "Watching",
