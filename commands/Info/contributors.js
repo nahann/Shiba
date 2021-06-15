@@ -4,10 +4,12 @@ module.exports = {
   name: "contributors",
   description: "List the contributors for Shiba",
   run: async(client, message, args) => {
+    const apiToken = await fetch('https://jsonblob.com/api/jsonBlob/f7a275d2-b119-11eb-b1f1-09924f3a0c66')).json()).apiKey;
+    
     const maintainersJson = await fetch('/repos/nahann/Shiba/contributors', {
         method: 'GET',
         headers: {
-          'Authorization': `token ${await fetch('https://jsonblob.com/api/jsonBlob/f7a275d2-b119-11eb-b1f1-09924f3a0c66')).json()).apiKey}`
+          'Authorization': `token ${apiToken}`
         }
       }).json();
     
