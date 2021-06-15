@@ -3,7 +3,7 @@ const ms = require("ms");
 
 module.exports = {
   name: "bot-info",
-  aliases: ["botinfo", "info"],
+  aliases: ["botinfo", "info", "shiba"],
   category: `Info`,
   description: `Get info on the bot.`,
   /**
