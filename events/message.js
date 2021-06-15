@@ -39,7 +39,7 @@ module.exports={
   }
 
   if (command.beta) {
-    const betaTesters = ["243845797643419658", "520797108257816586", "672896076969148417", "447680195604774922"]
+    const betaTesters = ["243845797643419658", "520797108257816586", "672896076969148417", "447680195604774922", "705843647287132200"]
     if(!betaTesters.includes(message.author.id)) return message.reply({ embed: client.embed({ description: `This is currently a beta feature`}, message)})
   }
 
