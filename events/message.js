@@ -21,7 +21,7 @@ module.exports={
     });
   if (!message.content.startsWith(prefix)) return;
   const [commandName,...args] = message.content.slice(prefix.length).trim().split(/ +/);
-
+  args.clean = message.cleanContent.slice(prefix.length + commandName.length)
   const command =
     client.commands.get(commandName) ||
     client.commands.find(
