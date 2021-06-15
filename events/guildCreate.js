@@ -1,3 +1,4 @@
+
 const { MessageEmbed } = require("discord.js");
 const GuildConfig = require("../database/GuildConfig")
 
@@ -16,4 +17,3 @@ module.exports={
       }
     }
   }
-  
