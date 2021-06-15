@@ -1,4 +1,3 @@
-
 const { MessageEmbed } = require("discord.js");
 const GuildConfig = require("../database/GuildConfig")
 
@@ -11,9 +10,9 @@ module.exports={
           guildName: guild.name,
           guildId: guild.id,
         });
+      }
         console.log(`Shiba has joined ${guild.name}. Saved to base`);
         const channel = client.guilds.cache.find(g => g.name.includes("Shiba Support")).channels.cache.get("852783453606248468")
-        channel.send({embed: new MessageEmbed().setTitle("New server!").addField("Name",guild.name,true).addField("Membercount",guild.memberCount,true).setThumbnail(guild.iconURL()).setColor("RANDOM")})   
-      }
+        channel.send({embed: new MessageEmbed().setAuthor(`New Server!`, guild.iconURL()).addField("Name",guild.name,true).addField("Membercount",guild.memberCount.toString(),true).setThumbnail(guild.iconURL()).setColor("RANDOM").setFooter(`${client.user.tag}`, client.user.displayAvatarURL()).setTimestamp()})   
     }
   }
