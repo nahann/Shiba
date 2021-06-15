@@ -14,7 +14,8 @@ module.exports = {
         const user = message.mentions.users.first() || message.author;
         const Schema = await client.db.load('userEcos')
         const data = await Schema.findOne({ userId: user.id }) || await Schema.create({ userId: user.id })
-        const token = data.get('shibaToken')
-        message.reply({ embed: client.embed({ title: `${user.username}'s wallet`, description: `:coin: ${token} Shiba Token`}, message)})
+        const walletToken = data.get('walletShibaToken')
+        const bankToken = data.get('bankShibaToken')
+        message.reply({ embed: client.embed({ title: `${user.username}'s wallet`, description: `:coin: Wallet: ${walletToken} Shiba Token\n:bank: Bank: ${bankToken} Shiba Token`}, message)})
     }
 }

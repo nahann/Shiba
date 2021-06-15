@@ -28,7 +28,7 @@ module.exports = {
         ]
         const job = Jobs[Math.floor(Math.random() * Jobs.length)]
         const token = Math.floor(Math.random() * 300);
-        await Schema.increment({ userId: message.author.id }, 'shibaToken', token);
+        await Schema.increment({ userId: message.author.id }, 'walletShibaToken', token);
         return message.reply({ embed: client.embed({ description: `You made \`${token}\` Shiba Token as a \`${job}\``}, message)})
     }
 }

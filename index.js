@@ -30,9 +30,13 @@ mongoose
         name: 'userEcos',
         data: {
             userId: String,
-            shibaToken: {
+            walletShibaToken: {
               type: Number,
               default: 500,
+            },
+            bankShibaToken: {
+              type: Number,
+              default: 0,
             },
             Passive: {
               type: Boolean,
