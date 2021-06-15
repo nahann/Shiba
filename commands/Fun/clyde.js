@@ -9,8 +9,7 @@ module.exports = {
     try {
       const { data } = await get(
         `https://nekobot.xyz/api/imagegen?type=clyde&text=${args
-          .slice(0)
-          .join(" ")}`
+          .clean}`
       );
       message.reply({ embed: new MessageEmbed()
 
