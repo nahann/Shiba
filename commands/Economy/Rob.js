@@ -16,8 +16,8 @@ module.exports = {
         const schema = await client.db.load("userEcos")
         const user = message.mentions.users.first();
         if(message.author.id === user.id) return message.reply({ embed: client.embed({ description: `You cannot rob yourself.`}, message)})
-        const authorData = await schema.findOne({ userId: message.author.id })
-        const userData = await schema.findOne({ userId: user.id })
+        const authorData = await schema.findOne({ userId: message.author.id }) || await schema.create({ userId: message.author.id })
+        const userData = await schema.findOne({ userId: user.id }) || await schema.create({ userId: message.author.id })
         const userToken = userData.get('walletShibaToken')
         const authorPassive = authorData.get('Passive')
         const userPassive = userData.get('Passive')
