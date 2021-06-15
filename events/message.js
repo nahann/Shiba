@@ -1,4 +1,4 @@
-const ms = require('ms')
+,const ms = require('ms')
 
 module.exports={
   name: "message",
@@ -19,7 +19,7 @@ module.exports={
         message
       ),
     });
-  if (!message.content.startsWith(data.get("prefix"))) return;
+  if (!message.content.startsWith(data.get("Prefix"))) return;
   const [commandName,...args] = message.content.slice(prefix.length).trim().split(/ +/);
 
   const command =
