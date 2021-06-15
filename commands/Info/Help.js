@@ -30,13 +30,13 @@ module.exports = {
       });
 
     const dirEmojis = {
-      Developer: "🍁",
-      Fun: "🦢",
-      "Guild Config": "🔧",
-      Info: "📝",
-      Moderation: "🦚",
-      Userinfo: "🧦",
-      "Economy": ":coin:"
+      Developer: "<:dev:854466327976345602>",
+      Fun: "<:fun:854470205978443789>",
+      "Guild Config": "<:config:854469436306882592>",
+      Info: "<:info:854469078433792020>",
+      Moderation: "<:mod:854469924088446996>",
+      Userinfo: "<:users:854458687547899934>",
+      "Economy": "<:ec:854466932551450644>"
     };
     const lines = categories.map(
       (category, name) =>
