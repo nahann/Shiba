@@ -26,7 +26,7 @@ module.exports = {
           inline: true,
         },
         {
-          name: `Uptime`,
+          name: `<:uptime:854464688490020875> Uptime`,
           value: `\`\`\`${ms(client.uptime)}‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎\`\`\``,
           inline: true,
         },
