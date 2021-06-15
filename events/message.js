@@ -19,7 +19,7 @@ module.exports={
       ),
     });
   if (!message.content.startsWith(data.get("prefix"))) return;
-  const [commandName,...args[ = message.content.slice(prefix.length).trim().split(/ +/);
+  const [commandName,...args] = message.content.slice(prefix.length).trim().split(/ +/);
 
   const command =
     client.commands.get(commandName) ||
