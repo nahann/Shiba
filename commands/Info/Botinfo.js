@@ -3,7 +3,7 @@ const ms = require("ms");
 
 module.exports = {
   name: "bot-info",
-  aliases: ["botinfo"],
+  aliases: ["botinfo", "info"],
   category: `Info`,
   description: `Get info on the bot.`,
   /**
@@ -14,9 +14,6 @@ module.exports = {
   run: async (client, message, args) => {
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
-      .setDescription(
-        `**[Support Server](https://discord.gg/kxt4GsrEE6)**`
-      )
       .addFields(
         {
           name: `Tag`,
@@ -63,9 +60,9 @@ module.exports = {
 
 	   new MessageButton()
             .setLabel('Support')
-            .setURL('https://discord.gg/kxt4GsrEE6')
+            .setURL('https://discord.gg/K4cMecMQyp')
             .setStyle('LINK'),
-			);
+	);
 
     message.reply({
       embed: embed,
