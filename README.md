@@ -2,10 +2,7 @@ Contributing Details
 
 - [0] Fork the repo
 
-- [1] Clone the repo locally to your pc
-git clone 
-
-https://github.com/your github username/Shiba.git
+- [1] Clone the repo locally to your pc: git clone https://github.com/ your github username /Shiba.git
 
 - [2] Create a file named: config.json
 Fill in the missing below
