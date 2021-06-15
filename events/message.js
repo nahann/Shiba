@@ -9,7 +9,7 @@ module.exports={
     guildName: message.guild.name,
     guildId: message.guild.id,
   });
-    const prefix = data.get('Prefix')
+    const prefix = data.get('prefix')
   if (!data)
     return message.reply({
       embed: client.embed(
