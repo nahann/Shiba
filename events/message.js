@@ -1,4 +1,4 @@
-,const ms = require('ms')
+const ms = require('ms')
 
 module.exports={
   name: "message",
