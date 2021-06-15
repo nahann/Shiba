@@ -16,12 +16,12 @@ module.exports = {
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .addFields(
         {
-          name: `Tag`,
+          name: `<:tag:854460951805296640> Tag`,
           value: `\`\`\`${client.user.tag}\`\`\``,
           inline: true,
         },
         {
-          name: `Ping`,
+          name: `<:ping:854461197720748032> Ping`,
           value: `\`\`\`${ms(client.ws.ping)}\`\`\``,
           inline: true,
         },
@@ -31,17 +31,17 @@ module.exports = {
           inline: true,
         },
         {
-          name: `Users`,
+          name: `<:users:854458687547899934> Users`,
           value: `\`\`\`${client.users.cache.size}\`\`\``,
           inline: true,
         },
         {
-          name: `Channels`,
+          name: `<:channel:854458888131444776> Channels`,
           value: `\`\`\`${client.channels.cache.size}\`\`\``,
           inline: true,
         },
         {
-          name: `Guilds`,
+          name: `<:guilds:854459430733479967> Guilds`,
           value: `\`\`\`${client.guilds.cache.size}\`\`\``,
           inline: true,
         }
