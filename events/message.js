@@ -18,15 +18,13 @@ module.exports={
         message
       ),
     });
-  const prefix = data.get("prefix");
-  if (!message.content.startsWith(prefix)) return;
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
-  const commandName = args.shift().toLowerCase();
+  if (!message.content.startsWith(data.get("prefix"))) return;
+  const [commandName,...args[ = message.content.slice(prefix.length).trim().split(/ +/);
 
   const command =
     client.commands.get(commandName) ||
     client.commands.find(
-      (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
+      (cmd) => cmd.aliases?.includes(commandName)
     );
 
   if (!command) return;
@@ -34,8 +32,6 @@ module.exports={
   if(client.cooldowns.has(`${message.author.id}-${command.name}`)) {
     return message.reply({ embed: client.embed({ description: `Try this command in ${ms(client.cooldowns.get(`${message.author.id}-${command.name}`) - Date.now(), { long: true })}`}, message)})
   }
-
-
 
   if (command.guildOnly && message.channel.type === "dm") {
     return message.channel.send(`This is a guild only command.`);
@@ -90,7 +86,7 @@ module.exports={
       }, 3000)
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     message.channel.send(`${error}`);
   }
 }
