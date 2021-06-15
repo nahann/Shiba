@@ -2,8 +2,8 @@ const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'bank-heist',
-    aliases: ['bank-rob'],
-    //cooldown: 7200000,
+    aliases: ['bank-rob', 'bankrob', 'bankheist'],
+    cooldown: 7200000,
     beta: true,
     /** 
      * @param {Client} client 
