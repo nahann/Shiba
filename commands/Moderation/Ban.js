@@ -15,12 +15,12 @@ module.exports = {
   run: async (client, message, args) => {
     if (!message.guild.me.permissions.has("BAN_MEMBERS"))
       return message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           {
             description: `Shiba does not have the \`BAN_MEMBERS\` permission.`,
           },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     const member = message.mentions.members.first();
@@ -28,10 +28,10 @@ module.exports = {
     if (member.bannable) {
       member.ban({ reason: reason });
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `${member.user.tag} has been banned` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     } else {
