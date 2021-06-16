@@ -28,7 +28,7 @@ module.exports = {
             parse: ["everyone", "users", "roles"],
             repliedUser: false,
           },
-          embed: client.embed({ description: `Not Found.` }, message),
+          embeds: [client.embed({ description: `Not Found.` }, message)],
           allowedMentions: { repliedUser: false },
         });
       }
