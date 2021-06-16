@@ -21,19 +21,14 @@ module.exports = {
         embeds: [client.embed(
           { title: "Eval Success!", description: `\`\`\`\n${split}\`\`\`` },
           message
-        )]
+        )],
       });
     } catch (err) {
-      // message.reply({allowedMentions: {
-      //   parse: ['everyone', 'users', 'roles'],
-      //   repliedUser: false,
-      //   }, embed: client.embed({ description: `AN ERROR HAS OCCURED: ${err}`}, message)})
       message.reply({
         embed: client.embed(
           { description: `AN ERROR HAS OCCURED: ${err}` },
           message
-        ),
-        allowedMentions: { repliedUser: false },
+        )
       });
     }
   },
