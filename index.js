@@ -9,11 +9,7 @@ const Discord = require("discord.js"),
   }),
   config = require("./config.json"),
   fs = require("fs"),
-  GuildConfig = require("./database/GuildConfig"),
-  WelcomeConfig = require("./database/Welcome"),
-  UserinfoConfig = require("./database/Userinfo"),
   mongoose = require("mongoose"),
-  ms = require("ms"),
   { Database } = require("zapmongo");
 
 mongoose
