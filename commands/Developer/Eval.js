@@ -25,10 +25,10 @@ module.exports = {
       });
     } catch (err) {
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `AN ERROR HAS OCCURED: ${err}` },
           message
-        )
+        )]
       });
     }
   },
