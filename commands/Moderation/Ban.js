@@ -36,10 +36,10 @@ module.exports = {
       });
     } else {
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `I cannot ban this member.` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     }
