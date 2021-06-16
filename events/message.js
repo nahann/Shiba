@@ -75,6 +75,7 @@ module.exports = {
         "672896076969148417",
         "447680195604774922",
         "705843647287132200",
+        "763767239018938368",
       ];
       if (!betaTesters.includes(message.author.id))
         return message.reply({
