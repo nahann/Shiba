@@ -11,7 +11,7 @@ module.exports = {
         const e = new MessageEmbed()
           .setTitle(json.setup)
           .setDescription(json.punchline);
-        message.channel.send({ embed: e });
+        message.channel.send({ embeds: [e] });
       });
   },
 };
