@@ -9,14 +9,14 @@ module.exports={
         await WelcomeConfig.findOneAndDelete({ guildId: guild.id });
         console.log(`Welcome config deleted from base.`);
         const channel = client.guilds.cache.find(g => g.name.includes("Shiba Support")).channels.cache.get("854479020028723210"); 
-        channel.send({embed: new MessageEmbed()
+        channel.send({embeds: [new MessageEmbed()
                       .setAuthor(`We lost a server.`, guild.iconURL())
                       .addField("Name",guild.name,true)
                       .addField("Membercount",guild.memberCount.toString(),true)
                       .setThumbnail(guild.iconURL())
                       .setColor("RANDOM")
                       .setFooter(`${client.user.tag}`, client.user.displayAvatarURL())
-                      .setTimestamp()})   
+                      .setTimestamp()]})   
     }
   }
   

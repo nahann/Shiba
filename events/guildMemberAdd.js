@@ -23,7 +23,7 @@ module.exports={
           .setColor("RANDOM")
           .setTimestamp();
         try {
-          channeltosend.send({ embed: embed });
+          channeltosend.send({ embeds: [embed] });
           if (role) member.roles.add(role);
         } catch (err) {
           console.log(err);
