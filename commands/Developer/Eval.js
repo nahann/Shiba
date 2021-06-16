@@ -18,10 +18,10 @@ module.exports = {
       const evaled = await eval(result);
       const split = splitMessage(inspect(evaled))[0];
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { title: "Eval Success!", description: `\`\`\`\n${split}\`\`\`` },
           message
-        ),
+        )]
       });
     } catch (err) {
       // message.reply({allowedMentions: {
