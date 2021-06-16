@@ -36,12 +36,12 @@ module.exports = {
         );
       }
       CCconfig.findOneAndDelete({ guildId: message.guild.id, commandname: args[0] }, (e, doc) => {
-        if(e) return  message.reply({ embed: client.embed({ description: `An error has occured.`}, message)})
-        else return  message.reply({ embed: client.embed({ description: `Command: ${ccname} has been deleted.`}, message)})
+        if(e) return  message.reply({ embeds: [client.embed({ description: `An error has occured.`}, message)]})
+        else return  message.reply({ embeds: [client.embed({ description: `Command: ${ccname} has been deleted.`}, message)]})
       })
     } catch (err) {
       console.error(err);
-      message.reply({ embed: client.embed({ description: `An error has occured.`}, message)})
+      message.reply({ embeds: [client.embed({ description: `An error has occured.`}, message)]})
     }
   },
 };
