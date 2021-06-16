@@ -11,10 +11,10 @@ module.exports = {
         `https://nekobot.xyz/api/imagegen?type=changemymind&text=${args
           .clean}`
       );
-      message.reply({ embed: new MessageEmbed()
+      message.reply({ embeds: [new MessageEmbed()
 
         .setImage(data.message)
-        .setColor('RANDOM')
+        .setColor('RANDOM')]
 
       });
     } catch (err) {
