@@ -14,7 +14,11 @@ module.exports = {
     run: async(client, message, args) => {
         exec(args.join(" "),(error,stdout)=>{
         const response = error || stdout
-        message.reply({content: response,code: true})
+        try {
+             message.reply({content: response,code: true})
+        } catch {
+        message.reply({embeds: [client.embed({ description: `An error has occured`}, message)]})
+        }
 })
     }
 }
