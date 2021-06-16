@@ -81,7 +81,7 @@ client.embed = (options, message) => {
       message.author.displayAvatarURL({ dynamic: true, format: "png" })
     )
     .setTimestamp()
-  if(options.colors && Array.isArray(options.colors)) emb.setColor(options.colors[Math.floor(Math.random() * options.colors.length)]
+  if(options.colors && Array.isArray(options.colors)) emb.setColor(options.colors[Math.floor(Math.random() * options.colors.length))]
 
 								   return emb
 };
