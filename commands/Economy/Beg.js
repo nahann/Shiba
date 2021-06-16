@@ -8,6 +8,6 @@ module.exports={
      const user = await schema.findOne({ userId: message.author.id }) || await schema.create({userId: message.author.id })
      const tokens = Math.floor(Math.random() * 25)
      schema.increment({userId: message.author.id},"walletShibaToken",tokens)
-     message.reply({embed: client.embed({description: `You begged and got ${tokens} Shiba Token`},message)})
+     message.reply({embeds: [client.embed({description: `You begged and got ${tokens} Shiba Token`},message)]})
    }
 }
