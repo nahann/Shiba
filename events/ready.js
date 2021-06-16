@@ -17,7 +17,7 @@ module.exports={
       const cmd = require(`${__dirname}/../commands-slash/${command}`);
 
       if (!cmd.name || !cmd.description || !cmd.run) return;
-
+      client.application?.commands.create(cmd)
       client.guilds.cache.get("849131192275566613").commands.create(cmd);
       client.slashes.set(cmd.name, cmd);
     });
