@@ -17,7 +17,7 @@ module.exports = {
       { Bday: bday }
     );
     message.reply({
-      embed: client.embed({ description: `Bday set to: \`${bday}\`` }, message),
+      embeds: [client.embed({ description: `Bday set to: \`${bday}\`` }, message)],
       allowedMentions: { repliedUser: false },
     });
   },
