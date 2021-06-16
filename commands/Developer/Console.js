@@ -12,6 +12,9 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        exec(args.join(" "))
+        exec(args.join(" "),(error,stdout)=>{
+        const response = error || stdout
+        message.reply({content: response,code: true})
+})
     }
 }
