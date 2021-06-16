@@ -65,7 +65,7 @@ module.exports = {
 	);
 
     message.reply({
-      embed: embed,
+      embeds: [embed],
       components: [buttons],
       allowedMentions: { repliedUser: false },
     });
