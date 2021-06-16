@@ -16,16 +16,16 @@ module.exports = {
     await message.delete()
     const slowmode  = args[0];
     if (isNaN(slowmode))
-      return message.reply({ embed:
-        client.embed({ description: `Provide a real number.` }, message),
+      return message.reply({ embeds:
+        [client.embed({ description: `Provide a real number.` }, message)],
         allowedMentions: { repliedUser: false },
       })
     message.channel.setRateLimitPerUser(slowmode)
     message.reply({
-      embed: client.embed(
+      embeda: [client.embed(
         { description: `Slowmode set to ${slowmode}` },
         message
-      ),
+      )],
       allowedMentions: { repliedUser: false },
     });
   },
