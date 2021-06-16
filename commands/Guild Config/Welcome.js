@@ -16,7 +16,7 @@ module.exports = {
     const data = await WelcomeConfig.findOne({ guildId: message.guild.id });
     if (!args[0])
       return message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           {
             author: {
               name: "Welcome System Sub-Commands",
@@ -49,7 +49,7 @@ module.exports = {
             ],
           },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     if (args[0].toLowerCase() === "set-channel") {
@@ -62,7 +62,7 @@ module.exports = {
             parse: ["everyone", "users", "roles"],
             repliedUser: false,
           },
-          embed: client.embed({ description: `Invalid channel.` }, message),
+          embeds: [client.embed({ description: `Invalid channel.` }, message)],
         });
       if (!data) {
         await WelcomeConfig.create({
@@ -70,10 +70,10 @@ module.exports = {
           channelId: channel.id,
         });
         message.reply({
-          embed: client.embed(
+          embeds: [client.embed(
             { description: `Channel set to <#${channel.id}>` },
             message
-          ),
+          )],
           allowedMentions: { repliedUser: false },
         });
       }
@@ -83,10 +83,10 @@ module.exports = {
           { channelId: channel.id }
         );
         message.reply({
-          embed: client.embed(
+          embeds: [client.embed(
             { description: `Channel set to <#${channel.id}>` },
             message
-          ),
+          )],
           allowedMentions: { repliedUser: false },
         });
       }
@@ -97,7 +97,7 @@ module.exports = {
         message.guild.roles.cache.has(args[1]);
       if (!role)
         message.reply({
-          embed: client.embed({ description: `Invalid Channel.` }, message),
+          embeds: [client.embed({ description: `Invalid Channel.` }, message)],
           allowedMentions: { repliedUser: false },
         });
       await WelcomeConfig.findOneAndUpdate(
@@ -105,7 +105,7 @@ module.exports = {
         { roleId: role.id }
       );
       message.reply({
-        embed: client.embed({ description: `Role set to ${role}.` }, message),
+        embeds: [client.embed({ description: `Role set to ${role}.` }, message)],
         allowedMentions: { repliedUser: false },
       });
     }
@@ -113,12 +113,12 @@ module.exports = {
       const msg = args.slice(1).join(" ");
       if (!msg)
         return message.reply({
-          embed: client.embed(
+          embeds: [client.embed(
             {
               description: `Provide a welcome message.\nDon't forget you can use {guild} to use the guild name.\nYou can also use {user} to mention the user that is joining.`,
             },
             message
-          ),
+          )],
           allowedMentions: { repliedUser: false },
         });
       await WelcomeConfig.findOneAndUpdate(
@@ -126,10 +126,10 @@ module.exports = {
         { message: msg }
       );
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `Welcome message set to ${msg}.` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     }
@@ -139,10 +139,10 @@ module.exports = {
         { toggled: true }
       );
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `Welcome system enabled.` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     }
@@ -152,10 +152,10 @@ module.exports = {
         { toggled: false }
       );
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `Welcome system disabled.` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     }
