@@ -23,7 +23,7 @@ module.exports = {
         ),
       });
     if (!message.content.startsWith(prefix)) return;
-    const [commandName, ...args] = message.content
+    const [commandName, ...args] = message.content.toLowerCase()
       .slice(prefix.length)
       .trim()
       .split(/ +/);
