@@ -19,7 +19,7 @@ module.exports = {
           .addField(
             `Cases today`,`\`\`\`${json.todayCases}\`\`\``,true).addField(`Deaths today`,`\`\`\`${json.todayDeaths}\`\`\``,true).addField(`All cases`,`\`\`\`${json.cases}\`\`\``,true).addField(`All deaths`,`\`\`\`${json.deaths}\`\`\``,true).addField(`All recoveries`,`\`\`\`${json.recovered}\`\`\``,true).addField(`Active cases right now`,`\`\`\`${json.active}\`\`\``,true)
       
-        message.reply({embed: e});
+        message.reply({embeds: [e]});
       });
   },
 };
