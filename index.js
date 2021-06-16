@@ -75,12 +75,15 @@ for (const file of eventFiles) {
 client.loadEvents()
 client.loadCommands()
 client.embed = (options, message) => {
-  return new Discord.MessageEmbed({ ...options, color: "RANDOM" })
+  const emb = new Discord.MessageEmbed({ ...options, color: "RANDOM" })
     .setFooter(
       `${message.author.tag}`,
       message.author.displayAvatarURL({ dynamic: true, format: "png" })
     )
-    .setTimestamp();
+    .setTimestamp()
+  if(options.colors && Array.isArray(options.colors)) emb.setColor(options.colors[Math.floor(Math.random() * options.colors.length)]
+
+								   return emb
 };
 
 client.login(config.token);
