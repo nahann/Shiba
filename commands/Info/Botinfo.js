@@ -32,7 +32,7 @@ module.exports = {
           value: `\`\`\`${client.users.cache.size}\`\`\``,
         },
         {
-          name: `Channels <:channel:854458888131444776>,
+          name: `Channels <:channel:854458888131444776>`,
           value: `\`\`\`${client.channels.cache.size}\`\`\``,
         },
         {
