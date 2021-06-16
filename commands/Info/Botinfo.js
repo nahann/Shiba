@@ -36,7 +36,7 @@ module.exports = {
           value: `\`\`\`${client.channels.cache.size}\`\`\``,
         },
         {
-          name: `Guilds <:guilds:854459430733479967>,
+          name: `Guilds <:guilds:854459430733479967>`,
           value: `\`\`\`${client.guilds.cache.size}\`\`\``,
         }
       )
