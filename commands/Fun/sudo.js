@@ -2,13 +2,11 @@ module.exports = {
   name: "sudo",
   description: "talk as your friends!",
   run: async(client, message, args) => {
-    const me = args.splice(0, 1);
+    const me = args.shift()
     console.log(me);
     const member =
-      message.guild.members.cache.find((m) => m.user.tag.includes(me)) !==
-        undefined || null
-        ? message.guild.members.cache.find((m) => m.user.tag.includes(me)).user
-        : await client.users.fetch(me);
+      message.mentions.users.first() || message.guild.members.cache.find((m) => m.user.tag.includes(me)).user
+        || await client.users.fetch(me);
     console.log(member);
     if (!member) return message.reply("That person doesn't exist!");
     const user = {
