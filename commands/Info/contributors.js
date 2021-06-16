@@ -16,16 +16,16 @@ module.exports = {
     
       contributors = contributors.map(contributor => new Object({
         name: contributor.login,
-        value: `[Click Me To Visit Their GitHub](${contributor.html_url})`,
+        value: `[Click me to visit their GitHub](${contributor.html_url})`,
         inline: true,
       }));
 
       const embed = new Discord.MessageEmbed()
-      .setTitle("All The Contributors That Are Helping Make Shiba Awesome!")
-      .setDescription("Be Sure To Drop A Star On The Repo, [Here!](https://github.com/nahann/Shiba)")
+      .setTitle("All the contributors that are helping make Shiba awesome!")
+      .setDescription("Be sure to drop a star on the repo, [here!](https://github.com/nahann/Shiba)")
       .addFields(contributors)
       .setColor("RANDOM")
-      .setFooter(`Shiba - This Command Was Made By ${client.users.cache.get('763767239018938368').tag}!`);
+      .setFooter(`Shiba - This command was made by ${await client.users.fetch('763767239018938368').tag}!`);
     
       message.reply({ embeds: [embed] });
   }
