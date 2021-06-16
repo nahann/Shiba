@@ -15,13 +15,13 @@ module.exports = {
    */
   run: async (client, message, args) => {
     if (!message.guild.me.permissions.has("KICK_MEMBERS"))
-      return message.reply({ embed:
-        client.embed(
+      return message.reply({ embeds:
+        [client.embed(
           {
             description: `Shiba does not have the \`KICK_MEMBERS\` permission.`,
           },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     const member = message.mentions.members.first();
@@ -33,17 +33,17 @@ module.exports = {
           parse: ["everyone", "users", "roles"],
           repliedUser: false,
         },
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `${member.user.tag} has been kicked` },
           message
-        ),
+        )],
       });
     } else {
       message.reply({
-        embed: client.embed(
+        embeds: [client.embed(
           { description: `I cannot kick this member.` },
           message
-        ),
+        )],
         allowedMentions: { repliedUser: false },
       });
     }
