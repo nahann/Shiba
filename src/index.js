@@ -50,10 +50,10 @@ client.loadCommands = function () {
   const commandFolders = fs.readdirSync(`${__dirname}/commands`);
   for (const folder of commandFolders) {
     const commandFiles = fs
-      .readdirSync(`${__dirname}/${folder}`)
+      .readdirSync(`${__dirname}/commands/${folder}`)
       .filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
-      const command = require(`${__dirname}/${folder}/${file}`);
+      const command = require(`${__dirname}/commands/${folder}/${file}`);
       if (!command.category) command.category = folder;
       client.commands.set(command.name, command);
     }
