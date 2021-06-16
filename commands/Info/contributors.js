@@ -26,6 +26,6 @@ module.exports = {
       .addFields(contributors)
       .setFooter(`Shiba - This Command Was Made By ${client.users.cache.get('763767239018938368').tag}!`);
     
-      message.reply(embed);
+      message.reply({ embeds: [embed] });
   }
 };
