@@ -46,12 +46,10 @@ module.exports = {
         commandname: ccname,
       });
       newschema.save();
-      message.reply(
-        `command: \`${ccname}\` with content: \`${cccontent}\` has been created!`
-      );
+      message.reply({ embed: client.embed({ description: `Command: \`${ccname}\` With content: \`${cccontent}\` has been created!`}, message)})
     } catch (err) {
       console.error(err);
-      message.reply("there was a error");
+      message.reply({ embed: client.embed({ description: `An error has occured.`}, message)})
     }
   },
 };
