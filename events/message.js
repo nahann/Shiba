@@ -39,6 +39,7 @@ module.exports = {
       CC.findOne(
         { guildId: message.guild.id, commandname: commandName },
         (e, cc) => {
+          if(!cc) return;
           if(e) return console.error(e)
           if (commandName === cc.commandname) {
             return message.reply(cc.commandcontent);
