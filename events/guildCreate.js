@@ -13,8 +13,7 @@ module.exports={
       }
         console.log(`Shiba has joined ${guild.name}. Saved to database`);
         const channel = client.guilds.cache.find(g => g.name.includes("Shiba Support")).channels.cache.get("854479020028723210"); 
-        channel.send({embeds: [new MessageEmbed()
-                      .setAuthor(`New Server!`, guild.iconURL())
+        channel.send({embeds: [new MessageEmbed().setAuthor(`New Server!`, guild.iconURL())
                       .addField("Name",guild.name,true)
                       .addField("Membercount",guild.memberCount.toString(),true)
                       .setThumbnail(guild.iconURL())
