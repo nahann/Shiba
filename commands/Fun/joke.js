@@ -11,7 +11,7 @@ module.exports = {
         const e = new MessageEmbed()
           .setTitle(json.setup)
           .setDescription(json.punchline)
-          .setColor("RANDOM")
+          .setColor("RANDOM");
         message.channel.send({ embeds: [e] });
       });
   },
