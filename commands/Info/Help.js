@@ -1,5 +1,4 @@
 const { Client, Message, MessageEmbed, Collection } = require("discord.js");
-const prefix = "*";
 
 module.exports = {
   name: "help",
@@ -11,6 +10,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    const { prefix } = require("../../config.json")
     try{
     const data = [];
     const { commands } = message.client;
@@ -53,7 +53,7 @@ module.exports = {
         `You can send \`${prefix}help [command name]\` to get info on a specific command!`
       )
       .setColor("RANDOM")
-      return message.reply({ embed: embed,
+      return message.reply({ embeds: [embed],
         allowedMentions: { repliedUser: false }, });
     }
     const embed2 = new MessageEmbed();
@@ -84,10 +84,10 @@ module.exports = {
     embed2
       .setFooter(`Syntax: [] = required, {} = optional.`)
       .setColor("RANDOM");
-    message.reply({ embed: embed2,
+    message.reply({ embeds: [embed2],
       allowedMentions: { repliedUser: false }, });
    }catch(e){
-    message.reply({embed: client.embed({title: "Error Caught!",description: `${e}`},message)})
+    message.reply({embeds: [client.embed({title: "Error Caught!",description: `${e}`},message)]})
    }
   },
 };
