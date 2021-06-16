@@ -24,6 +24,7 @@ module.exports = {
       .setTitle("All The Contributors That Are Helping Make Shiba Awesome!")
       .setDescription("Be Sure To Drop A Star On The Repo, [Here!](https://github.com/nahann/Shiba)")
       .addFields(contributors)
+      .setColor("RANDOM")
       .setFooter(`Shiba - This Command Was Made By ${client.users.cache.get('763767239018938368').tag}!`);
     
       message.reply({ embeds: [embed] });
