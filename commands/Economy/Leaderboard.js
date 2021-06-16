@@ -12,14 +12,14 @@ module.exports = {
     run: async(client, message, args) => {
         const Schema = await client.db.load('userEcos')
         const leaderboard = await Schema.leaderboard((a, b) => b.walletShibaToken - a.walletShibaToken);
-        return message.reply({ embed: client.embed({ fields: [{
+        return message.reply({ embeds: [client.embed({ fields: [{
             name: "⠀",
             value: "This displays the users with the most money in their wallets."
           }
         ], title: `Shiba Economy Leaderboard`, description: leaderboard.map((value, index) => {
             return `:coin: ${value.walletShibaToken} Shiba Token - ${client.users.cache.get(value.userId).tag || 'Unknown User'}`
         }).join("\n")
-    }, message)})
+    }, message)]})
 
     }
 }
