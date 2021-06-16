@@ -23,10 +23,11 @@ module.exports = {
         ),
       ]});
     if (!message.content.startsWith(prefix)) return;
-    const [commandName, ...args] = message.content.toLowerCase()
+    let [commandName, ...args] = message.content
       .slice(prefix.length)
       .trim()
       .split(/ +/);
+    commandName = commandName.toLowerCase()
     args.clean = message.cleanContent.slice(prefix.length + commandName.length);
     const command =
       client.commands.get(commandName) ||
