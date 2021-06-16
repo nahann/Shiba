@@ -10,7 +10,8 @@ module.exports = {
       .then((json) => {
         const e = new MessageEmbed()
           .setTitle(json.setup)
-          .setDescription(json.punchline);
+          .setDescription(json.punchline)
+          .setColor("RANDOM")
         message.channel.send({ embeds: [e] });
       });
   },
