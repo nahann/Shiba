@@ -25,7 +25,7 @@ module.exports = {
       .setDescription("Be sure to drop a star on the repo, [here!](https://github.com/nahann/Shiba)")
       .addFields(contributors)
       .setColor("RANDOM")
-      .setFooter(`Shiba - This command was made by ${await client.users.fetch('763767239018938368').tag}!`);
+      .setFooter(`Shiba - This command was made by molai.dev#9999!`);
     
       message.reply({ embeds: [embed] });
   }
