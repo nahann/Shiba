@@ -14,11 +14,11 @@ module.exports = {
         const Schema = await client.db.load('userEcos')
         if(args[0].toLowerCase() === 'enable') {
             await Schema.update({ userId: message.author.id }, { Passive: true })
-            message.reply({ embed: client.embed({ description: `Passive mode set to \`TRUE\``}, message)})
+            message.reply({ embeds: [client.embed({ description: `Passive mode set to \`TRUE\``}, message)]})
         }
         if(args[0].toLowerCase() === 'disable') {
             await Schema.update({ userId: message.author.id }, { Passive: false })
-            message.reply({ embed: client.embed({ description: `Passive mode set to \`FALSE\``}, message)})
+            message.reply({ embeds: [client.embed({ description: `Passive mode set to \`FALSE\``}, message)]})
         }
     }
 }
