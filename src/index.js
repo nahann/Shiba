@@ -8,7 +8,7 @@ const Discord = require("discord.js"),
     },
   }),
   config = require("./config.json"),
-  fs = require("fs"),
+  fs = require("node:fs"),
   mongoose = require("mongoose"),
   { Database } = require("zapmongo");
 
@@ -61,7 +61,7 @@ client.loadCommands = function () {
 };
 client.loadEvents = function () {
   const eventFiles = fs
-    .readdirSync("./events")
+    .readdirSync(`${__dirname}/events`)
     .filter((file) => file.endsWith(".js"));
 
   for (const file of eventFiles) {
