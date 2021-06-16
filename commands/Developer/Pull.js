@@ -14,9 +14,8 @@ module.exports = {
    */
   run: async (client, message, args) => {
     await message.reply({
-      embed: client.embed({ description: `Pulled Successfully` }, message),
-      allowedMentions: { repliedUser: false },
-    });
+      embeds: [client.embed({ description: `Pulled Successfully` }, message)
+    ]});
     exec("git pull");
   },
 };
