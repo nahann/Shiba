@@ -11,15 +11,15 @@ module.exports={
           guildId: guild.id,
         });
       }
-        console.log(`Shiba has joined ${guild.name}. Saved to base`);
+        console.log(`Shiba has joined ${guild.name}. Saved to database`);
         const channel = client.guilds.cache.find(g => g.name.includes("Shiba Support")).channels.cache.get("854479020028723210"); 
-        channel.send({embed: new MessageEmbed()
+        channel.send({embeds: [new MessageEmbed()
                       .setAuthor(`New Server!`, guild.iconURL())
                       .addField("Name",guild.name,true)
                       .addField("Membercount",guild.memberCount.toString(),true)
                       .setThumbnail(guild.iconURL())
                       .setColor("RANDOM")
                       .setFooter(`${client.user.tag}`, client.user.displayAvatarURL())
-                      .setTimestamp()})   
+                      .setTimestamp()]})   
     }
   }
