@@ -5,7 +5,7 @@ module.exports = {
     const me = args.shift()
     console.log(me);
     const member =
-      message.mentions.users.first() || message.guild.members.cache.find((m) => m.user.tag.includes(me)).user
+      message.mentions.users.first() || message.guild.members.cache.find((m) => m.user.tag.includes(me))?.user
         || await client.users.fetch(me);
     console.log(member);
     if (!member) return message.reply("That person doesn't exist!");
