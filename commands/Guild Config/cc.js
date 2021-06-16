@@ -7,7 +7,7 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: "*cc [commandname] [whats in the command]",
-  // userPermissions: ["MANAGE_GUILD"],
+  userPermissions: ["MANAGE_GUILD"],
   category: `Guild Config`,
   description: `add a custom command to your guild!`,
   userPermissions: `MANAGE_GUILD`,
