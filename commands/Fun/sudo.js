@@ -2,6 +2,7 @@ module.exports = {
   name: "sudo",
   description: "talk as your friends!",
   run: async(client, message, args) => {
+    if(!message.guild.me.permissions.has("MANAGE_WEBHOOKS")) return 
     const me = args.shift()
     console.log(me);
     const member =
