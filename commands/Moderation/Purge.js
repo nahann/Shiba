@@ -18,24 +18,24 @@ module.exports = {
     await message.delete()
     const purge = args[0];
     if (isNaN(purge))
-      return message.reply({ embed:
-        client.embed({ description: `Provide a real number.` }, message),
+      return message.reply({ embeds:
+        [client.embed({ description: `Provide a real number.` }, message)],
         allowedMentions: { repliedUser: false },
       })
     if (purge > 99)
-      return message.reply({ embed:
-        client.embed(
+      return message.reply({ embeds:
+        [client.embed(
           { description: `You cannot delete more than 99 memssages` },
           message
-      ),
+      )],
       allowedMentions: { repliedUser: false },
     });
     message.channel.bulkDelete(purge);
     message.reply({
-      embed: client.embed(
+      embeds: [client.embed(
         { description: `${purge} messages have been deleted.` },
         message
-      ),
+      )],
       allowedMentions: { repliedUser: false },
     });
   },
