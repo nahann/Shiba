@@ -50,10 +50,10 @@ client.loadCommands = function () {
   const commandFolders = fs.readdirSync(`${__dirname}/commands`);
   for (const folder of commandFolders) {
     const commandFiles = fs
-      .readdirSync(`./commands/${folder}`)
+      .readdirSync(`${__dirname}/${folder}`)
       .filter((file) => file.endsWith(".js"));
     for (const file of commandFiles) {
-      const command = require(`./commands/${folder}/${file}`);
+      const command = require(`${__dirname}/${folder}/${file}`);
       if (!command.category) command.category = folder;
       client.commands.set(command.name, command);
     }
@@ -65,7 +65,7 @@ client.loadEvents = function () {
     .filter((file) => file.endsWith(".js"));
 
   for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
+    const event = require(`${__dirname}/events/${file}`);
     if (event.once) {
       client.once(event.name, (...args) => event.run(...args, client));
     } else {
