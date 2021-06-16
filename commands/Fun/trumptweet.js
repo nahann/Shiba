@@ -11,7 +11,7 @@ module.exports = {
         `https://nekobot.xyz/api/imagegen?type=trumptweet&text=${args
           .clean}`
       );
-      message.reply({ embeds: new MessageEmbed()
+      message.reply({ embeds: [new MessageEmbed()
 
         .setImage(data.message)
         .setColor('RANDOM')]
