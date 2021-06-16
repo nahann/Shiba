@@ -21,7 +21,7 @@ module.exports = {
 
     axios.get(url).then(({ data }) => {
       if (data) {
-        message.channel.send({ embed: data });
+        message.channel.send({ embeds: [data] });
       } else {
         message.reply({
           allowedMentions: {
