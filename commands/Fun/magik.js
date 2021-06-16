@@ -11,10 +11,10 @@ module.exports = {
       const { data } = await get(
         `https://nekobot.xyz/api/imagegen?type=magik&image=${avatar}&intensity=10`
       );
-      message.reply({ embed: new MessageEmbed()
+      message.reply({ embeds: [new MessageEmbed()
 
         .setImage(data.message)
-        .setColor('RANDOM')
+        .setColor('RANDOM')]
 
       });
     } catch (err) {
