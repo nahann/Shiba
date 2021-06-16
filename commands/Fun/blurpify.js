@@ -11,11 +11,11 @@ module.exports = {
       const { data } = await get(
         `https://nekobot.xyz/api/imagegen?type=blurpify&image=${avatar}`
       );
-      message.reply({ embed: new MessageEmbed()
+      message.reply({ embeds: [new MessageEmbed()
 
         .setImage(data.message)
         .setColor('RANDOM')
-        .setAuthor(`${user.username} has been blurpified!`)
+        .setAuthor(`${user.username} has been blurpified!`)]
 
       });
     } catch (err) {
