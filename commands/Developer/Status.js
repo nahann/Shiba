@@ -24,6 +24,6 @@ module.exports = {
    console.log(typ)
    if(!["WATCHING","PLAYING","STREAMING","LISTENING","COMPETING"].includes(typ.toUpperCase())) return message.reply("That's not a valid type ya nerd")
    await client.user.setActivity(status,{type: typ.toUpperCase()})
-   message.reply({embed: client.embed({description: `Changed status to ${types[typ.toUpperCase()]} ${status}`},message)})
+   message.reply({embeds: [client.embed({description: `Changed status to ${types[typ.toUpperCase()]} ${status}`},message)]})
   },
 };
