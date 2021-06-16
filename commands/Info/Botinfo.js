@@ -1,4 +1,10 @@
-const { Client, Message, MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
+const {
+  Client,
+  Message,
+  MessageEmbed,
+  MessageActionRow,
+  MessageButton,
+} = require("discord.js");
 const ms = require("ms");
 
 module.exports = {
@@ -25,7 +31,9 @@ module.exports = {
         },
         {
           name: `Uptime <:uptime:854464688490020875>`,
-          value: `\`\`\`${ms(client.uptime)}‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎\`\`\``,
+          value: `\`\`\`${ms(
+            client.uptime
+          )}‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎‏‏‎ ‎\`\`\``,
         },
         {
           name: `Users <:users:854458687547899934>`,
@@ -44,19 +52,19 @@ module.exports = {
       .setFooter(message.author.tag, message.author.displayAvatarURL())
       .setTimestamp();
 
-      
-    const buttons = new MessageActionRow()
-        .addComponents(
-	   new MessageButton()
-           .setLabel('Invite')
-           .setURL('https://discord.com/oauth2/authorize?client_id=838254815225970739&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&scope=bot%20applications.commands')
-           .setStyle('LINK'),
+    const buttons = new MessageActionRow().addComponents(
+      new MessageButton()
+        .setLabel("Invite")
+        .setURL(
+          "https://discord.com/oauth2/authorize?client_id=838254815225970739&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&scope=bot%20applications.commands"
+        )
+        .setStyle("LINK"),
 
-	   new MessageButton()
-            .setLabel('Support')
-            .setURL('https://discord.gg/K4cMecMQyp')
-            .setStyle('LINK'),
-	);
+      new MessageButton()
+        .setLabel("Support")
+        .setURL("https://discord.gg/K4cMecMQyp")
+        .setStyle("LINK")
+    );
 
     message.reply({
       embeds: [embed],

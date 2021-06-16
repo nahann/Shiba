@@ -24,7 +24,9 @@ module.exports = {
         Bio: bio,
       });
     message.reply({
-      embeds: [client.embed({ description: `Bio set to: \`${bio}\`` }, message)],
+      embeds: [
+        client.embed({ description: `Bio set to: \`${bio}\`` }, message),
+      ],
       allowedMentions: { repliedUser: false },
     });
   },

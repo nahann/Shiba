@@ -91,7 +91,6 @@ ${Object.entries(member.user.presence?.clientStatus || {})
                     `.trim(),
         }
       );
-    message.reply({ embeds: [embed],
-      allowedMentions: { repliedUser: false }, })
+    message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
   },
 };

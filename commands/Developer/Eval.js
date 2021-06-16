@@ -12,23 +12,31 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const reg = new RegExp("client.token","g")
-    const result = args.join(" ").replace(/”/g,"\"").replace(/“/g,"\"").replace(reg,"you thought");
+    const reg = new RegExp("client.token", "g");
+    const result = args
+      .join(" ")
+      .replace(/”/g, '"')
+      .replace(/“/g, '"')
+      .replace(reg, "you thought");
     try {
       const evaled = await eval(result);
       const split = splitMessage(inspect(evaled))[0];
       message.reply({
-        embeds: [client.embed(
-          { title: "Eval Success!", description: `\`\`\`\n${split}\`\`\`` },
-          message
-        )],
+        embeds: [
+          client.embed(
+            { title: "Eval Success!", description: `\`\`\`\n${split}\`\`\`` },
+            message
+          ),
+        ],
       });
     } catch (err) {
       message.reply({
-        embeds: [client.embed(
-          { description: `AN ERROR HAS OCCURED: ${err}` },
-          message
-        )]
+        embeds: [
+          client.embed(
+            { description: `AN ERROR HAS OCCURED: ${err}` },
+            message
+          ),
+        ],
       });
     }
   },

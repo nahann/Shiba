@@ -17,10 +17,9 @@ module.exports = {
       { Color: color }
     );
     message.reply({
-      embeds: [client.embed(
-        { description: `Color set to: \`${color}\`` },
-        message
-      )],
+      embeds: [
+        client.embed({ description: `Color set to: \`${color}\`` }, message),
+      ],
       allowedMentions: { repliedUser: false },
     });
   },

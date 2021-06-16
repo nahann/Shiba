@@ -1,13 +1,15 @@
 module.exports = {
   name: "sudo",
   description: "talk as your friends!",
-  run: async(client, message, args) => {
-    if(!message.guild.me.permissions.has("MANAGE_WEBHOOKS")) return message.reply("I need manage webhook perms!")
-    const me = args.shift()
+  run: async (client, message, args) => {
+    if (!message.guild.me.permissions.has("MANAGE_WEBHOOKS"))
+      return message.reply("I need manage webhook perms!");
+    const me = args.shift();
     console.log(me);
     const member =
-      message.mentions.users.first() || message.guild.members.cache.find((m) => m.user.tag.includes(me))?.user
-        || await client.users.fetch(me);
+      message.mentions.users.first() ||
+      message.guild.members.cache.find((m) => m.user.tag.includes(me))?.user ||
+      (await client.users.fetch(me));
     console.log(member);
     if (!member) return message.reply("That person doesn't exist!");
     const user = {
