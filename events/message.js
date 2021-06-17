@@ -38,7 +38,8 @@ module.exports = {
 
     if (!command) {
       if (!CC.findOne({ guildId: message.guild.id, commandname: commandName })){
-       const best = [client.commands.map(c => c.name)].filter(c => require("leven")(command.toLowerCase(),c.toLowerCase()) < (c.length * 0.4))
+       const aliases = []; client.commands.forEach(cmm => cmm.aliases.forEach(alias => aliases.push(alias)))
+       const best = [client.commands.map(c => c.name),aliases].filter(c => require("leven")(commandName.toLowerCase(),c.toLowerCase()) < (c.length * 0.4))
        const d = !best.length ? "" : best.length == 1 ? `Did you mean **${best[0]}**?` : `Did you mean any of these? ${best.slice(0,3).map(val => `**${val}**`).join("\n")}` 
        return message.reply({embeds: [client.embed({description: "Couldn't find that command!"},message)]})
       }
