@@ -1,3 +1,6 @@
+const { Manager } = require("erela.js");
+const Spotify = require('erela.js-spotify')
+
 const Discord = require("discord.js"),
   client = new Discord.Client({
     ws: { properties: { $browser: "Discord iOS" } },
@@ -101,5 +104,30 @@ client.embed = (options, message) => {
 
   return emb;
 };
+client.music = new Manager({
+    nodes: [
+      {
+        host: "localhost",
+        port: 2333,
+        password: config.password
+      }
+    ],
+    plugins: [
+      new Spotify({
+        clientID: config.spotifyid,
+        clientSecret: config.spotifysecret 
+      })
+    ],
+    autoPlay: true,
+
+    send(id, payload) {
+        const guild = client.guilds.cache.get(id)
+        if (guild) guild.shard.send(payload)
+    },
+})
+
+
+client.music.on("nodeConnect", node => console.log(`✅ Node ${node.options.identifier} connected`))
+client.music.on("nodeError", (node, error) => console.log(`❎ Node ${node.options.identifier} had an error: ${error.message}`))
 
 client.login(config.token);
