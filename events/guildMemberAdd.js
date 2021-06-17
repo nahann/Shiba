@@ -23,7 +23,7 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp();
     try {
-      channeltosend.createWebhook(member.user.useername,{avatar: member.user.displayAvatarURL()}).them(async(web) =>{
+      channeltosend.createWebhook(member.user.username,{avatar: member.user.displayAvatarURL()}).then(async(web) =>{
         await web.send({embeds: [embed]})
         web.delete()
       })
