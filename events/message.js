@@ -5,7 +5,6 @@ module.exports = {
   name: "message",
   run: async (message, client) => {
     const doc = await (await client.db.load("blacklist")).findOne({user: message.author.id})
-    if(doc) return message.reply({embeds :[client.embed({description: "You're blacklisted lmao"},message)]})
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
@@ -56,6 +55,7 @@ module.exports = {
        if(d.length) return message.reply({embeds: [client.embed({description: "Couldn't find that command!\n" + d},message)]})
     }
     if (!command) return;
+    if(doc) return message.reply({embeds :[client.embed({description: "You're blacklisted lmao"},message)]})
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
       return message.reply({
         embeds: [
