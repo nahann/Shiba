@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "play",
     description: "Play music from youtube and more.",
+    beta: true,
     run: async (client, message, args) => {
         const channel = message.member.voice.channel
         const url = args.join(" ")
@@ -30,5 +31,7 @@ module.exports = {
         });
 
         player.connect()
+
+
     },
 };
