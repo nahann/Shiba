@@ -30,6 +30,6 @@ module.exports = {
       if (role) member.roles.add(role);
     } catch (err) {
       console.log(err);
-    }k
+    }
   },
 };
