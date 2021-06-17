@@ -57,6 +57,10 @@ client.db = new Database({
         guild: String,
       },
     },
+    {
+      name: "blacklist",
+      data:{ user: String }
+    }
   ],
 });
 client.cooldowns = new Discord.Collection();
