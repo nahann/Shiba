@@ -1,0 +1,31 @@
+const { Client, Message, MessageEmbed } = require('discord.js');
+const UserConfig = require('../../database/Userinfo')
+
+module.exports = {
+    name: 'beta',
+    ownerOnly: true,
+    /** 
+     * @param {Client} client 
+     * @param {Message} message 
+     * @param {String[]} args 
+     */
+    run: async(client, message, args) => {
+        const data = await UserConfig.findOne({ userId: user.id }) 
+        const user = message.mentions.users.first()
+        if(args[0].toLowerCase() === 'add') {
+            if(data) return message.reply({ embeds:  [client.embed({ description: `This user already has beta access.`}, message)]})
+            if(!data) {
+                await UserConfig.create({
+                    userId: user.id
+                })
+            }
+        }
+        if(args[0].toLowerCase() === 'del') {
+            if(!data) return message.reply({ embeds:  [client.embed({ description: `This user does not have beta acccess.`}, message)]})
+            if(data) {
+                await UserConfig.findOneAndDelete({ userId: user.id })
+                message.reply({ embeds:  [client.embed({ description: `${user.username} no longer has beta acccess.`}, message)]})
+            }
+        }
+    }
+}

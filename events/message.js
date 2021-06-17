@@ -1,4 +1,5 @@
 const ms = require("ms");
+const UserConfig = require('./../database/UserConfig')
 
 module.exports = {
   name: "message",
@@ -69,21 +70,13 @@ module.exports = {
     }
 
     if (command.beta) {
-      const betaTesters = [
-        "243845797643419658",
-        "520797108257816586",
-        "672896076969148417",
-        "447680195604774922",
-        "705843647287132200",
-        "763767239018938368",
-      ];
-      if (!betaTesters.includes(message.author.id))
-        return message.reply({
-          embeds: [client.embed(
-            { description: `This is currently a beta feature` },
-            message
-          ),
-        ]});
+      const data = await UserConfig.findOne({ userId: message.author.id })
+      if(!data)  return message.reply({
+        embeds: [client.embed(
+          { description: `This is currently a beta feature` },
+          message
+        ),
+      ]});
     }
 
     if (command.userPermissions) {
