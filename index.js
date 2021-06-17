@@ -45,10 +45,9 @@ mongoose
         }
     },
 	  {
-       name: "mutes",
+       name: "warns",
        data:{
-          roles: Array,
-	  timestamp : Number,
+          warns: Array,
 	  user: String
        }
 	  }
