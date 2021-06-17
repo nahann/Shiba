@@ -37,8 +37,9 @@ module.exports = {
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));
 
     if (!command) {
-      if (!CC.findOne({ guildId: message.guild.id, commandname: commandName }))
-        return;
+      if (!CC.findOne({ guildId: message.guild.id, commandname: commandName })){
+       const best = [client.commands.map(c => c.name)].filter(c => "h")
+      }
 
       CC.findOne(
         { guildId: message.guild.id, commandname: commandName },
