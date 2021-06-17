@@ -48,7 +48,8 @@ mongoose
        name: "warns",
        data:{
           warns: Array,
-	  user: String
+	  user: String,
+	  guild: String
        }
 	  }
 ] });
