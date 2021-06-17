@@ -43,7 +43,15 @@ mongoose
               default: false
             }
         }
-    }
+    },
+	  {
+       name: "mutes",
+       data:{
+          roles: Array,
+	  timestamp : Number,
+	  user: String
+       }
+	  }
 ] });
 client.cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
