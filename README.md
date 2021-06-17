@@ -1,4 +1,4 @@
-Contributing Details
+# Contributing Details
 
 - [0] Fork the repo
 
@@ -24,3 +24,6 @@ Forking the repo
 ![image](https://user-images.githubusercontent.com/72932485/122134132-a0077880-ce03-11eb-956b-caf581cfec0e.png)
 
 Making a pull request
+
+# Music Commands
+To use the music commands you need to have a [Lavalink server](https://github.com/freyacodes/lavalink)
