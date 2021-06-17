@@ -18,6 +18,8 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    let memberc = 0
+    client.guilds.cache.forEach(guild => memberc += guild.memberCount)
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .addFields(
@@ -38,7 +40,7 @@ module.exports = {
         },
         {
           name: `Users <:users:854458687547899934>`,
-          value: `\`\`\`${client.users.cache.size}\`\`\``,
+          value: `\`\`\`${memberc}\`\`\``,
           inline: true
         },
         {
