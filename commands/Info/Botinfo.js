@@ -35,7 +35,7 @@ module.exports = {
         },
         {
           name: `Uptime <:uptime:854464688490020875>`,
-          value: `\`\`\`${ms(client.uptime)}\`\`\``,
+          value: `\`\`\`${ms(client.uptime), { long: true }}\`\`\``,
        //   inline: true
         },
         {
