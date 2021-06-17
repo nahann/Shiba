@@ -8,7 +8,7 @@ module.exports={
     const schema = await client.db.load("warns")
     const docs = await schema.findOne({ user: user.id })
     if(!docs || !docs.warns.length) return message.reply("This user has no warns!")
-    const mapped = doc.warns.map(w =>`Warn id: ${w.id}\nReason: \"${w.reason}\"\nDate: ${w.date.toLocaleDateString()}`)
+    const mapped = docs.warns.map(w =>`Warn id: ${w.id}\nReason: \"${w.reason}\"\nDate: ${w.date.toLocaleDateString()}`)
     return message.reply({embeds: [client.embed({title: `Warns for ${user.tag}`,description: mapped.join("\n\n")},message)]})
     }catch(e){
       console.error(e)
