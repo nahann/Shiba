@@ -20,5 +20,15 @@ module.exports = {
             ],
             allowedMentions: { repliedUser: false },
         });
+
+        const player = client.music.create({
+            guild: message.guild.id,
+            voiceChannel: channel.id,
+            textChannel: message.channel.id,
+            volume: 100,
+            selfDeafen: true,
+        });
+
+        player.connect()
     },
 };
