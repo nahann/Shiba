@@ -10,8 +10,8 @@ module.exports = {
      * @param {String[]} args 
      */
     run: async(client, message, args) => {
-        const data = await UserConfig.findOne({ userId: user.id }) 
         const user = message.mentions.users.first()
+        const data = await UserConfig.findOne({ userId: user.id }) 
         if(args[0].toLowerCase() === 'add') {
             if(data) return message.reply({ embeds:  [client.embed({ description: `This user already has beta access.`}, message)]})
             if(!data) {
