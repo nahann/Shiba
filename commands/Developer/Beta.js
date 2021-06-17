@@ -18,6 +18,7 @@ module.exports = {
                 await UserConfig.create({
                     userId: user.id
                 })
+                message.reply({ embeds:  [client.embed({ description: `${user.username} now has beta acccess.`}, message)]})
             }
         }
         if(args[0].toLowerCase() === 'del') {
