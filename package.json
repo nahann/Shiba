@@ -3,6 +3,7 @@
     "axios": "^0.21.1",
     "discord-reply": "^0.1.2",
     "discord.js": "^13.0.0-dev.f5f3f772865ee98bbb44df938e0e71f9f8865c10",
+    "erela.js": "^2.3.3",
     "fs": "^0.0.1-security",
     "imageapi.js": "^1.7.0",
     "leven": "^3.1.0",
