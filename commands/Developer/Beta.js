@@ -1,5 +1,5 @@
 const { Client, Message, MessageEmbed } = require('discord.js');
-const UserConfig = require('../../database/Userinfo')
+const UserConfig = require('../../database/UserConfig')
 
 module.exports = {
     name: 'beta',
