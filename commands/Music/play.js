@@ -5,7 +5,7 @@ module.exports = {
     description: "Play music from youtube and more.",
     run: async (client, message, args) => {
         const channel = message.member.voice.channel
-        const url = args.slice(0).join(" ")
+        const url = args.join(" ")
 
         if (!channel) return message.reply({
             embeds: [
