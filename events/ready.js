@@ -6,6 +6,7 @@ module.exports = {
   once: true,
   run: async function (client) {
     require("child_process").exec("git push");
+    client.manager.init(client.user.id);
     console.log(`${client.user.username} is now online.`);
     client.slashes = new Discord.Collection();
     const commands = fs

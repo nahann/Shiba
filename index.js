@@ -126,7 +126,7 @@ client.music = new Manager({
     },
 })
 
-
+client.on("raw", (d) => client.music.updateVoiceState(d))
 client.music.on("nodeConnect", node => console.log(`✅ Node ${node.options.identifier} connected`))
 client.music.on("nodeError", (node, error) => console.log(`❎ Node ${node.options.identifier} had an error: ${error.message}`))
 
