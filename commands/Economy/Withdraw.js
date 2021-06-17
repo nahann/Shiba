@@ -20,9 +20,9 @@ module.exports = {
     const data =
       (await Schema.findOne({ userId: message.author.id })) ||
       (await Schema.create({ userId: message.author.id }));
-    const walletToken = data.get("walletShibaToken");
-    const bankToken = data.get("bankShibaToken");
-    if (args[0] > bankToken)
+    const walletToken = data["walletShibaToken"];
+    const bankToken = data["bankShibaToken"];
+    if (parseInt(args[0]) > bankToken)
       return message.reply({
         embeds: [
           client.embed(
@@ -37,7 +37,7 @@ module.exports = {
     Schema.increment(
       { userId: message.author.id },
       "walletShibaToken",
-      args[0]
+      parseInt(args[0])
     );
     message.reply({
       embeds: [
