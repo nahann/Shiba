@@ -1,9 +1,9 @@
 const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
-  name: "slowmode", 
+  name: "slowmode",
   guildOnly: true,
-  userPermissions: 'MANAGE_MESSAGES',
+  userPermissions: "MANAGE_MESSAGES",
   args: true,
   usage: `*slowmode [number in seconds]`,
   category: `Moderation`,
@@ -13,19 +13,20 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    await message.delete()
-    const slowmode  = args[0];
+    await message.delete();
+    const slowmode = args[0];
     if (isNaN(slowmode))
-      return message.reply({ embeds:
-        [client.embed({ description: `Provide a real number.` }, message)],
+      return message.reply({
+        embeds: [
+          client.embed({ description: `Provide a real number.` }, message),
+        ],
         allowedMentions: { repliedUser: false },
-      })
-    message.channel.setRateLimitPerUser(slowmode)
+      });
+    message.channel.setRateLimitPerUser(slowmode);
     message.reply({
-      embeda: [client.embed(
-        { description: `Slowmode set to ${slowmode}` },
-        message
-      )],
+      embeda: [
+        client.embed({ description: `Slowmode set to ${slowmode}` }, message),
+      ],
       allowedMentions: { repliedUser: false },
     });
   },

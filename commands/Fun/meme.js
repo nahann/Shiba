@@ -3,7 +3,7 @@ const api = require("imageapi.js");
 module.exports = {
   name: "meme",
   description: "sends a meme lmao",
-  run: async(client, message, args)  => {
+  run: async (client, message, args) => {
     await api.advanced("meme", "top");
     message.channel.startTyping();
     let subreddits = ["dankmemes"];

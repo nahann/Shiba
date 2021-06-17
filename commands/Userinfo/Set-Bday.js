@@ -11,13 +11,15 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    const bday = args.join(" ")
+    const bday = args.join(" ");
     await UserinfoConfig.findOneAndUpdate(
       { userId: message.author.id },
       { Bday: bday }
     );
     message.reply({
-      embeds: [client.embed({ description: `Bday set to: \`${bday}\`` }, message)],
+      embeds: [
+        client.embed({ description: `Bday set to: \`${bday}\`` }, message),
+      ],
       allowedMentions: { repliedUser: false },
     });
   },

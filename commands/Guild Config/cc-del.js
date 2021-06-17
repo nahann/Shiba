@@ -7,7 +7,7 @@ module.exports = {
   guildOnly: true,
   args: true,
   usage: "*cc-del [commandname]",
-   userPermissions: ["MANAGE_GUILD"],
+  userPermissions: ["MANAGE_GUILD"],
   category: `Guild Config`,
   description: `delete a custom command!`,
   userPermissions: `MANAGE_GUILD`,
@@ -35,13 +35,33 @@ module.exports = {
           }
         );
       }
-      CCconfig.findOneAndDelete({ guildId: message.guild.id, commandname: args[0] }, (e, doc) => {
-        if(e) return  message.reply({ embeds: [client.embed({ description: `An error has occured.`}, message)]})
-        else return  message.reply({ embeds: [client.embed({ description: `Command: ${ccname} has been deleted.`}, message)]})
-      })
+      CCconfig.findOneAndDelete(
+        { guildId: message.guild.id, commandname: args[0] },
+        (e, doc) => {
+          if (e)
+            return message.reply({
+              embeds: [
+                client.embed({ description: `An error has occured.` }, message),
+              ],
+            });
+          else
+            return message.reply({
+              embeds: [
+                client.embed(
+                  { description: `Command: ${ccname} has been deleted.` },
+                  message
+                ),
+              ],
+            });
+        }
+      );
     } catch (err) {
       console.error(err);
-      message.reply({ embeds: [client.embed({ description: `An error has occured.`}, message)]})
+      message.reply({
+        embeds: [
+          client.embed({ description: `An error has occured.` }, message),
+        ],
+      });
     }
   },
 };

@@ -1,5 +1,5 @@
 const ms = require("ms");
-const UserConfig = require('./../database/UserConfig')
+const UserConfig = require("./../database/UserConfig");
 
 module.exports = {
   name: "message",
@@ -16,19 +16,21 @@ module.exports = {
     const prefix = data.get("prefix");
     if (!data)
       return message.reply({
-        embeds: [client.embed(
-          {
-            description: `If you are seeing this message it is because Shiba has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shiba to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
-          },
-          message
-        ),
-      ]});
+        embeds: [
+          client.embed(
+            {
+              description: `If you are seeing this message it is because Shiba has not been able to add your server to the database.\nTo fix this issue kick, then re-add Shiba to your server.\nIf this issue keeps happening contact \`nahan#6480\``,
+            },
+            message
+          ),
+        ],
+      });
     if (!message.content.startsWith(prefix)) return;
     let [commandName, ...args] = message.content
       .slice(prefix.length)
       .trim()
       .split(/ +/);
-    commandName = commandName.toLowerCase()
+    commandName = commandName.toLowerCase();
     args.clean = message.cleanContent.slice(prefix.length + commandName.length);
     const command =
       client.commands.get(commandName) ||
@@ -41,28 +43,30 @@ module.exports = {
       CC.findOne(
         { guildId: message.guild.id, commandname: commandName },
         (e, cc) => {
-          if(!cc) return;
-          if(e) return console.error(e)
+          if (!cc) return;
+          if (e) return console.error(e);
           if (commandName === cc.commandname) {
             return message.reply(cc.commandcontent);
           }
         }
       );
     }
-    if (!command) return
+    if (!command) return;
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
       return message.reply({
-        embeds: [client.embed(
-          {
-            description: `Try this command in ${ms(
-              client.cooldowns.get(`${message.author.id}-${command.name}`) -
-                Date.now(),
-              { long: true }
-            )}`,
-          },
-          message
-        ),
-      ]});
+        embeds: [
+          client.embed(
+            {
+              description: `Try this command in ${ms(
+                client.cooldowns.get(`${message.author.id}-${command.name}`) -
+                  Date.now(),
+                { long: true }
+              )}`,
+            },
+            message
+          ),
+        ],
+      });
     }
 
     if (command.guildOnly && message.channel.type === "dm") {
@@ -70,26 +74,31 @@ module.exports = {
     }
 
     if (command.beta) {
-      const data = await UserConfig.findOne({ userId: message.author.id })
-      if(!data)  return message.reply({
-        embeds: [client.embed(
-          { description: `This is currently a beta feature` },
-          message
-        ),
-      ]});
+      const data = await UserConfig.findOne({ userId: message.author.id });
+      if (!data)
+        return message.reply({
+          embeds: [
+            client.embed(
+              { description: `This is currently a beta feature` },
+              message
+            ),
+          ],
+        });
     }
 
     if (command.userPermissions) {
       const authorPerms = message.channel.permissionsFor(message.author);
       if (!authorPerms || !authorPerms.has(command.userPermissions)) {
         return message.channel.send({
-          embeds: [client.embed(
-            {
-              description: `You require the permission: \`${command.userPermissions}\``,
-            },
-            message
-          ),
-        ]});
+          embeds: [
+            client.embed(
+              {
+                description: `You require the permission: \`${command.userPermissions}\``,
+              },
+              message
+            ),
+          ],
+        });
       }
     }
 
@@ -101,8 +110,8 @@ module.exports = {
       }
 
       return message.channel.send({
-        embeds: [client.embed({ description: reply }, message),
-      ]});
+        embeds: [client.embed({ description: reply }, message)],
+      });
     }
 
     if (

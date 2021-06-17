@@ -22,10 +22,12 @@ module.exports = {
       { prefix: prefix }
     );
     message.reply({
-      embeds: [client.embed(
-        { description: `Prefix updated to: \`${prefix}\`` },
-        message
-      )],
+      embeds: [
+        client.embed(
+          { description: `Prefix updated to: \`${prefix}\`` },
+          message
+        ),
+      ],
       allowedMentions: { repliedUser: false },
     });
   },

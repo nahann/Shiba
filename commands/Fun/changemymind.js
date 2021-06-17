@@ -8,14 +8,12 @@ module.exports = {
     if (!args.length) return message.reply("you need some text there!");
     try {
       const { data } = await get(
-        `https://nekobot.xyz/api/imagegen?type=changemymind&text=${args
-          .clean}`
+        `https://nekobot.xyz/api/imagegen?type=changemymind&text=${args.clean}`
       );
-      message.reply({ embeds: [new MessageEmbed()
-
-        .setImage(data.message)
-        .setColor('RANDOM')]
-
+      message.reply({
+        embeds: [
+          new MessageEmbed().setImage(data.message).setColor("RANDOM"),
+        ],
       });
     } catch (err) {
       return console.error(err.message);
