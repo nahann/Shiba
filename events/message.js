@@ -4,6 +4,8 @@ const UserConfig = require("./../database/UserConfig");
 module.exports = {
   name: "message",
   run: async (message, client) => {
+    const doc = await (await client.db.load("blacklist")).findOne({user: message.author.id})
+    if(doc) return message.reply({embeds :[client.embed({description: "You're blacklisted lmao"},message)]})
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
