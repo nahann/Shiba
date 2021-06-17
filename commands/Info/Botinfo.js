@@ -24,12 +24,12 @@ module.exports = {
         {
           name: `Tag <:tag:854460951805296640>`,
           value: `\`\`\`${client.user.tag}\`\`\``,
-        //  inline: true
+          inline: true
         },
         {
           name: `Ping <:ping:854461197720748032>`,
           value: `\`\`\`${ms(client.ws.ping)}\`\`\``,
-       //   inline: true
+          inline: true
         },
         {
           name: `Uptime <:uptime:854464688490020875>`,
@@ -39,12 +39,12 @@ module.exports = {
         {
           name: `Users <:users:854458687547899934>`,
           value: `\`\`\`${client.users.cache.size}\`\`\``,
-      //    inline: true
+          inline: true
         },
         {
           name: `Channels <:channel:854458888131444776>`,
           value: `\`\`\`${client.channels.cache.size}\`\`\``,
-     //     inline: true
+         inline: true
         },
         {
           name: `Guilds <:guilds:854459430733479967>`,
