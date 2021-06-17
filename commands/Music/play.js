@@ -13,5 +13,12 @@ module.exports = {
             ],
             allowedMentions: { repliedUser: false },
         });
+
+        if (!url) return message.reply({
+            embeds: [
+                client.embed({ description: `Oh you want me to play nothing lol?` }, message),
+            ],
+            allowedMentions: { repliedUser: false },
+        });
     },
 };
