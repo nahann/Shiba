@@ -71,7 +71,12 @@ module.exports = {
         .setLabel("Support")
         .setURL("https://discord.gg/K4cMecMQyp")
         .setStyle("LINK")
-        .setEmoji("<:invite:854951126025240586>")
+        .setEmoji("<:invite:854951126025240586>"),
+      new MessageButton()
+        .setLabel("GitHub Repository")
+        .setURL("https://github.com/nahann/Shiba")
+        .setStyle("LINK")
+        .setEmoji("<:github:854957408585515019>")
     );
 
     message.reply({
