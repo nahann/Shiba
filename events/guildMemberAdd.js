@@ -23,13 +23,13 @@ module.exports = {
       .setColor("RANDOM")
       .setTimestamp();
     try {
-      channeltosend.createWebhook(member.user.useername,{avatar: member.user.displayAvatarURL()}).them(web =>{
+      channeltosend.createWebhook(member.user.useername,{avatar: member.user.displayAvatarURL()}).them(async(web) =>{
         await web.send({embeds: [embed]})
         web.delete()
       })
       if (role) member.roles.add(role);
     } catch (err) {
       console.log(err);
-    }
+    }k
   },
 };
