@@ -38,7 +38,7 @@ module.exports = {
 
     if (!command) {
       if (!CC.findOne({ guildId: message.guild.id, commandname: commandName })){
-       const best = [client.commands.map(c => c.name)].filter(c => "h")
+       const best = [client.commands.map(c => c.name)].filter(c => require("leven")(command.toLowerCase(),c.toLowerCase()) < (c.length * 0.4))
       }
 
       CC.findOne(
