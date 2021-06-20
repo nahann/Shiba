@@ -42,6 +42,7 @@ module.exports = {
 				)
 			message.reply({ embeds: [embed]});
 		} catch (e) {
+                        console.error(e)
 			return message.reply(`\`${query}\` is not a valid npm package`);
 		}
 	},
