@@ -26,4 +26,5 @@ Forking the repo
 Making a pull request
 
 # Music Commands
+
 To use the music commands you need to have a [Lavalink server](https://github.com/freyacodes/lavalink)

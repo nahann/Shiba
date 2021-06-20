@@ -32,19 +32,17 @@ module.exports = {
         command
       ),
     });
-    guild.members
-      .ban(user)
-      .then(() =>
-        command.editReply({
-          embeds: [
-            client.embed(
-              {
-                description: `Banned ${member.user.username} for **${reason}**`,
-              },
-              command
-            ),
-          ],
-        })
-      );
+    guild.members.ban(user).then(() =>
+      command.editReply({
+        embeds: [
+          client.embed(
+            {
+              description: `Banned ${member.user.username} for **${reason}**`,
+            },
+            command
+          ),
+        ],
+      })
+    );
   },
 };

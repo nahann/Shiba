@@ -1,5 +1,5 @@
 const { Manager } = require("erela.js");
-const Spotify = require('erela.js-spotify')
+const Spotify = require("erela.js-spotify");
 
 const Discord = require("discord.js"),
   client = new Discord.Client({
@@ -59,8 +59,8 @@ client.db = new Database({
     },
     {
       name: "blacklist",
-      data:{ user: String }
-    }
+      data: { user: String },
+    },
   ],
 });
 client.cooldowns = new Discord.Collection();
@@ -109,29 +109,35 @@ client.embed = (options, message) => {
   return emb;
 };
 client.music = new Manager({
-    nodes: [
-      {
-        host: "localhost",
-        port: 2333,
-        password: config.password
-      }
-    ],
-    plugins: [
-      new Spotify({
-        clientID: config.spotifyid,
-        clientSecret: config.spotifysecret 
-      })
-    ],
-    autoPlay: true,
-
-    send(id, payload) {
-        const guild = client.guilds.cache.get(id)
-        if (guild) guild.shard.send(payload)
+  nodes: [
+    {
+      host: "localhost",
+      port: 2333,
+      password: config.password,
     },
-})
+  ],
+  plugins: [
+    new Spotify({
+      clientID: config.spotifyid,
+      clientSecret: config.spotifysecret,
+    }),
+  ],
+  autoPlay: true,
 
-client.on("raw", (d) => client.music.updateVoiceState(d))
-client.music.on("nodeConnect", node => console.log(`✅ Node ${node.options.identifier} connected`))
-client.music.on("nodeError", (node, error) => console.log(`❎ Node ${node.options.identifier} had an error: ${error.message}`))
+  send(id, payload) {
+    const guild = client.guilds.cache.get(id);
+    if (guild) guild.shard.send(payload);
+  },
+});
+
+client.on("raw", (d) => client.music.updateVoiceState(d));
+client.music.on("nodeConnect", (node) =>
+  console.log(`✅ Node ${node.options.identifier} connected`)
+);
+client.music.on("nodeError", (node, error) =>
+  console.log(
+    `❎ Node ${node.options.identifier} had an error: ${error.message}`
+  )
+);
 
 client.login(config.token);

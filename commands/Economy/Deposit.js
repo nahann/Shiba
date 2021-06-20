@@ -31,7 +31,11 @@ module.exports = {
           ),
         ],
       });
-    Schema.increment({ userId: message.author.id }, "bankShibaToken", parseInt(args[0]));
+    Schema.increment(
+      { userId: message.author.id },
+      "bankShibaToken",
+      parseInt(args[0])
+    );
     Schema.decrement(
       { userId: message.author.id },
       "walletShibaToken",

@@ -1,9 +1,1 @@
-{
-  "token": "ODM4MjU0ODE1MjI1OTcwNzM5.YI4boQ.crBq1HupXshAMp01ycb9jNhZpWY",
-  "mongouri": "mongodb+srv://nathan:ndj03.25.07@cluster0.tuyhp.mongodb.net/data?",
-  "apiToken": "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",
-  "prefix": "*",
-  "password": "t9GD*9spQE#U$RUf",
-  "spotifyid": "5325e9dec8d54f1e88c93daee2c91bff",
-  "spotifysecret": "2ed3ca3acc1a458591fac552e27683c6"
-}
+{"token":"ODM4MjU0ODE1MjI1OTcwNzM5.YI4boQ.Q6d-cLD6zb06cKsIRK1eQCMP2NU","mongouri":"mongodb+srv://nathan:ndj03.25.07@cluster0.tuyhp.mongodb.net/data?","apiToken":"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","prefix":"*","password":"t9GD*9spQE#U$RUf","spotifyid":"5325e9dec8d54f1e88c93daee2c91bff","spotifysecret":"2ed3ca3acc1a458591fac552e27683c6"}

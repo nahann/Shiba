@@ -4,7 +4,9 @@ const UserConfig = require("./../database/UserConfig");
 module.exports = {
   name: "message",
   run: async (message, client) => {
-    const doc = await (await client.db.load("blacklist")).findOne({user: message.author.id})
+    const doc = await (
+      await client.db.load("blacklist")
+    ).findOne({ user: message.author.id });
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
@@ -38,24 +40,51 @@ module.exports = {
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));
 
     if (!command) {
-      console.log("test")
+      console.log("test");
       CC.findOne(
         { guildId: message.guild.id, commandname: commandName },
         (e, cc) => {
-          if(!cc) return
+          if (!cc) return;
           if (e) return console.error(e);
           if (commandName === cc.commandname) {
             return message.reply(cc.commandcontent);
           }
         }
-      );    
-       const aliases = []; client.commands.forEach(cmm => cmm.aliases?.forEach(alias => aliases.push(alias)))
-       const best = [...client.commands.map(c => c.name),...aliases].filter(c => require("leven")(commandName.toLowerCase(),c.toLowerCase()) < (c.length * 0.4))
-       const d = !best.length ? "" : best.length == 1 ? `Did you mean **${best[0]}**?` : `Did you mean any of these? ${best.slice(0,3).map(val => `**${val}**`).join("\n")}` 
-       if(d.length) return message.reply({embeds: [client.embed({description: "Couldn't find that command!\n" + d},message)]})
+      );
+      const aliases = [];
+      client.commands.forEach((cmm) =>
+        cmm.aliases?.forEach((alias) => aliases.push(alias))
+      );
+      const best = [...client.commands.map((c) => c.name), ...aliases].filter(
+        (c) =>
+          require("leven")(commandName.toLowerCase(), c.toLowerCase()) <
+          c.length * 0.4
+      );
+      const d = !best.length
+        ? ""
+        : best.length == 1
+        ? `Did you mean **${best[0]}**?`
+        : `Did you mean any of these? ${best
+            .slice(0, 3)
+            .map((val) => `**${val}**`)
+            .join("\n")}`;
+      if (d.length)
+        return message.reply({
+          embeds: [
+            client.embed(
+              { description: "Couldn't find that command!\n" + d },
+              message
+            ),
+          ],
+        });
     }
     if (!command) return;
-    if(doc) return message.reply({embeds :[client.embed({description: "You're blacklisted lmao"},message)]})
+    if (doc)
+      return message.reply({
+        embeds: [
+          client.embed({ description: "You're blacklisted lmao" }, message),
+        ],
+      });
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
       return message.reply({
         embeds: [
@@ -124,7 +153,7 @@ module.exports = {
         "243845797643419658",
         "520797108257816586",
         "447680195604774922",
-        "705843647287132200"
+        "705843647287132200",
       ].includes(message.author.id)
     )
       return;

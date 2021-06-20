@@ -36,7 +36,7 @@ module.exports = {
         Moderation: "<:mod:854469924088446996>",
         Userinfo: "<:users:854458687547899934>",
         Economy: "<:ec:854466932551450644>",
-        Music: "<:music:855134047205720104>"
+        Music: "<:music:855134047205720104>",
       };
       const lines = categories.map(
         (category, name) =>

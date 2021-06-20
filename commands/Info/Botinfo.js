@@ -18,40 +18,40 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    let memberc = 0
-    client.guilds.cache.forEach(guild => memberc += guild.memberCount)
+    let memberc = 0;
+    client.guilds.cache.forEach((guild) => (memberc += guild.memberCount));
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .addFields(
         {
           name: `Tag <:tag:854460951805296640>`,
           value: `\`\`\`${client.user.tag}\`\`\``,
-          inline: true
+          inline: true,
         },
         {
           name: `Ping <:ping:854461197720748032>`,
           value: `\`\`\`${ms(client.ws.ping)}\`\`\``,
-          inline: true
+          inline: true,
         },
         {
           name: `Uptime <:uptime:854464688490020875>`,
           value: `\`\`\`${ms(client.uptime, { long: true })}\`\`\``,
-       //   inline: true
+          //   inline: true
         },
         {
           name: `Users <:users:854458687547899934>`,
           value: `\`\`\`${memberc}\`\`\``,
-          inline: true
+          inline: true,
         },
         {
           name: `Channels <:channel:854458888131444776>`,
           value: `\`\`\`${client.channels.cache.size}\`\`\``,
-         inline: true
+          inline: true,
         },
         {
           name: `Guilds <:guilds:854459430733479967>`,
           value: `\`\`\`${client.guilds.cache.size}\`\`\``,
-     //     inline: true
+          //     inline: true
         }
       )
       .setColor("RANDOM")

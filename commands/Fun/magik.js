@@ -12,9 +12,7 @@ module.exports = {
         `https://nekobot.xyz/api/imagegen?type=magik&image=${avatar}&intensity=10`
       );
       message.reply({
-        embeds: [
-          new MessageEmbed().setImage(data.message).setColor("RANDOM"),
-        ],
+        embeds: [new MessageEmbed().setImage(data.message).setColor("RANDOM")],
       });
     } catch (err) {
       return console.error(err.message);
