@@ -18,26 +18,26 @@ module.exports = {
 		}
 		try {
 			const { package } = res.results[0]
-			const embed = client.embed({title:pkg.name,url: pkg.links.npm,description: pkg.description},message)				
+			const embed = client.embed({title:package.name,url: package.links.npm,description: package.description},message)				
                                 .setThumbnail(message.author.displayAvatarURL())
-				.addField('Author', pkg.author?.name || 'Not Specified', true)
-				.addField('Version', pkg.version, true)
+				.addField('Author', package.author?.name || 'Not Specified', true)
+				.addField('Version', package.version, true)
 				.addField(
 					'Repository',
 					`[Click here](${
-						pkg.links.repository || 'No repository specified'
+						package.links.repository || 'No repository specified'
 					})`,
 					true
 				)
 				.addField(
 					'Maintainers',
-				        pkg.maintainers?.map((e) => `\`${e.username}\``).join(' | ')
+				        package.maintainers?.map((e) => `\`${e.username}\``).join(' | ')
 						|| 'No maintainers',
 					true
 				)
 				.addField(
 					'Keywords',
-					pkg.keywords?.join(', ') || 'No keywords specified',
+					package.keywords?.join(', ') || 'No keywords specified',
 					true
 				)
 			message.reply({ embeds: [embed]});
