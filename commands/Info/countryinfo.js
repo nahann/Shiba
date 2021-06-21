@@ -22,7 +22,7 @@ module.exports={
                                .addField("Demonym",result.demonym,true)
                                .addField("Native Name",result.nativeName,true)
                                .addField("Languages",result.languages.map(l => l.name).join(", "),true)
-                               .setThumbnail("attachments://flag.png")
+                               .setThumbnail("attachment://flag.png")
                               ], attachments: [flag]
                      })
      }catch(e) {
