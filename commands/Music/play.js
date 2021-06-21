@@ -122,7 +122,7 @@ module.exports = {
                 number = '4'
               }
             })
-        } catch { }
+        } catch(e){ console.error(e) }
 
         console.log(number)
 
