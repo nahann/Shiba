@@ -16,6 +16,6 @@ module.exports = {
     await message.reply({
       embeds: [client.embed({ description: `Pulled Successfully` }, message)],
     });
-    exec("git stash && git pull");
+    exec("git stash && git pull && pm2 restart 0");
   },
 };
