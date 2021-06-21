@@ -21,7 +21,7 @@ module.exports = {
         message.reply('not same vc so noob')
     } 
 
-    player.stop();
-    message.reply('like i just skiped some music. :O')
+    player.pause(false)
+    message.reply('like i just unpause some music. :O')
   },
 };
