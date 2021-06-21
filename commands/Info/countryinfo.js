@@ -1,5 +1,6 @@
 const fetch = require("node-fetch")
 const { MessageAttachment } = require("discord.js")
+const sharp = require("sharp")
 module.exports={
   name: "countryinfo",
   description: "Get any country's info",
@@ -11,7 +12,7 @@ module.exports={
        const fetched = await fetch(url).then(res => res.json())
        if(!fetched.length) return message.reply("That country does not exist!")
        const result = fetched[0]
-       const buffer = await fetch(result.flag).then(file => file.buffer())
+       const buffer = sharp(await fetch(result.flag).then(file => file.buffer())).png().toBuffer()
        const flag = new MessageAttachment(buffer,"flag.png")
        message.reply({embeds: [client.embed({title: `Info for ${result.name}`},message)
                                .addField("Top Level Domain(s)",result.topLevelDomain?.join(", ") || "None",true)
