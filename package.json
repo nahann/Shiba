@@ -12,6 +12,7 @@
     "ms": "^2.1.3",
     "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1",
+    "sharp": "^0.28.3",
     "zapmongo": "^2.1.0"
   },
   "name": "Shiba",
