@@ -39,5 +39,27 @@ module.exports = {
     });
 
     player.connect();
+
+    let music
+
+    try {
+      music = await player.search(url, message.author)
+    } catch {
+      return message.reply({
+        embeds: [
+          client.embed(
+            { description: `Something went wrong with searching for it.` },
+            message
+          ),
+        ],
+        allowedMentions: { repliedUser: false },
+      });
+    }
+
+    player.queue.add(res.tracks[0]);
+
+    if (!player.playing && !player.paused && !player.queue.size) player.play();
+
+    if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
   },
 };
