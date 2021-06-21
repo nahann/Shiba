@@ -83,14 +83,14 @@ module.exports = {
         let max = 5
         
         if (res.tracks.length < max) max = res.tracks.length;
-        const results = res.tracks
+        const results = await res.tracks
           .slice(0, max)
           .map((track, index) => `**${++index}** - \`${track.title}\``)
           .join("\n");
 
 
         const msg = await message.reply({
-          embeds: { description: results },
+          embeds: { description: `${results}` },
           message
         })
 
