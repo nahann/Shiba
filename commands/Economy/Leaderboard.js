@@ -3,7 +3,6 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "leaderboard",
   aliases: ["lb"],
-  beta: true,
   /**
    * @param {Client} client
    * @param {Message} message
