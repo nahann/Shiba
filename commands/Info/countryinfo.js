@@ -1,4 +1,4 @@
-const { fetch } = require("node-fetch")
+const fetch = require("node-fetch")
 module.exports={
   name: "countryinfo",
   description: "Get any country's info",
