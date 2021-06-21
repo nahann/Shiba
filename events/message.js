@@ -7,6 +7,7 @@ const { mongouri } = require("../config.json")
 module.exports = {
   name: "message",
   run: async (message, client) => {
+    client.Levels = Levels
     if(message.channel.id == "852783453606248468") message.crosspost();
     const doc = await (
       await client.db.load("blacklist")
@@ -15,9 +16,9 @@ module.exports = {
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
     const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
-  const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+  const hasLeveledUp = await client.Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
   if (hasLeveledUp) {
-    const user = await Levels.fetch(message.author.id, message.guild.id);
+    const user = await client.Levels.fetch(message.author.id, message.guild.id);
     message.reply(`Congratulations! You have leveled up to **${user.level}**. :tada:`);
   }
     const data =
