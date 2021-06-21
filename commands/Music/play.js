@@ -57,7 +57,7 @@ module.exports = {
     }
     console.log(music)
     const track = music.tracks[0]
-    player.queue.add(music);
+    player.queue.add(track);
     
     if (!player.playing && !player.paused && !player.queue.size) {
       message.reply({embeds: [client.embed({title: `Playing ${track.title}`,description: `Duration: ${require("pretty-ms")(track.duration)}\nRequested by: ${message.author.tag}`},message).setURL(track.uri).setThumbnail(track.thumbnail)]})
