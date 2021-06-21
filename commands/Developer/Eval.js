@@ -20,11 +20,8 @@ module.exports = {
       .replace(reg, "you thought");
     try {
       const evaled = await eval(result);
-<<<<<<< HEAD
       const split = splitMessage(inspect(evaled, { depth: 1 }))[0];
-=======
       const split = splitMessage(inspect(evaled,{depth: 0}))[0];
->>>>>>> c0eaba470e2ea027f806c4d2ee67142bb64eb0c8
       message.reply({
         embeds: [
           client.embed(
