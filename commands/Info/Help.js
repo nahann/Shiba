@@ -37,6 +37,7 @@ module.exports = {
         Userinfo: "<:users:854458687547899934>",
         Economy: "<:ec:854466932551450644>",
         Music: "<:music:855134047205720104>",
+        Leveling: '<:rocket:856565446878560276>'
       };
       const lines = categories.map(
         (category, name) =>
