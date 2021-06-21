@@ -106,7 +106,7 @@ module.exports = {
             return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
           };
 
-          msg.awaitReactions(filter, { max: 1, time: 100000, errors: ['time'] })
+          await msg.awaitReactions(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(collected => {
               const reaction = collected.first();
 
