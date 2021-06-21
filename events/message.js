@@ -9,7 +9,7 @@ module.exports = {
   run: async (message, client) => {
     client.Levels = Levels
     const levelon = await (
-       await client.db.load("leveling")
+       await client.db.load("levelguilds")
     ).findOne({ guild: message.guild.id })
     if(message.channel.id == "852783453606248468") message.crosspost();
     const doc = await (
@@ -18,7 +18,7 @@ module.exports = {
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
-    if(levelon?.on){
+    if(levelon?.onoff){
     const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
   const hasLeveledUp = await client.Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
   if (hasLeveledUp) {
