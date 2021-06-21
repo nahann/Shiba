@@ -62,8 +62,8 @@ client.db = new Database({
       data: { user: String },
     },
     {
-      name: "leveling",
-      data: { guild: String, on: Boolean }
+      name: "levelguilds",
+      data: { guild: String, onoff: Boolean }
     }
   ],
 });
