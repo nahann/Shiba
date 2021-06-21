@@ -6,6 +6,6 @@ module.exports={
      const user = await client.Levels.fetch(target.id, message.guild.id); // Selects the target from the database.
      if (!user) return message.reply("This user does not have any levels!")
      console.log(user)
-     message.reply({embeds: [client.embed({title: `${target.tag}'s Level`,description: `${user.level}`},message)]});
+     message.reply({embeds: [client.embed({title: `${target.tag}'s Level`,description: `Level: ${user.level}\nXP: ${user.xp}`},message)]});
    }
 }  
