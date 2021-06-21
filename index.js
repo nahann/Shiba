@@ -143,5 +143,12 @@ client.music.on("nodeError", (node, error) =>
     `❎ Node ${node.options.identifier} had an error: ${error.message}`
   )
 );
+client.music.on("queueEnd", (player) => {
+  client.channels.cache
+    .get(player.textChannel)
+    .send("am gone from the queue");
+
+  player.destroy();
+});
 
 client.login(config.token);

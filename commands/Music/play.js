@@ -55,7 +55,6 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
     }
-    console.log(music.tracks[0])
     const track = music.tracks[0]
     player.queue.add(music.tracks[0]);
     
