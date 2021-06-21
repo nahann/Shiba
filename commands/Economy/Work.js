@@ -2,7 +2,6 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "work",
-  beta: true,
   cooldown: 1200000,
   /**
    * @param {Client} client
