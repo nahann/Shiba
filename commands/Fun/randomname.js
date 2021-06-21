@@ -6,7 +6,7 @@ module.exports={
     message.channel.startTyping()
     const randomise = (arr) =>{ return arr[Math.floor(Math.random() * arr.length)]}
     const name = `${randomise(first)} ${randomise(last)}`
-    setTimeout(()=> message.reply({content: `The name is:\n${name}`,code: true}),1000)
+    setTimeout(() => message.reply({ embeds: [client.embed({ description: `The name is: ${name}`}, message)]}), 1000)
     message.channel.stopTyping()
   }
 }
