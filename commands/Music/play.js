@@ -111,21 +111,22 @@ module.exports = {
               const reaction = collected.first();
 
               if (reaction.emoji.name === '1️⃣') {
-                number = '1'
+                number = '0'
               } else if (reaction.emoji.name === '2️⃣') {
-                number = '2'
+                number = '1'
               } else if (reaction.emoji.name === '3️⃣') {
-                number = '3'
+                number = '2'
               } else if (reaction.emoji.name === '4️⃣') {
-                number = '4'
+                number = '3'
               } else if (reaction.emoji.name === '5️⃣') {
-                number = '5'
+                number = '4'
               }
             })
         } catch { }
 
-        const realNumber = Number(number) - 1;
-        const track = res.tracks[realNumber];
+        console.log(number)
+
+        const track = res.tracks[number];
 
         player.queue.add(track);
 
