@@ -16,6 +16,8 @@ module.exports={
                                .addField("Alternate Names",result.altSpellings?.join(", ") || "None")
                                .addField("Continent",result.region,true)
                                .addField("Population",result.population.toString(),true)
+                               .addField("Demonym",result.demonym,true)
+                               .addField("Native Name",result.nativeName,true)
                               ]
                      })
      }
