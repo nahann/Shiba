@@ -4,6 +4,7 @@ const UserConfig = require("./../database/UserConfig");
 module.exports = {
   name: "message",
   run: async (message, client) => {
+    if(message.channel.id == "852783453606248468") message.crosspost();
     const doc = await (
       await client.db.load("blacklist")
     ).findOne({ user: message.author.id });
