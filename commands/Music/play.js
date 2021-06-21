@@ -80,7 +80,8 @@ module.exports = {
         })
 
       case "SEARCH_RESULT":
-        let max = 5,
+        let max = 5
+        
         if (res.tracks.length < max) max = res.tracks.length;
         const results = res.tracks
           .slice(0, max)
