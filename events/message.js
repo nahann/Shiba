@@ -19,7 +19,7 @@ module.exports = {
   const hasLeveledUp = await client.Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
   if (hasLeveledUp) {
     const user = await client.Levels.fetch(message.author.id, message.guild.id);
-    message.reply(`Congratulations! You have leveled up to **${user.level}**. :tada:`);
+    message.reply(`Congratulations! You have leveled up to **${user.level}**. <:tada:856552964713087027>`);
   }
     const data =
       (await GuildConfig.findOne({ guildId: message.guild.id })) ||
