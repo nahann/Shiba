@@ -3,7 +3,6 @@ const { Client, Message, MessageEmbed } = require("discord.js");
 module.exports = {
   name: "rob",
   aliases: ["steal"],
-  beta: true,
   args: true,
   usage: "*passive [true or false]",
   cooldown: 3600000,
