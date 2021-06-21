@@ -8,6 +8,9 @@ module.exports = {
   name: "message",
   run: async (message, client) => {
     client.Levels = Levels
+    const levelon = await (
+       await client.db.load("leveling")
+    ).findOne({ guild: message.guild.id })
     if(message.channel.id == "852783453606248468") message.crosspost();
     const doc = await (
       await client.db.load("blacklist")
@@ -15,12 +18,14 @@ module.exports = {
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
     if (message.author.bot) return;
+    if(levelon?.on){
     const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
   const hasLeveledUp = await client.Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
   if (hasLeveledUp) {
     const user = await client.Levels.fetch(message.author.id, message.guild.id);
     message.reply(`Congratulations! You have leveled up to **${user.level}**. <:tada:856552964713087027>`);
   }
+}
     const data =
       (await GuildConfig.findOne({ guildId: message.guild.id })) ||
       (await GuildConfig.create({
