@@ -25,7 +25,7 @@ module.exports={
                                .addField("Native Name",result.nativeName,true)
                                .addField("Languages",result.languages.map(l => l.name).join(", "),true)
                                .setThumbnail("attachment://flag.png")
-                              ], attachments: [flag]
+                              ], files: [flag]
                      })
      }catch(e) {
       console.error(e)
