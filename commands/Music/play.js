@@ -31,13 +31,17 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
 
-    const player = client.music.players.get(message.guild.id) || client.music.create({
-      guild: message.guild.id,
-      voiceChannel: channel.id,
-      textChannel: message.channel.id,
-      volume: 100,
-      selfDeafen: true,
-    });
+    if (client.music.players.get(message.guild.id)) {
+      const player = client.music.players.get(message.guild.id)
+    } else {
+      const player = client.music.create({
+        guild: message.guild.id,
+        voiceChannel: channel.id,
+        textChannel: message.channel.id,
+        volume: 100,
+        selfDeafen: true,
+      });
+    }
 
     if (player.state !== "CONNECTED") player.connect();
 
@@ -122,7 +126,7 @@ module.exports = {
                 number = '4'
               }
             })
-        } catch(e){ console.error(e) }
+        } catch (e) { console.error(e) }
 
         console.log(number)
 
