@@ -4,7 +4,6 @@ module.exports = {
   name: "bank-heist",
   aliases: ["bank-rob", "bankrob", "bankheist"],
   cooldown: 7200000,
-  beta: true,
   /**
    * @param {Client} client
    * @param {Message} message
