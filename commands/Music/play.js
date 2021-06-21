@@ -80,7 +80,8 @@ module.exports = {
         })
 
       case "SEARCH_RESULT":
-        if (res.tracks.length < 5) 5 = res.tracks.length;
+        let max = 5,
+        if (res.tracks.length < max) max = res.tracks.length;
         const results = res.tracks
           .slice(0, max)
           .map((track, index) => `**${++index}** - \`${track.title}\``)
