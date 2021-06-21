@@ -58,8 +58,11 @@ module.exports = {
     console.log(music.tracks[0])
     const track = music.tracks[0]
     player.queue.add(music.tracks[0]);
-    message.reply({embeds: [client.embed({title: `Playing ${track.title}`,description: `Duration: ${require("pretty-ms")(track.duration)}\nRequested by: ${message.author.tag}`},message).setURL(track.uri).setThumbnail(track.thumbnail)]})
-    if (!player.playing && !player.paused && !player.queue.size) player.play();
+    
+    if (!player.playing && !player.paused && !player.queue.size) {
+      message.reply({embeds: [client.embed({title: `Playing ${track.title}`,description: `Duration: ${require("pretty-ms")(track.duration)}\nRequested by: ${message.author.tag}`},message).setURL(track.uri).setThumbnail(track.thumbnail)]})
+      player.play();
+    }
 
     if (!player.playing && !player.paused && player.queue.totalSize === music.tracks.length) player.play();
   },
