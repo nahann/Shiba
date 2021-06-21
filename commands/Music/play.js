@@ -90,8 +90,7 @@ module.exports = {
 
 
         const msg = await message.reply({
-          embeds: { description: `${results}` },
-          message
+          embeds: [client.embed({ description: `${results}` },message)]
         })
 
         msg.react(':one:')
