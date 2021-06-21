@@ -43,7 +43,7 @@ module.exports = {
         (category, name) =>
           `${dirEmojis[name]} **${name}: **  ${category
             .map((command) => `\`${command.name}\``)
-            .join(" ")}`
+            .join(" | ")}`
       );
 
       if (!args.length) {
