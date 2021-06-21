@@ -31,7 +31,7 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
 
-    const player = client.music.create({
+    const player = client.music.players.get(message.guild.id) || client.music.create({
       guild: message.guild.id,
       voiceChannel: channel.id,
       textChannel: message.channel.id,
