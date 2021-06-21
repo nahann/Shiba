@@ -63,8 +63,8 @@ client.db = new Database({
     },
     {
       name: "levelguilds",
-      data: { guild: String, onoff: { type: Boolean,default: false} }
-    }
+      data: { guild: String, onoff: { type: Boolean, default: false } },
+    },
   ],
 });
 client.cooldowns = new Discord.Collection();
