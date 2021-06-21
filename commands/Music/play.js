@@ -31,10 +31,12 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
 
+    let player
+
     if (client.music.players.get(message.guild.id)) {
-      const player = client.music.players.get(message.guild.id)
+      player = client.music.players.get(message.guild.id)
     } else {
-      const player = client.music.create({
+      player = client.music.create({
         guild: message.guild.id,
         voiceChannel: channel.id,
         textChannel: message.channel.id,
