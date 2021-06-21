@@ -1,6 +1,5 @@
 module.exports = {
   name: "beg",
-  beta: true,
   description: "idk beg",
   cooldown: 300000,
   run: async (client, message) => {
