@@ -14,6 +14,7 @@ module.exports={
        const result = fetched[0]
        const buffer = sharp(await fetch(result.flag).then(file => file.buffer())).png().toBuffer()
        const flag = new MessageAttachment(buffer,"flag.png")
+       console.log(flag)
        message.reply({embeds: [client.embed({title: `Info for ${result.name}`},message)
                                .addField("Top Level Domain(s)",result.topLevelDomain?.join(", ") || "None",true)
                                .addField("Capital",result.capital,true)
