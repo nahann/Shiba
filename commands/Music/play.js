@@ -56,10 +56,10 @@ module.exports = {
       });
     }
 
-    player.queue.add(res.tracks[0]);
+    player.queue.add(music.tracks[0]);
 
     if (!player.playing && !player.paused && !player.queue.size) player.play();
 
-    if (!player.playing && !player.paused && player.queue.totalSize === res.tracks.length) player.play();
+    if (!player.playing && !player.paused && player.queue.totalSize === music.tracks.length) player.play();
   },
 };
