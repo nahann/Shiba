@@ -7,5 +7,6 @@ module.exports={
     const randomise = (arr) =>{ return arr[Math.floor(Math.random() * arr.length)]}
     const name = `${randomise(first)} ${randomise(last)}`
     setTimeout(()=> message.reply({content: `The name is:\n${name}`,code: true}),1000)
+    message.channel.stopTyping()
   }
 }
