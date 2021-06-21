@@ -5,7 +5,7 @@ module.exports={
   args: true,
   aliases: ["country"],
   run: async(client,message,args)=>{
-     const url = `https://restcountries.eu/rest/v2/name/${args[0]}`
+     const url = `https://restcountries.eu/rest/v2/name/${args.join(" ")}`
      try{
        const fetched = await fetch(url).then(res => res.json())
        if(!fetched.length) return message.reply("That country does not exist!")
