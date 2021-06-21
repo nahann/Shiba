@@ -143,10 +143,5 @@ client.music.on("nodeError", (node, error) =>
     `❎ Node ${node.options.identifier} had an error: ${error.message}`
   )
 );
-client.music.on("trackStart", (player, track) => {
-  client.channels.cache
-    .get(player.textChannel)
-    .send(`ok playing ${track.title} i will change this soon `);
-})
 
 client.login(config.token);
