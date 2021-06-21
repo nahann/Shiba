@@ -143,7 +143,7 @@ client.music.on("nodeError", (node, error) =>
     `❎ Node ${node.options.identifier} had an error: ${error.message}`
   )
 );
-client.manager.on("trackStart", (player, track) => {
+client.music.on("trackStart", (player, track) => {
   const channel = client.channels.cache.get(player.textChannel);
 
   channel.send(`playing ${track.title} i will change the text soon i am just testing`)
