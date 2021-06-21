@@ -22,6 +22,9 @@ module.exports={
                                .setThumbnail(result.flag)
                               ]
                      })
+     }catch(e) {
+      console.error(e)
+      message.reply("An error occured, this has been reported.")
      }
   }
 }
