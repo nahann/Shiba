@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const ms = require("ms");
 
 module.exports = {
   name: "play",
@@ -40,10 +41,10 @@ module.exports = {
 
     player.connect();
 
-    let music
+    let res
 
     try {
-      music = await player.search(url, message.author)
+      res = await player.search(url, message.author)
     } catch {
       return message.reply({
         embeds: [
@@ -55,15 +56,68 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
     }
-    console.log(music)
-    const track = music.tracks[0]
-    player.queue.add(music);
-    
-    if (!player.playing && !player.paused && !player.queue.size) {
-      message.reply({embeds: [client.embed({title: `Playing ${track.title}`,description: `Duration: ${require("pretty-ms")(track.duration)}\nRequested by: ${message.author.tag}`},message).setURL(track.uri).setThumbnail(track.thumbnail)]})
-      player.play();
-    }
 
-    if (!player.playing && !player.paused && player.queue.totalSize === music.tracks.length) player.play();
+    switch (res.loadType) {
+      case "NO_MATCHES":
+        if (!player.queue.current) {
+          player.destroy();
+          return message.reply({ embeds: client.embed({ description: `Did not find anything.`, message }) })
+        }
+
+
+      case "TRACK_LOADED":
+        player.queue.add(res.tracks[0]);
+        if (!player.playing && !player.paused && !player.queue.length)
+          player.play();
+        return message.reply({ embeds: Client.embed({ description: `Added ${res.tracks[0].title} to the queue`.setThumbnail(res.tracks[0].thumbnail) }), message })
+
+      case "PLAYLIST_LOADED":
+        player.queue.add(res.tracks);
+        player.play();
+        return message.reply({
+          embeds: { description: `Added ${res.tracks[0].title} to the queue`.setThumbnail(res.tracks[0].thumbnail) },
+          message
+        })
+
+      case "SEARCH_RESULT":
+        if (res.tracks.length < 5) 5 = res.tracks.length;
+        const results = res.tracks
+          .slice(0, max)
+          .map((track, index) => `**${++index}** - \`${track.title}\``)
+          .join("\n");
+
+
+        const msg = await message.reply({
+          embeds: { description: results },
+          message
+        })
+
+        msg.react(':one:')
+        msg.react(':two:')
+        msg.react(':three:')
+        msg.react(':four:')
+        msg.react(':five:')
+
+
+        try {
+          msg.awaitReactions(filter, { max: 1, time: 100000, errors: ['time'] })
+            .then(collected => {
+              const reaction = collected.first();
+
+              if (reaction.emoji.name === ':one:') {
+                message.reply('1');
+              } else if (reaction.emoji.name === ':two:') {
+                message.reply('2');
+              } else if (reaction.emoji.name === ':three:') {
+                message.reply('3');
+              } else if (reaction.emoji.name === ':four:') {
+                message.reply('4');
+              } else if (reaction.emoji.name === ':five:') {
+                message.reply('5');
+              }
+            })
+        } catch { }
+
+    }
   },
 };
