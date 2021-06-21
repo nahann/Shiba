@@ -133,7 +133,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
 
-        return message.reply({ embeds: Client.embed({ description: `Added ${res.track.title} to the queue`.setThumbnail(res.track.thumbnail) }), message })
+        return message.reply({ embeds: client.embed({ description: `Added ${res.track.title} to the queue`.setThumbnail(res.track.thumbnail) },message) })
     }
   },
 };
