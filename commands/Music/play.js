@@ -94,27 +94,31 @@ module.exports = {
           message
         })
 
-        msg.react(':one:')
-        msg.react(':two:')
-        msg.react(':three:')
-        msg.react(':four:')
-        msg.react(':five:')
+        msg.react('1️⃣')
+        msg.react('2️⃣')
+        msg.react('3️⃣')
+        msg.react('4️⃣')
+        msg.react('5️⃣')
 
 
         try {
+          const filter = (reaction, user) => {
+            return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
+          };
+
           msg.awaitReactions(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(collected => {
               const reaction = collected.first();
 
-              if (reaction.emoji.name === ':one:') {
+              if (reaction.emoji.name === '1️⃣') {
                 message.reply('1');
-              } else if (reaction.emoji.name === ':two:') {
+              } else if (reaction.emoji.name === '2️⃣') {
                 message.reply('2');
-              } else if (reaction.emoji.name === ':three:') {
+              } else if (reaction.emoji.name === '3️⃣') {
                 message.reply('3');
-              } else if (reaction.emoji.name === ':four:') {
+              } else if (reaction.emoji.name === '4️⃣') {
                 message.reply('4');
-              } else if (reaction.emoji.name === ':five:') {
+              } else if (reaction.emoji.name === '5️⃣') {
                 message.reply('5');
               }
             })
