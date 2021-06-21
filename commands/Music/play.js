@@ -12,7 +12,7 @@ module.exports = {
       return message.reply({
         embeds: [
           client.embed(
-            { description: `Your not in a voice channel lol.` },
+            { description: `You're not in a voice channel lol.` },
             message
           ),
         ],
