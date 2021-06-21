@@ -81,7 +81,7 @@ module.exports = {
 
       case "SEARCH_RESULT":
         let max = 5
-        
+
         if (res.tracks.length < max) max = res.tracks.length;
         const results = await res.tracks
           .slice(0, max)
@@ -90,7 +90,7 @@ module.exports = {
 
 
         const msg = await message.reply({
-          embeds: [client.embed({ description: `${results}` },message)]
+          embeds: [client.embed({ description: `${results}` }, message)]
         })
 
         msg.react('1️⃣')
@@ -99,6 +99,7 @@ module.exports = {
         msg.react('4️⃣')
         msg.react('5️⃣')
 
+        let number
 
         try {
           const filter = (reaction, user) => {
@@ -110,19 +111,28 @@ module.exports = {
               const reaction = collected.first();
 
               if (reaction.emoji.name === '1️⃣') {
-                message.reply('1');
+                number = '1'
               } else if (reaction.emoji.name === '2️⃣') {
-                message.reply('2');
+                number = '2'
               } else if (reaction.emoji.name === '3️⃣') {
-                message.reply('3');
+                number = '3'
               } else if (reaction.emoji.name === '4️⃣') {
-                message.reply('4');
+                number = '4'
               } else if (reaction.emoji.name === '5️⃣') {
-                message.reply('5');
+                number = '5'
               }
             })
         } catch { }
 
+        const realNumber = Number(number) - 1;
+        const track = res.tracks[realNumber];
+
+        player.queue.add(track);
+
+        if (!player.playing && !player.paused && !player.queue.length)
+          player.play();
+
+        return message.reply({ embeds: Client.embed({ description: `Added ${res.track.title} to the queue`.setThumbnail(res.track.thumbnail) }), message })
     }
   },
 };
