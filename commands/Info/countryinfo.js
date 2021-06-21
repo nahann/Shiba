@@ -34,7 +34,7 @@ module.exports = {
             )
             .addField("Continent", result.region, true)
             .addField("Subregion", result.subregion, true)
-            .addField("Population", result.population.toString(), true)
+            .addField("Population", result.population.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,'), true)
             .addField("Demonym", result.demonym, true)
             .addField("Native Name", result.nativeName, true)
             .addField(
