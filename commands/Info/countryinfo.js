@@ -23,7 +23,7 @@ module.exports={
                                .addField("Population",result.population.toString(),true)
                                .addField("Demonym",result.demonym,true)
                                .addField("Native Name",result.nativeName,true)
-                               .addField("Currencies",result.currencies.map(c => `(${c.symbol})` + c.name).join(", "),true)
+                               .addField("Currencies",result.currencies.map(c => `(${c.symbol}) ${c.name}`).join(", "),true)
                                .addField("Languages",result.languages.map(l => l.name).join(", "),true)
                                .setThumbnail("attachment://flag.png")
                               ], files: [flag]
