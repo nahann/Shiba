@@ -144,9 +144,9 @@ client.music.on("nodeError", (node, error) =>
   )
 );
 client.music.on("trackStart", (player, track) => {
-  const channel = client.channels.cache.get(player.textChannel);
-
-  channel.send(`playing ${track.title} i will change the text soon i am just testing`)
+  client.channels.cache
+    .get(player.textChannel)
+    .send(`ok playing ${track.title} i will change this soon `);
 })
 
 client.login(config.token);
