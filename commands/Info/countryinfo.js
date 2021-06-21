@@ -12,9 +12,9 @@ module.exports={
        const fetched = await fetch(url).then(res => res.json())
        if(!fetched.length) return message.reply("That country does not exist!")
        const result = fetched[0]
-       const buffer = sharp(await fetch(result.flag).then(file => file.buffer())).png().toBuffer()
-       const flag = new MessageAttachment(buffer,"flag.png")
-       console.log(await flag.attachment)
+       const fl1 = sharp(await fetch(result.flag).then(file => file.buffer())).png()
+       const flag = new MessageAttachment(fl1.toBuffer(),"flag.png")
+       console.log(fl1)
        message.reply({embeds: [client.embed({title: `Info for ${result.name}`},message)
                                .addField("Top Level Domain(s)",result.topLevelDomain?.join(", ") || "None",true)
                                .addField("Capital",result.capital,true)
