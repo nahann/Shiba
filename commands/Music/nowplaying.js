@@ -6,7 +6,7 @@ module.exports = {
   description: "Get the currently playing song",
   run: async (client, message, args) => {
     const player = client.music.players.get(message.guild.id)
-    if (!player) return message.reply({ embeds: [client.embed({ title: "There is no song currently playing!", message })] })
+    if (!player) return message.reply({ embeds: [client.embed({ title: "There is no song currently playing!"}, message  )] })
 
     const { current } = player.queue
     const s = current.endTime ? `\`\`\`diff\n+ ${ms(Date.now() - (current.endTime - current.duration))}/${ms(current.duration)}\`\`\`` : `\`\`\`Playlists do not currently support this feature.\`\`\``
