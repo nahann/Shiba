@@ -1,5 +1,6 @@
 const { Manager } = require("erela.js");
 const Spotify = require("erela.js-spotify");
+const ms = require("pretty-ms");
 
 const Discord = require("discord.js"),
   client = new Discord.Client({
@@ -134,6 +135,8 @@ client.music = new Manager({
   },
 });
 
+
+// Lavalink and stuff
 client.on("raw", (d) => client.music.updateVoiceState(d));
 client.music.on("nodeConnect", (node) =>
   console.log(`✅ Node ${node.options.identifier} connected`)
@@ -155,5 +158,20 @@ client.music.on("queueEnd", (player) => {
 
   player.destroy();
 });
+client.music.on("trackStart", (player, track) => {
+  const channel = client.channels.cache.get(player.textChannel);
+
+  const MusicEmbed = new Discord.MessageEmbed()
+    .setTitle(`Playing ${track.title}`)
+    .setDescription(`**Duration:** ${ms(track.duration)}\n **Requested by:** ${track.requester.tag}\n **Author:** ${track.author}`)
+    .setThumbnail(track.thumbnail)
+    .setURL(track.uri)
+    .setColor('RANDOM')
+    .setTimestamp()
+
+  channel.send({
+    embeds: [MusicEmbed]
+  })
+})
 
 client.login(config.token);
