@@ -139,7 +139,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
 
-        return message.reply({ embeds: client.embed({ description: `Added ${track.title} to the queue`}, message).setThumbnail(track.thumbnail) })
+        return message.reply({ embeds: [client.embed({ description: `Added ${track.title} to the queue`}, message).setThumbnail(track.thumbnail)] })
     }
   },
 };
