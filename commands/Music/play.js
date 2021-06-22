@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const ms = require("ms");
+const ms = require("pretty-ms");
 
 module.exports = {
   name: "play",
@@ -139,7 +139,7 @@ module.exports = {
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
 
-        return message.reply({ embeds: [client.embed({ description: `Added ${track.title} to the queue`}, message).setThumbnail(track.thumbnail)] })
+        return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`,description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**`}, message).setThumbnail(track.thumbnail)] })
     }
   },
 };
