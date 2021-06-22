@@ -130,16 +130,14 @@ module.exports = {
             })
         } catch (e) { console.error(e) }
 
-        console.log(number)
-
         const track = res.tracks[number];
-       track.endTime = Date.now() + track.duration
+        track.endTime = Date.now() + track.duration
         player.queue.add(track);
 
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
 
-        return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`,description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**`}, message).setThumbnail(track.thumbnail)] })
+        return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`, description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**` }, message).setThumbnail(track.thumbnail)] })
     }
   },
 };
