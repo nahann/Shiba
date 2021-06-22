@@ -62,7 +62,7 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
     }
-
+    res.tracks ? res.tracks = res.tracks.map(track => {track.endTime = Date.now(); return track}) : true
     switch (res.loadType) {
       case "NO_MATCHES":
         if (!player.queue.current) {
