@@ -23,7 +23,7 @@ module.exports = {
 
     player.destroy();
 
-    let texts = ['You stoped a song what i liked for once.', 'You just wanted to get rid of me **pops a chocky milk**']
+    let texts = ['You stoped a song what i liked for once.', 'You just wanted to get rid of me **pops a chocky milk**', 'I stoped the song anyway i did not like that song.']
     let Picker = Math.floor(Math.random() * texts.length)
 
     message.reply({ embeds: [client.embed({ description: texts[Picker] }, message)] })

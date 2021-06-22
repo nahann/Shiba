@@ -22,6 +22,10 @@ module.exports = {
     } 
 
     player.stop();
-    message.reply('like i just skiped some music. :O')
+
+    let texts = ['You skiped a song what i liked for once.', 'Okay lets get started with next tune.', 'I hope the next song is a bangar.']
+    let Picker = Math.floor(Math.random() * texts.length)
+
+    message.reply({ embeds: [client.embed({ description: texts[Picker] }, message)] })
   },
 };
