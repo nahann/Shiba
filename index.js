@@ -144,9 +144,14 @@ client.music.on("nodeError", (node, error) =>
   )
 );
 client.music.on("queueEnd", (player) => {
+  const embed = new Discord.MessageEmbed()
+    .setDescription('I was in a voice channel playing nothing so i left.')
+    .setColor('RANDOM')
+    .setTimestamp()
+
   client.channels.cache
     .get(player.textChannel)
-    .send({ embeds: [client.embed({ description: `I was in a voice channel playing nothing so i left.` }, message)] });
+    .send({ embeds: [embed] });
 
   player.destroy();
 });
