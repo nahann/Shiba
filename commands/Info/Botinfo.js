@@ -49,7 +49,7 @@ module.exports = {
           inline: true,
         },
         {
-          name: `Voice Channels <:music:855134047205720104>`,
+          name: `Voice <:music:855134047205720104>`,
           value: `\`\`\`${client.music.players.size}\`\`\``,
           inline: true
         },
