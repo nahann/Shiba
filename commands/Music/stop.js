@@ -8,20 +8,24 @@ module.exports = {
     const player = message.client.music.players.get(message.guild.id);
 
     if (!player) {
-        message.reply('no music playing')
+      message.reply('no music playing')
     }
 
     const channel = message.member.voice.channel;
 
     if (!channel) {
-        message.reply('your not in a vc.')
-    } 
+      message.reply('your not in a vc.')
+    }
 
     if (channel.id !== player.voiceChannel) {
-        message.reply('not same vc so noob')
-    } 
+      message.reply('not same vc so noob')
+    }
 
     player.destroy();
-    message.reply('like i just stoped some music. :O')
+
+    let texts = ['You stoped a song what i liked for once.', 'You just want to get rid of me now *pops a chocky milk*']
+    let Picker = Math.floor(Math.random() * texts.length)
+
+    message.reply({ embeds: [client.embed({ description: texts[Picker] }, message)] })
   },
 };
