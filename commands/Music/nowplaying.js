@@ -8,7 +8,7 @@ module.exports = {
     if (!player) return message.reply({ embeds: [client.embed({ title: "There is no song currently playing!"}, message  )] })
 
     const { current } = player.queue
-    const s = current.endTime ? `\`\`\`diff\n+ ${ms(Date.now() - (current.endTime - current.duration))}/${ms(current.duration)}\`\`\`` : `\`\`\`Playlists do not currently support this feature.\`\`\``
+    const s = `\`\`\`diff\n+ ${ms(current.position)}\`\`\`` 
     message.reply({
       embeds: [client.embed({ title: `Currently playing: **${current.title}** by **${current.author}**`, description: `${s}\nRequested by: **${current.requester.tag}**` }, message).setURL(current.uri).setThumbnail(current.thumbnail)]
     })
