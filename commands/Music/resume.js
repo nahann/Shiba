@@ -9,20 +9,25 @@ module.exports = {
     const player = message.client.music.players.get(message.guild.id);
 
     if (!player) {
-        message.reply('no music playing')
+      message.reply({ embeds: [client.embed({ description: 'There is no music playing in this server.' }, message)] })
     }
 
     const channel = message.member.voice.channel;
 
     if (!channel) {
-        message.reply('your not in a vc.')
-    } 
+      message.reply({ embeds: [client.embed({ description: 'Your not in a voice channel.' }, message)] })
+    }
 
     if (channel.id !== player.voiceChannel) {
-        message.reply('not same vc so noob')
-    } 
+      message.reply({ embeds: [client.embed({ description: 'Your not in the same voice channel then me.' }, message)] })
+    }
+
 
     player.pause(false)
-    message.reply('like i just unpause some music. :O')
+
+    let texts = ['Unpaused this bangar song.', 'Unpaused this trash song.', 'Unpaused this ok song.']
+    let Picker = Math.floor(Math.random() * texts.length)
+
+    message.reply({ embeds: [client.embed({ description: texts[Picker] }, message)] })
   },
 };
