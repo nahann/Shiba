@@ -82,8 +82,12 @@ module.exports = {
         player.queue.add(res.tracks);
         const length = res.tracks.length - 3
         const s = res.tracks.length <= 3 ? res.tracks.map(tr => `**${tr.title}**`).join(", ") : `${res.tracks.splice(0,3).map(tr => `**${tr.title}**`).join(", ")} ...and ${length} more`
-        if (player.playing) return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
-        if (!player.playing && !player.paused && !player.queue.length) return player.play();
+        
+        player.play();
+        return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
+
+
+        return;
 
       case "SEARCH_RESULT":
         let max = 5
