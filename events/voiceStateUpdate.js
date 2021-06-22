@@ -6,7 +6,6 @@ module.exports={
        const player = client.music.players.get(guild.id)
        if(!player) return
        const channel = guild.channels.cache.get(player.textChannel)
-       console.log(vchannel.type)
        channel.send("Everyone left, so I did too!")
        await player.destroy()
      }
