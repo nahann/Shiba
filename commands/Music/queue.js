@@ -12,7 +12,7 @@ module.exports={
     i++
     s += `\n${i}: **${track.title}** by **${track.author}**`  
     })
-    message.reply({embeds: [client.embed({title: `Queue`,description: s},message)]})
    }
+    message.reply({embeds: [client.embed({title: `Queue`,description: s},message)]})
   }
 }
