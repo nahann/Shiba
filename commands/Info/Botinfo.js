@@ -67,7 +67,7 @@ module.exports = {
       new MessageButton()
         .setLabel("Invite")
         .setURL(
-          "https://discord.com/oauth2/authorize?client_id=838254815225970739&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&scope=bot%20applications.commands"
+         "https://discord.com/api/oauth2/authorize?client_id=838254815225970739&permissions=8&scope=bot%20applications.commands"
         )
         .setStyle("LINK")
         .setEmoji("<:support:854951274423910410>"),
