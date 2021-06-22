@@ -62,6 +62,7 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
     }
+    console.log(res.loadType)
     switch (res.loadType) {
       case "NO_MATCHES":
         if (!player.queue.current) {
