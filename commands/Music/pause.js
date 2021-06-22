@@ -7,17 +7,17 @@ module.exports = {
     const player = message.client.music.players.get(message.guild.id);
 
     if (!player) {
-      message.reply({ embeds: [client.embed({ description: 'There is no music playing in this server.' }, message)] })
+      return message.reply({ embeds: [client.embed({ description: 'There is no music playing in this server.' }, message)] })
     }
 
     const channel = message.member.voice.channel;
 
     if (!channel) {
-      message.reply({ embeds: [client.embed({ description: 'Your not in a voice channel.' }, message)] })
+      return message.reply({ embeds: [client.embed({ description: 'Your not in a voice channel.' }, message)] })
     }
 
     if (channel.id !== player.voiceChannel) {
-      message.reply({ embeds: [client.embed({ description: 'Your not in the same voice channel then me.' }, message)] })
+      return message.reply({ embeds: [client.embed({ description: 'Your not in the same voice channel then me.' }, message)] })
     }
 
 
