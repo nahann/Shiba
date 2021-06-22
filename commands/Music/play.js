@@ -79,12 +79,11 @@ module.exports = {
 
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
-        console.log(res.tracks[0].resolve.toString())
         const length = res.tracks.length - 3
         const s = res.tracks.length <= 3 ? res.tracks.map(tr => `**${tr.title}**`).join(", ") : `${res.tracks.splice(0,3).map(tr => `**${tr.title}**`).join(", ")} ...and ${length} more`
         player.play();
         return message.reply({
-          embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(res.tracks[0].thumbnail)],
+          embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())],
           message
         })
 
