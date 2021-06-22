@@ -4,7 +4,7 @@ const GuildConfig = require("../database/GuildConfig");
 module.exports = {
   name: "guildCreate",
   run: async (guild, client) => {
-    await client.user.setActivity(`Watching ${client.guilds.cache.size} servers`, { type: "WATCHING" })
+    await client.user.setActivity(`${client.guilds.cache.size} servers`, { type: "WATCHING" })
     const data = await GuildConfig.findOne({ guildId: guild.id });
     if (!data) {
       await GuildConfig.create({
