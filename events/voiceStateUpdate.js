@@ -1,3 +1,5 @@
+const Discord = require('discord.js')
+
 module.exports={
    name: "voiceStateUpdate",
    run: async(old,newc,client)=>{
@@ -11,8 +13,14 @@ module.exports={
 
        let texts = ['Everyone left me so i left crying', 'Everyone left me so i left **poping a chocky milk**']
        let Picker = Math.floor(Math.random() * texts.length)
+      
+       const embed = new Discord.MessageEmbed()
+       .setDescription(texts[Picker])
+       .setColor('RANDOM')
+       .setTimestamp()
 
-       channel.send({ embeds: [client.embed({ description: texts[Picker] }, message)] })
+       
+       channel.send({ embeds: [embed] })
 
        await player.destroy()
      }
