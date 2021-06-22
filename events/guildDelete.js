@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = {
   name: "guildDelete",
   run: async (guild, client) => {
-    await client.user.setActivity(`Watching ${client.guilds.cache.size} servers`, { type: "WATCHING" })
+    await client.user.setActivity(`${client.guilds.cache.size} servers`, { type: "WATCHING" })
     await GuildConfig.findOneAndDelete({ guildId: guild.id });
     console.log(`Shiba has left ${guild.name}. Deleted from base`);
     await WelcomeConfig.findOneAndDelete({ guildId: guild.id });
