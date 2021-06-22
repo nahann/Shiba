@@ -75,13 +75,13 @@ module.exports = {
         player.queue.add(res.tracks[0]);
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
-        return message.reply({ embeds: client.embed({ description: `Added ${res.tracks[0].title} to the queue`.setThumbnail(res.tracks[0].thumbnail) }), message })
+        return message.reply({ embeds: [client.embed({ description: `Added ${res.tracks[0].title} to the queue`},message).setThumbnail(res.tracks[0].thumbnail)] })
 
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
         player.play();
         return message.reply({
-          embeds: { description: `Added ${res.tracks[0].title} to the queue`.setThumbnail(res.tracks[0].thumbnail) },
+          embeds: [client.embed({ description: `Added ${res.tracks[0].title} to the queue`},message).setThumbnail(res.tracks[0].thumbnail)],
           message
         })
 
