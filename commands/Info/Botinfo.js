@@ -51,7 +51,12 @@ module.exports = {
         {
           name: `Guilds <:guilds:854459430733479967>`,
           value: `\`\`\`${client.guilds.cache.size}\`\`\``,
-          //     inline: true
+          inline: true
+        },
+        {
+          name: `Voice Channels <:music:855134047205720104>`,
+          value: `\`\`\`${client.music.players.size}\`\`\``,
+          inline: true
         }
       )
       .setColor("RANDOM")
