@@ -5,7 +5,7 @@ module.exports = {
   name: "ready",
   once: true,
   run: async function (client) {
-   await client.user.setActivity(`Watching ${client.guilds.cache.size} servers`,{type: "WATCHING"})
+   await client.user.setActivity(`${client.guilds.cache.size} servers`,{type: "WATCHING"})
    require("child_process").exec("git push");
     client.music.init(client.user.id);
     console.log(`${client.user.username} is now online.`);
