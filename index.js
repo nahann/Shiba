@@ -1,6 +1,6 @@
 const { Manager } = require("erela.js");
 const Spotify = require("erela.js-spotify");
-const ms = require("pretty-ms");
+const ms1 = require("pretty-ms");
 
 const Discord = require("discord.js"),
   client = new Discord.Client({
@@ -163,7 +163,7 @@ client.music.on("trackStart", (player, track) => {
 
   const MusicEmbed = new Discord.MessageEmbed()
     .setTitle(`Playing ${track.title}`)
-    .setDescription(`**Duration:** ${ms(track.duration)}\n **Requested by:** ${track.requester.tag}\n **Author:** ${track.author}`)
+    .setDescription(`**Duration:** ${ms1(track.duration)}\n **Requested by:** ${track.requester.tag}\n **Author:** ${track.author}`)
     .setThumbnail(track.thumbnail)
     .setURL(track.uri)
     .setColor('RANDOM')
