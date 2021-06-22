@@ -5,7 +5,8 @@ module.exports = {
   name: "ready",
   once: true,
   run: async function (client) {
-    require("child_process").exec("git push");
+   await client.user.setActivity(`Watching ${client.guilds.cache.size} servers`,{type: "WATCHING"})
+   require("child_process").exec("git push");
     client.music.init(client.user.id);
     console.log(`${client.user.username} is now online.`);
     client.slashes = new Discord.Collection();
