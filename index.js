@@ -158,6 +158,7 @@ client.music.on("queueEnd", (player) => {
   player.destroy();
 });
 client.music.on("trackStart", (player, track) => {
+  track.endTime= Date.now() + track.duration
   const channel = client.channels.cache.get(player.textChannel);
 
   const MusicEmbed = new Discord.MessageEmbed()
