@@ -3,6 +3,7 @@ const ms = require("pretty-ms");
 
 module.exports = {
   name: "play",
+  aliases: ["p"],
   description: "Play music from youtube and more.",
   beta: true,
   run: async (client, message, args) => {

@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "stop",
+  aliases: ["s"],
   description: "Stop music.",
   beta: true,
   run: async (client, message, args) => {

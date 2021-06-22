@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "resume",
+  aliases: ["unpause"],
   description: "Skip your music",
   beta: true,
   run: async (client, message, args) => {

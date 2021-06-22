@@ -1,7 +1,7 @@
 const ms = require("pretty-ms")
 module.exports={
   name: "np",
-  aliases: "nowplaying",
+  aliases: ["nowplaying"],
   beta: true,
   description: "Get the currently playing song",
   run: async(client,message,args)=>{
