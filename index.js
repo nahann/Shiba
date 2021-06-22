@@ -144,13 +144,11 @@ client.music.on("nodeError", (node, error) =>
   )
 );
 client.music.on("queueEnd", (player) => {
-  setTimeout(() => {
-    client.channels.cache
-      .get(player.textChannel)
-      .send({ embeds: [client.embed({ description: `I was in a voice channel playing nothing for 40 seconds so i left.` }, message)] });
-    
-      player.destroy();
-  }, 40000);
+  client.channels.cache
+    .get(player.textChannel)
+    .send({ embeds: [client.embed({ description: `I was in a voice channel playing nothing so i left.` }, message)] });
+
+  player.destroy();
 });
 
 client.login(config.token);
