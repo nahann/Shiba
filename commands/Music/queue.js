@@ -1,7 +1,6 @@
 module.exports={
   name: "queue",
   aliases: ["q"],
-  beta: true,
   run: async(client,message,args)=>{
    const player = client.music.players.get(message.guild.id)
    if(!player) return message.reply({embeds: [client.embed({title: "There is no song playing!"},message)]})

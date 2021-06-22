@@ -4,7 +4,6 @@ module.exports = {
   name: "resume",
   aliases: ["unpause"],
   description: "Skip your music",
-  beta: true,
   run: async (client, message, args) => {
     const player = message.client.music.players.get(message.guild.id);
 

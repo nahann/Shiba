@@ -5,7 +5,6 @@ module.exports = {
   name: "play",
   aliases: ["p"],
   description: "Play music from youtube and more.",
-  beta: true,
   run: async (client, message, args) => {
     const channel = message.member.voice.channel;
     const url = args.join(" ");
