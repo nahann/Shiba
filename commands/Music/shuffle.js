@@ -5,7 +5,7 @@ module.exports={
     if(!message.member.voice.channel) return;
     const player = client.music.players.get(message.guild.id)
     if(!player) return;
-    await player.shuffle()
+    await player.queue.shuffle()
     message.reply({embeds: [client.embed({title: "Shuffled queeeueueurueurrueueueue."},message)]})
   }
 }
