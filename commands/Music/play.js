@@ -133,7 +133,7 @@ module.exports = {
         console.log(number)
 
         const track = res.tracks[number];
-
+       track.endTime = Date.now() + track.duration
         player.queue.add(track);
 
         if (!player.playing && !player.paused && !player.queue.length)
