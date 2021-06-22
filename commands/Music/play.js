@@ -73,19 +73,16 @@ module.exports = {
       case "TRACK_LOADED":
         res.tracks[0].endTime = Date.now() + res.tracks[0].duration
         player.queue.add(res.tracks[0]);
-        if (!player.playing && !player.paused && !player.queue.length)
-          player.play();
-        return message.reply({ embeds: [client.embed({ description: `Added **${res.tracks[0].title}** to the queue`},message).setThumbnail(res.tracks[0].thumbnail)] })
+
+        if (player.playing) return message.reply({ embeds: [client.embed({ description: `Added **${res.tracks[0].title}** to the queue`},message).setThumbnail(res.tracks[0].thumbnail)] })
+        if (!player.playing && !player.paused && !player.queue.length) return player.play();
 
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
         const length = res.tracks.length - 3
         const s = res.tracks.length <= 3 ? res.tracks.map(tr => `**${tr.title}**`).join(", ") : `${res.tracks.splice(0,3).map(tr => `**${tr.title}**`).join(", ")} ...and ${length} more`
-        player.play();
-        return message.reply({
-          embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())],
-          message
-        })
+        if (player.playing) return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
+        if (!player.playing && !player.paused && !player.queue.length) return player.play();
 
       case "SEARCH_RESULT":
         let max = 5
@@ -136,10 +133,8 @@ module.exports = {
         track.endTime = Date.now() + track.duration
         player.queue.add(track);
 
-        if (!player.playing && !player.paused && !player.queue.length)
-          player.play();
-
-        return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`, description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**` }, message).setThumbnail(track.thumbnail)] })
+        if (player.playing) return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`, description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**` }, message).setThumbnail(track.thumbnail)] })
+        if (!player.playing && !player.paused && !player.queue.length) return player.play();
     }
   },
 };
