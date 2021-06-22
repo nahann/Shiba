@@ -86,9 +86,6 @@ module.exports = {
         player.play();
         return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
 
-
-        return;
-
       case "SEARCH_RESULT":
         let max = 5
 
