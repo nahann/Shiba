@@ -62,7 +62,6 @@ module.exports = {
         allowedMentions: { repliedUser: false },
       });
     }
-    res.tracks ? res.tracks = res.tracks.map(track => {track.endTime = Date.now(); return track}) : true
     switch (res.loadType) {
       case "NO_MATCHES":
         if (!player.queue.current) {
@@ -72,6 +71,7 @@ module.exports = {
 
 
       case "TRACK_LOADED":
+        res.tracks[0].endTime = Date.now() + res.tracks[0].duration
         player.queue.add(res.tracks[0]);
         if (!player.playing && !player.paused && !player.queue.length)
           player.play();
