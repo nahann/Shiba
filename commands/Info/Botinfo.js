@@ -49,13 +49,13 @@ module.exports = {
           inline: true,
         },
         {
-          name: `Guilds <:guilds:854459430733479967>`,
-          value: `\`\`\`${client.guilds.cache.size}\`\`\``,
+          name: `Voice Channels <:music:855134047205720104>`,
+          value: `\`\`\`${client.music.players.size}\`\`\``,
           inline: true
         },
         {
-          name: `Voice Channels <:music:855134047205720104>`,
-          value: `\`\`\`${client.music.players.size}\`\`\``,
+          name: `Guilds <:guilds:854459430733479967>`,
+          value: `\`\`\`${client.guilds.cache.size}\`\`\``,
           inline: true
         }
       )
