@@ -1,6 +1,6 @@
 module.exports={
    name: "voiceStateUpdate",
-   run: async(old,new,client)=>{
+   run: async(old,newc,client)=>{
      const { guild } = old
      if(!guild.me.voice?.channel?.members.size){
        const player = client.music.players.get(message.guild.id)
