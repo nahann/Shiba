@@ -11,7 +11,7 @@ module.exports = {
     const levelon = await (
       await client.db.load("levelguilds")
     ).findOne({ guild: message.guild.id });
-    if (message.channel.id == "852783453606248468") message.crosspost();
+    if (message.channel.id == "852783453606248468" && !message.content.startsWith("*")) message.crosspost();
     const doc = await (
       await client.db.load("blacklist")
     ).findOne({ user: message.author.id });
