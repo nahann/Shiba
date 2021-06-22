@@ -17,7 +17,6 @@ const Discord = require("discord.js"),
   WelcomeConfig = require("./database/Welcome"),
   UserinfoConfig = require("./database/Userinfo"),
   mongoose = require("mongoose"),
-  ms = require("ms"),
   { Database } = require("zapmongo");
 
 mongoose
