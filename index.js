@@ -136,7 +136,7 @@ client.music = new Manager({
 
 
 // Lavalink and stuff
-client.on("raw",client.music.updateVoiceState);
+client.on("raw",(d) => client.music.updateVoiceState(d));
 client.music.on("nodeConnect", (node) =>
   console.log(`✅ Node ${node.options.identifier} connected`)
 );
