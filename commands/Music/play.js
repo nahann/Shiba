@@ -114,7 +114,7 @@ module.exports = {
 
           await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(collected => {
-              const interaction = collected.first();
+              const interaction = await collected
               interaction.defer(true)
               if (interaction.label === 'b1') {
                 number = '0'
