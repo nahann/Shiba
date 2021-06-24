@@ -113,7 +113,7 @@ module.exports = {
           const filter = (interaction) => interaction.user.id === message.author.id;
 
           await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
-            .then(collected => {
+            .then(async(collected)=>{
               const interaction = await collected
               interaction.defer(true)
               if (interaction.label === 'b1') {
