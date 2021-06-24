@@ -136,7 +136,7 @@ client.music = new Manager({
 
 
 // Lavalink and stuff
-client.on("raw", (d) => client.music.updateVoiceState(d));
+client.on("raw",client.music.updateVoiceState);
 client.music.on("nodeConnect", (node) =>
   console.log(`✅ Node ${node.options.identifier} connected`)
 );
@@ -147,7 +147,7 @@ client.music.on("nodeError", (node, error) =>
 );
 client.music.on("queueEnd", (player) => {
   const embed = new Discord.MessageEmbed()
-    .setDescription('I was in a voice channel playing nothing so i left.')
+    .setDescription('The queue has ended.')
     .setColor('RANDOM')
     .setTimestamp()
 
@@ -158,7 +158,6 @@ client.music.on("queueEnd", (player) => {
   player.destroy();
 });
 client.music.on("trackStart", (player, track) => {
-  track.endTime= Date.now() + track.duration
   const channel = client.channels.cache.get(player.textChannel);
 
   const MusicEmbed = new Discord.MessageEmbed()
