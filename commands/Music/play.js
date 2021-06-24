@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 const ms = require("pretty-ms");
 
 module.exports = {
@@ -94,40 +94,40 @@ module.exports = {
           .slice(0, max)
           .map((track, index) => `**${++index}** - \`${track.title}\``)
           .join("\n");
-
+        const b1 = new MessageButton().setLabel('1️⃣').setCustomID("b1").setStyle("PRIMARY")
+        const b2 = new MessageButton().setLabel('2️⃣').setCustomID("b2").setStyle("SECONDARY")
+        const b3 = new MessageButton().setLabel('3️⃣').setCustomID("b3").setStyle("SUCCESS")
+        const b4 = new MessageButton().setLabel('4️⃣').setCustomID("b4").setStyle("DANGER")
+        const b5 = new MessageButton().setLabel('5️⃣').setCustomID("b5").setStyle("PRIMARY")
+        const row = new MessageActionRow().addComponents([b1,b2,b3,b4,b5])
 
         const msg = await message.reply({
-          embeds: [client.embed({ description: `${results}` }, message)]
+          embeds: [client.embed({ description: results }, message)],
+          components: [row]
         })
 
-        msg.react('1️⃣')
-        msg.react('2️⃣')
-        msg.react('3️⃣')
-        msg.react('4️⃣')
-        msg.react('5️⃣')
 
         let number
 
         try {
-          const filter = (reaction, user) => {
-            return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣'].includes(reaction.emoji.name) && user.id === message.author.id;
-          };
+          const filter = (interaction) => interaction.user.id === message.author.id;
 
-          await msg.awaitReactions(filter, { max: 1, time: 100000, errors: ['time'] })
+          await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(collected => {
-              const reaction = collected.first();
-
-              if (reaction.emoji.name === '1️⃣') {
+              const interaction = collected.first();
+              interaction.defer(true)
+              if (interaction.label === 'b1') {
                 number = '0'
-              } else if (reaction.emoji.name === '2️⃣') {
+              } else if (interaction.customID === 'b2') {
                 number = '1'
-              } else if (reaction.emoji.name === '3️⃣') {
+              } else if (interaction.customID === 'b3') {
                 number = '2'
-              } else if (reaction.emoji.name === '4️⃣') {
+              } else if (interaction.customID === 'b4') {
                 number = '3'
-              } else if (reaction.emoji.name === '5️⃣') {
+              } else if (interaction.customID === 'b5') {
                 number = '4'
               }
+             interaction.editReply("Successful!")
             })
         } catch (e) { console.error(e) }
 
