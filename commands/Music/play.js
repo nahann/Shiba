@@ -132,7 +132,6 @@ module.exports = {
         } catch (e) { console.error(e) }
 
         const track = res.tracks[number];
-        track.endTime = Date.now() + track.duration
         player.queue.add(track);
 
         if (player.playing) return message.reply({ embeds: [client.embed({ title: `Added ${track.title} to the queue`, description: `Duration : ${ms(track.duration)}\nAuthor: **${track.author}**` }, message).setThumbnail(track.thumbnail)] })
