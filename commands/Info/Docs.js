@@ -13,7 +13,7 @@ module.exports = {
   run: async (client, message, args) => {
     const sq = args.join(" ").split(" --src=");
     const query = sq[0];
-    const sr = sq[1] || "stable";
+    const sr = ["master","stable","commando","rpc","collection"].includes(sq[1]) ? sq[1] || "master";
     if (!query) return message.reply("Please specify a query!");
     const url = `https://djsdocs.sorta.moe/v2/embed?src=${sr}&q=${encodeURIComponent(
       query
