@@ -116,7 +116,7 @@ module.exports = {
             .then(async(collected)=>{
               const interaction = await collected
               interaction.defer(true)
-              if (interaction.label === 'b1') {
+              if (interaction.customID === 'b1') {
                 number = '0'
               } else if (interaction.customID === 'b2') {
                 number = '1'
