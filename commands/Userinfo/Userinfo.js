@@ -53,7 +53,7 @@ module.exports = {
             roles.length < 10
               ? roles.join(" ,")
               : roles.length > 10
-              ? "Too long to display"
+              ? client.trimArray(roles,10)
               : "None"
           }`,
         },
