@@ -67,7 +67,7 @@ client.db = new Database({
     },
   ],
 });
-client.trimArray = function(arr,num){
+client.trimArray = function(ar,num){
    const l = ar.length - num
    return ar.length > num ? `${ar.splice(0,num).join(", ")} ...and ${l} more` : ar.join(", ")
 }
