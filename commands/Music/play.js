@@ -92,7 +92,7 @@ module.exports = {
         if (res.tracks.length < max) max = res.tracks.length;
         const results = await res.tracks
           .slice(0, max)
-          .map((track, index) => `**${++index}** - \`${track.title}\``)
+          .map((track, index) => `**${++index}** - [${track.title}](${track.uri}) by ${track.author}`)
           .join("\n");
         const b1 = new MessageButton().setLabel('1️⃣').setCustomID("b1").setStyle("PRIMARY")
         const b2 = new MessageButton().setLabel('2️⃣').setCustomID("b2").setStyle("SECONDARY")
