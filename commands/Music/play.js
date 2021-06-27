@@ -115,7 +115,7 @@ module.exports = {
           await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(async(collected)=>{
               const interaction = await collected
-              interaction.defer(true)
+              interaction.defer({ ephemeral: true})
               if (interaction.customID === 'b1') {
                 number = '0'
               } else if (interaction.customID === 'b2') {
