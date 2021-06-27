@@ -2,6 +2,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "discord-reply": "^0.1.2",
+    "discord-xp": "^1.1.16",
     "discord.js": "github:discordjs/discord.js",
     "erela.js": "^2.3.3",
     "erela.js-spotify": "^1.2.0",
