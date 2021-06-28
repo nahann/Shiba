@@ -82,7 +82,7 @@ module.exports = {
         player.queue.add(res.tracks);
         const length = res.tracks.length - 3
         const s = client.trimArray(res.tracks,3)
-        player.shuffle()
+        player.queue.shuffle()
         player.play();
         return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
 
