@@ -80,8 +80,7 @@ module.exports = {
 
       case "PLAYLIST_LOADED":
         player.queue.add(res.tracks);
-        const length = res.tracks.length - 3
-        const s = client.trimArray(res.tracks,3)
+        const s = client.trimArray(res.tracks.map(s => s.title),3)
         player.queue.shuffle()
         player.play();
         return message.reply({ embeds: [client.embed({ description: `Added ${s} to the queue`},message).setThumbnail(message.author.displayAvatarURL())], message })
