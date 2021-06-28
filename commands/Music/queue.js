@@ -13,6 +13,6 @@ module.exports={
     s.push(`${i}: **${track.title}** by **${track.author}**`)
     })
    }
-    message.reply({embeds: [client.embed({title: `Queue`,description: client.trimArray(s,10).join("\n")},message)]})
+    message.reply({embeds: [client.embed({title: `Queue`,description: client.trimArray(s,10)},message)]})
   }
 }
