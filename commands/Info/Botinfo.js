@@ -67,7 +67,7 @@ module.exports = {
       new MessageButton()
         .setLabel("Invite")
         .setURL(
-         "https://discord.com/api/oauth2/authorize?client_id=838254815225970739&permissions=8&scope=bot%20applications.commands"
+         client.generateInvite({ permissions: ["ADMINISTRATOR"],additionalScopes: ["applications.commands"]})
         )
         .setStyle("LINK")
         .setEmoji("<:support:854951274423910410>"),
