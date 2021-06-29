@@ -74,9 +74,9 @@ class ShibaClient extends Client{
   for (const file of eventFiles) {
     const event = require(`${__dirname}/events/${file}`);
     if (event.once) {
-      this.once(event.name, (...args) => event.run(...args, client));
+      this.once(event.name, (...args) => event.run(...args, this));
     } else {
-      this.on(event.name, (...args) => event.run(...args, client));
+      this.on(event.name, (...args) => event.run(...args, this));
     }
   }
   }
