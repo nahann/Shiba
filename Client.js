@@ -64,6 +64,7 @@ class ShibaClient extends Client{
       this.commands.set(command.name, command);
     }
   }
+  }
   loadEvents(){
   const eventFiles = fs
     .readdirSync(__dirname + "/events")
