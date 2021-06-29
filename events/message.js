@@ -206,8 +206,7 @@ module.exports = {
         }, 3000);
       }
     } catch (error) {
-      console.error(error);
-      message.channel.send(`${error}`);
+      client.emit("error",error)
     }
   },
 };
