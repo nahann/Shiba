@@ -10,7 +10,7 @@ module.exports={
     let i = 0
     queue.forEach(track =>{
     i++
-    s.push(`${i}: **${track.title}** by **${track.author}**`)
+    s.push(`\n${i}: **${track.title}** by **${track.author}**`)
     })
    }
     message.reply({embeds: [client.embed({title: `Queue`,description: client.trimArray(s,10,"\n")},message)]})
