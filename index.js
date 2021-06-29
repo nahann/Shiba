@@ -69,7 +69,7 @@ client.db = new Database({
 });
 client.trimArray = function(ar,num,join = ", "){
    const l = ar.length - num
-   return ar.length > num ? `${ar.splice(0,num).join(join)} ...and ${l} more` : ar.join(", ")
+   return ar.length > num ? `${ar.splice(0,num).join(join)} ${join == "\n" ? "\n" : ""}...and ${l} more` : ar.join(", ")
 }
 client.cooldowns = new Discord.Collection();
 client.commands = new Discord.Collection();
