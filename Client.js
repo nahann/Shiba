@@ -1,5 +1,6 @@
 const { Client, MessageEmbed, Collection} = require("discord.js")
 const { Database } = require("zapmongo")
+const Spotify = require("erela.js-spotify")
 const { Manager } = require("erela.js")
 const config = require("config.json")
 class ShibaClient extends Client{
@@ -46,41 +47,6 @@ class ShibaClient extends Client{
    });
   this.cooldowns = new Collection();
   this.commands = new Collection();
-  client.embed = (options, message) => {
-  const emb = new MessageEmbed({ ...options, color: "RANDOM" })
-    .setFooter(
-      `${message.author.tag}`,
-      message.author.displayAvatarURL({ dynamic: true, format: "png" })
-    )
-    .setTimestamp();
-  if (options.colors && Array.isArray(options.colors))
-    emb.setColor(
-      options.colors[Math.floor(Math.random() * options.colors.length)]
-    );
-
-  return emb;
-};
-client.music = new Manager({
-  nodes: [
-    {
-      host: "localhost",
-      port: 2333,
-      password: config.password,
-    },
-  ],
-  plugins: [
-    new Spotify({
-      clientID: config.spotifyid,
-      clientSecret: config.spotifysecret,
-    }),
-  ],
-  autoPlay: true,
-
-  send(id, payload) {
-    const guild = client.guilds.cache.get(id);
-    if (guild) guild.shard.send(payload);
-  },
-  });
   }
   trimArray(ar,num,join = ", "){
    const l = ar.length - num
@@ -111,5 +77,19 @@ client.music = new Manager({
       this.on(event.name, (...args) => event.run(...args, client));
     }
   }
+  embed(options, message){
+  const emb = new MessageEmbed({ ...options, color: "RANDOM" })
+    .setFooter(
+      `${message.author.tag}`,
+      message.author.displayAvatarURL({ dynamic: true, format: "png" })
+    )
+    .setTimestamp();
+  if (options.colors && Array.isArray(options.colors))
+    emb.setColor(
+      options.colors[Math.floor(Math.random() * options.colors.length)]
+    );
+
+  return emb;
+  };
 };
 }
