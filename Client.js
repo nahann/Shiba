@@ -1,5 +1,6 @@
 const { Client, MessageEmbed, Collection} = require("discord.js")
 const { Database } = require("zapmongo")
+const fs= require("fs")
 const Spotify = require("erela.js-spotify")
 const { Manager } = require("erela.js")
 const config = require("./config.json")
