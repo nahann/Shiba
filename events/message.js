@@ -104,6 +104,7 @@ module.exports = {
         });
     }
     if (!command) return;
+    client.cmdmsg = message
     if (doc)
       return message.reply({
         embeds: [
