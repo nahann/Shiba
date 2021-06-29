@@ -5,7 +5,7 @@ module.exports = {
   args: true,
   guildOnly: true,
   category: `Moderation`,
-  description: `Bans a member from the guild.`,
+  description: `Steal an emoji.`,
   /**
    * @param {Client} client
    * @param {Message} message
