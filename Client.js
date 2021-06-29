@@ -93,3 +93,4 @@ class ShibaClient extends Client{
   };
 };
 }
+module.exports = ShibaClient
