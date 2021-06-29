@@ -30,14 +30,7 @@ module.exports = {
         ],
       });
     } catch (err) {
-      message.reply({
-        embeds: [
-          client.embed(
-            { description: `AN ERROR HAS OCCURED: ${err}` },
-            message
-          ),
-        ],
-      });
+      client.emit("error",err)
     }
   },
 };
