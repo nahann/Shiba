@@ -78,6 +78,7 @@ class ShibaClient extends Client{
       this.on(event.name, (...args) => event.run(...args, client));
     }
   }
+  }
   embed(options, message){
   const emb = new MessageEmbed({ ...options, color: "RANDOM" })
     .setFooter(
@@ -92,6 +93,5 @@ class ShibaClient extends Client{
 
   return emb;
   };
-};
 }
 module.exports = ShibaClient
