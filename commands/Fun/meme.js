@@ -17,15 +17,7 @@ module.exports = {
       .setImage(advanced.img)
       .setFooter(`by ${advanced.author} in ${subreddit}`);
 
-    message.channel
-      .createWebhook(`${message.author.username}\'s meme `, {
-        avatar:
-          "https://ih1.redbubble.net/image.772966036.8977/flat,750x,075,f-pad,750x1000,f8f8f8.u5.jpg",
-      })
-      .then(async (web) => {
         await message.channel.stopTyping();
-        await web.send({ embeds: [embed] });
-        web.delete();
-      });
+        await message.reply({ embeds: [embed] });
   },
 };
