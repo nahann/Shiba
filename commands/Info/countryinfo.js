@@ -14,7 +14,7 @@ module.exports = {
       if (!fetched.length) return message.reply("That country does not exist!");
       const max = fetched.length >= 5 ? 5 : fetched.length
       let result;
-      if(fetched.length == 1) result = 0
+      if(fetched.length == 1) result = fetched[0]
       if(!result){
       const results = await fetched
           .slice(0, max)
