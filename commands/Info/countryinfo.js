@@ -96,8 +96,7 @@ module.exports = {
         files: [flag],
       });
     } catch (e) {
-      console.error(e);
-      message.reply("An error occured, this has been reported.");
+      client.emit("error",e)
     }
   },
 };
