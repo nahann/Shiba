@@ -5,7 +5,6 @@ module.exports = {
   name: "botinfo",
   description: "Basic info on Shiba",
   run: async (client, command) => {
-    command.defer();
     const embed = new MessageEmbed()
       .setAuthor(`Shiba Bot Info`, client.user.displayAvatarURL())
       .setDescription(
@@ -46,6 +45,6 @@ module.exports = {
       .setColor("RANDOM")
       .setFooter(command.user.tag, command.user.displayAvatarURL())
       .setTimestamp();
-    command.editReply({ embeds: [embed] });
+    command.reply({ embeds: [embed] });
   },
 };
