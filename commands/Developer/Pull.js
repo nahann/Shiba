@@ -16,7 +16,7 @@ module.exports = {
     await message.reply({
       embeds: [client.embed({ description: `Pulled Successfully` }, message)],
     });
-    exec("cd Shiba && git stash && git pull && pm2 restart 0",(res,error)=>{
+    exec("cd /root/Shiba && git stash && git pull && pm2 restart 0",(res,error)=>{
       message.reply({
       embeds: [client.embed({title: "Output",description: `${res || error}`},message)]
       })
