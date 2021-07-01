@@ -13,6 +13,9 @@ module.exports = {
       const fetched = await fetch(url).then((res) => res.json());
       if (!fetched.length) return message.reply("That country does not exist!");
       const max = fetched.length >= 5 ? 5 : fetched.length
+      let result;
+      if(fetched.length == 1) result = 0
+      if(!result){
       const results = await fetched
           .slice(0, max)
           .map((country) => { i++; return`**${i}** ${country.name} `})
@@ -39,7 +42,7 @@ module.exports = {
           await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(async(collected)=>{
               const interaction = await collected
-              interaction.defer()
+              interaction.defer({ ephemeral: true})
               if (interaction.customID === 'b1') {
                 number = '0'
               } else if (interaction.customID === 'b2') {
@@ -51,10 +54,11 @@ module.exports = {
               } else if (interaction.customID === 'b5') {
                 number = '4'
               }
-             interaction.deleteReply()
+             interaction.editReply("Search done!")
             })
-        } catch (e) { console.error(e) }
-      const result = fetched[number]
+        } catch (e) { console.error(e) } 
+       result = fetched[number]
+     }
       const fl1 = await sharp(
         await fetch(result.flag).then((file) => file.buffer())
       )
