@@ -22,7 +22,8 @@ module.exports = {
         const b3 = new MessageButton().setLabel('3️⃣').setCustomID("b3").setStyle("SUCCESS")
         const b4 = new MessageButton().setLabel('4️⃣').setCustomID("b4").setStyle("DANGER")
         const b5 = new MessageButton().setLabel('5️⃣').setCustomID("b5").setStyle("PRIMARY")
-        const row = new MessageActionRow().addComponents([b1,b2,b3,b4,b5])
+        const buttonarr = [b1,b2,b3,b4,b5].slice(0,max)
+        const row = new MessageActionRow().addComponents(buttonarr)
 
         const msg = await message.reply({
           embeds: [client.embed({ description: results }, message)],
