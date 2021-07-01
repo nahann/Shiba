@@ -13,7 +13,6 @@ module.exports = {
     },
   ],
   run: async (client, command) => {
-    command.defer();
     if (!command.member.permissions.has("MANAGE_GUILD"))
       return command.editReply({
         embeds: [
@@ -28,7 +27,7 @@ module.exports = {
         ],
       });
     const prefix = command.options.get("prefix").value;
-    command.editReply({
+    command.reply({
       embeds: [
         new MessageEmbed()
           .setFooter(
