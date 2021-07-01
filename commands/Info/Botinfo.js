@@ -81,7 +81,12 @@ module.exports = {
         .setLabel("GitHub Repository")
         .setURL("https://github.com/nahann/Shiba")
         .setStyle("LINK")
-        .setEmoji("<:github:854957408585515019>")
+        .setEmoji("<:github:854957408585515019>"),
+     new MessageButton()
+        .setLabel("Vote for us on top.gg")
+        .setURL("https://top.gg/bot/838254815225970739")
+        .setStyle("LINK")
+        .setEmoji("<:rocket:856565446878560276>")
     );
 
     message.reply({
