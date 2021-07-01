@@ -12,7 +12,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
-    exec(args.join(" "), (error, stdout) => {
+    exec(`cd /root/Shiba && ${args.join(" ")}`, (error, stdout) => {
       const response = error || stdout;
       try {
         message.reply({ content: response, code: true });
