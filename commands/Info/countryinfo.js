@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const { MessageAttachment } = require("discord.js");
+const { MessageAttachment, MessageActionRow, MessageButton } = require("discord.js");
 const sharp = require("sharp");
 module.exports = {
   name: "countryinfo",
@@ -9,9 +9,50 @@ module.exports = {
   run: async (client, message, args) => {
     const url = `https://restcountries.eu/rest/v2/name/${args.join(" ")}`;
     try {
+      let i = 0;
       const fetched = await fetch(url).then((res) => res.json());
       if (!fetched.length) return message.reply("That country does not exist!");
-      const result = fetched[0];
+      const results = await fetched
+          .slice(0, 5)
+          .map((country) => { i++; return`**${i}** ${country.name} `)
+          .join("\n");
+        const b1 = new MessageButton().setLabel('1️⃣').setCustomID("b1").setStyle("PRIMARY")
+        const b2 = new MessageButton().setLabel('2️⃣').setCustomID("b2").setStyle("SECONDARY")
+        const b3 = new MessageButton().setLabel('3️⃣').setCustomID("b3").setStyle("SUCCESS")
+        const b4 = new MessageButton().setLabel('4️⃣').setCustomID("b4").setStyle("DANGER")
+        const b5 = new MessageButton().setLabel('5️⃣').setCustomID("b5").setStyle("PRIMARY")
+        const row = new MessageActionRow().addComponents([b1,b2,b3,b4,b5])
+
+        const msg = await message.reply({
+          embeds: [client.embed({ description: results }, message)],
+          components: [row]
+        })
+
+
+        let number
+
+        try {
+          const filter = (interaction) => interaction.user.id === message.author.id;
+
+          await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
+            .then(async(collected)=>{
+              const interaction = await collected
+              interaction.defer({ ephemeral: true})
+              if (interaction.customID === 'b1') {
+                number = '0'
+              } else if (interaction.customID === 'b2') {
+                number = '1'
+              } else if (interaction.customID === 'b3') {
+                number = '2'
+              } else if (interaction.customID === 'b4') {
+                number = '3'
+              } else if (interaction.customID === 'b5') {
+                number = '4'
+              }
+             interaction.deleteReply()
+            })
+        } catch (e) { console.error(e) }
+      const result = fetched[number]
       const fl1 = await sharp(
         await fetch(result.flag).then((file) => file.buffer())
       )
