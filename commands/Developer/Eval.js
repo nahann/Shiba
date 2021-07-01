@@ -1,4 +1,4 @@
-const { Client, Message, MessageEmbed, splitMessage } = require("discord.js");
+const { Client, Message, MessageEmbed, Util } = require("discord.js");
 const { inspect } = require("util");
 module.exports = {
   name: "eval",
@@ -20,7 +20,7 @@ module.exports = {
       .replace(reg, "you thought");
     try {
       const evaled = await eval(result);
-      const split = splitMessage(inspect(evaled, { depth: 0 }))[0];
+      const split = Util.splitMessage(inspect(evaled, { depth: 0 }))[0];
       message.reply({
         embeds: [
           client.embed(
