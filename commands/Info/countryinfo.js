@@ -12,8 +12,9 @@ module.exports = {
       let i = 0;
       const fetched = await fetch(url).then((res) => res.json());
       if (!fetched.length) return message.reply("That country does not exist!");
+      const max = fetched.length >= 5 ? 5 : fetched.length
       const results = await fetched
-          .slice(0, 5)
+          .slice(0, max)
           .map((country) => { i++; return`**${i}** ${country.name} `)
           .join("\n");
         const b1 = new MessageButton().setLabel('1️⃣').setCustomID("b1").setStyle("PRIMARY")
