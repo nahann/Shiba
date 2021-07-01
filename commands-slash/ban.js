@@ -16,7 +16,6 @@ module.exports = {
   ],
   run: async (client, command) => {
     command.author = command.user;
-    await command.defer();
     if (!command.member.permissions.has("BAN_MEMBERS"))
       return command.editReply("You can't use this command!");
     const { guild } = command;
@@ -33,7 +32,7 @@ module.exports = {
       ),
     });
     guild.members.ban(user).then(() =>
-      command.editReply({
+      command.reply({
         embeds: [
           client.embed(
             {
