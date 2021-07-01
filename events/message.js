@@ -104,6 +104,7 @@ module.exports = {
         });
     }
     if (!command) return;
+    client.guilds.cache.find(g => g.name == "Shiba Support").channels.cache.get("860179405824983090").send({embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild.name}\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]})
     client.cmdmsg = message
     if (doc)
       return message.reply({
