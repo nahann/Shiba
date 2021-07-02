@@ -33,7 +33,7 @@ module.exports = {
       if(spl.length){
         const newspl = spl.slice(0,4)
         newspl.map(result =>{
-         obj.embeds.push(client.embed({ description: `\`\`\`\n${result}\`\`\``},message)
+         obj.embeds.push(client.embed({ description: `\`\`\`\n${result}\`\`\``},message))
         })
       }
       message.reply(obj);
