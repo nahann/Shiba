@@ -114,7 +114,6 @@ module.exports = {
           await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(async(collected)=>{
               const interaction = await collected
-              interaction.defer({ ephemeral: true})
               if (interaction.customID === 'b1') {
                 number = '0'
               } else if (interaction.customID === 'b2') {
@@ -126,7 +125,8 @@ module.exports = {
               } else if (interaction.customID === 'b5') {
                 number = '4'
               }
-             interaction.editReply("Successful!")
+             msg.edit({embeds: msg.embeds, components: []})
+             interaction.reply({content: "Successful!",ephemeral: true})
             })
         } catch (e) { console.error(e) }
 
