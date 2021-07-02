@@ -10,7 +10,7 @@ module.exports={
        value: 'updates',
      },
      {
-       label: "Upcoming"
+       label: "Upcoming",
        description: "Upcoming updates of the bot",
        value: "upcoming"
      }
