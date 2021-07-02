@@ -1,5 +1,5 @@
 const os = require("os-utils")
-const Ms = require("pretty-ms")
+const ms = require("pretty-ms")
 module.exports={
    name: "info2",
    description: "System info and stuff idk",
