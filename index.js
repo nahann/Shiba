@@ -1,23 +1,23 @@
-const { Manager } = require("erela.js");
-const Spotify = require("erela.js-spotify");
-const ms1 = require("pretty-ms");
-const Client = require("./Client")
-const Discord = require("discord.js"),
-  client = new Client({
-    ws: { properties: { $browser: "Discord iOS" } },
-    intents: require("discord.js").Intents.ALL,
-    allowedMentions: {
-      repliedUser: false,
-      parse: ["users", "roles"],
-    },
-  }),
-  config = require("./config.json"),
-  fs = require("fs"),
-  GuildConfig = require("./database/GuildConfig"),
-  WelcomeConfig = require("./database/Welcome"),
-  UserinfoConfig = require("./database/Userinfo"),
-  mongoose = require("mongoose"),
-  { Database } = require("zapmongo");
+const { Manager } = require("erela.js"),
+      Spotify = require("erela.js-spotify"),
+      ms1 = require("pretty-ms"),
+      Client = require("./Client"),
+      Discord = require("discord.js"),
+      client = new Client({
+          ws: { properties: { $browser: "Discord iOS" } },
+          intents: require("discord.js").Intents.ALL,
+          allowedMentions: {
+            repliedUser: false,
+            parse: ["users", "roles"],
+          },
+      }),
+     config = require("./config.json"),
+     fs = require("fs"),
+     GuildConfig = require("./database/GuildConfig"),
+     WelcomeConfig = require("./database/Welcome"),
+     UserinfoConfig = require("./database/Userinfo"),
+     mongoose = require("mongoose"),
+     { Database } = require("zapmongo");
 
 mongoose
   .connect(config.mongouri, {
