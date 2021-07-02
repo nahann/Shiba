@@ -1,4 +1,5 @@
 const { Client, Message, MessageEmbed, Collection } = require("discord.js");
+const alphaSort = require("alpha-sort")
 
 module.exports = {
   name: "help",
@@ -43,13 +44,13 @@ module.exports = {
         (category, name) =>
           `${dirEmojis[name]} **${name}: **  ${category
             .map((command) => `\`${command.name}\``)
-            .join(", ")}`
+            .sort(alphaSort({caseInsensitive: true,natural: true})).join(", ")}`
       );
 
       if (!args.length) {
         embed
           .setAuthor(`Shiba Command List`, message.author.displayAvatarURL())
-          .setDescription(lines.join("\n"))
+          .setDescription(lines.sort(alphaSort({caseInsensitive: true,natural: true})).join("\n"))
           .setThumbnail(client.user.displayAvatarURL())
           .setFooter(
             `You can send \`${prefix}help [command name]\` to get info on a specific command!`
