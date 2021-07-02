@@ -42,6 +42,9 @@ module.exports = {
         guildId: message.guild.id,
       }));
     const prefix = data.get("prefix");
+    message.embed = function(embed){
+       return message["reply"]({ embeds: [client.embed(embed,message)] })    
+    }
     if (!data)
       return message.reply({
         embeds: [
