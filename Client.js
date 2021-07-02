@@ -58,7 +58,7 @@ class ShibaClient extends Client{
   for (const folder of commandFolders) {
     const commandFiles = fs
       .readdirSync(`${__dirname}/commands/${folder}`)
-      .filter((file) => file.endsWith(".js"));
+      .filter((file) => file.endsWith(".js") || file.endsWith(".mjs"));
     for (const file of commandFiles) {
       const command = require(`${__dirname}/commands/${folder}/${file}`);
       if (!command.category) command.category = folder;
@@ -69,7 +69,7 @@ class ShibaClient extends Client{
   loadEvents(){
   const eventFiles = fs
     .readdirSync(__dirname + "/events")
-    .filter((file) => file.endsWith(".js"));
+    .filter((file) => file.endsWith(".js") || file.endsWith(".mjs"));
 
   for (const file of eventFiles) {
     const event = require(`${__dirname}/events/${file}`);
