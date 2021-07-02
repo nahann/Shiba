@@ -1,22 +1,26 @@
-const ms = require("ms");
-const UserConfig = require("./../database/UserConfig");
-const { mongouri } = require("../config.json");
-const Levels = require("discord-xp");
+const ms = require("ms"),
+      UserConfig = require("./../database/UserConfig"),
+      { mongouri } = require("../config.json"),
+      Levels = require("discord-xp");
 Levels.setURL(mongouri);
 
 module.exports = {
   name: "message",
   run: async (message, client) => {
+    //Leveling shit
     client.Levels = Levels;
     const levelon = await (
       await client.db.load("levelguilds")
     ).findOne({ guild: message.guild.id });
+
     if (message.channel.id == "852783453606248468" && !message.content.startsWith("*")) message.crosspost();
     const doc = await (
       await client.db.load("blacklist")
     ).findOne({ user: message.author.id });
+
     const GuildConfig = require("../database/GuildConfig");
     const CC = require("../database/CustomCommands");
+
     if (message.author.bot) return;
     if (levelon?.onoff) {
       const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
@@ -41,6 +45,7 @@ module.exports = {
         guildName: message.guild.name,
         guildId: message.guild.id,
       }));
+    //Get the custom prefix of a server or use the defaukt prefix
     const prefix = data.get("prefix");
     message.embed = function(embed){
        return message["reply"]({ embeds: [client.embed(embed,message)] })    
@@ -68,7 +73,7 @@ module.exports = {
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));
 
     if (!command) {
-      console.log("test");
+      //Check if there is a custom command or not
       CC.findOne(
         { guildId: message.guild.id, commandname: commandName },
         (e, cc) => {
@@ -107,7 +112,13 @@ module.exports = {
         });
     }
     if (!command) return;
-    client.guilds.cache.find(g => g.name == "Shiba Support").channels.cache.get("860179405824983090").send({embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild.name}\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]})
+    //Command log
+    client.guilds.cache.find(g => g.name == "Shiba Support")
+      .channels.cache.get("860179405824983090")
+         .send({
+           embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild.name}\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]
+              })
+    //For the error event
     client.cmdmsg = message
     if (doc)
       return message.reply({
@@ -115,6 +126,7 @@ module.exports = {
           client.embed({ description: "You're blacklisted lmao" }, message),
         ],
       });
+    //Obviusly checking for cooldowns
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
       return message.reply({
         embeds: [
