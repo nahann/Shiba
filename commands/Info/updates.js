@@ -20,7 +20,7 @@ module.exports={
      upcoming: client.embed({description: "Nothing determined to be upcoming yet"},message)
     }
     const row = new MessageActionRow().addComponents([select])
-    const msg = message.reply({embeds: [client.embed({description: "Choose an option in the select menu to get started!\n**Be aware the select menus only work for a minute.**"},message)],components: [row]})
+    const msg = await message.reply({embeds: [client.embed({description: "Choose an option in the select menu to get started!\n**Be aware the select menus only work for a minute.**"},message)],components: [row]})
     const filter = i => i.customID == "select" && i.user.id == message.author.id
     const collector = await msg.channel.createMessageComponentInteractionCollector({filter, time: 60000})
     collector.on("collect",(i) =>{
