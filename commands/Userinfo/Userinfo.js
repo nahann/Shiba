@@ -26,6 +26,7 @@ module.exports = {
       bio.push(`Bio Not Set`);
       bday.push(`Bday Not Set`);
     }
+    console.log(await bio)
     const roles = member.roles.cache
       .sort((a, b) => b.position - a.position)
       .map((role) => role.toString())
@@ -73,7 +74,7 @@ module.exports = {
           name: `» Logged In On Devices [${
             Object.entries(member.user.presence?.clientStatus || {}).length
           }]`,
-          value: `
+          value: `\u200b
 ${Object.entries(member.user.presence?.clientStatus || {})
   .map(
     (value, index) =>
