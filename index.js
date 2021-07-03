@@ -27,6 +27,9 @@ mongoose
   .then(() => {
     console.log("Connected to database.");
   });
+String.prototype.splitEvery = function(n){
+  return this.match(new RegExp('.{1,' + n + '}', 'g'));
+}
 client.loadEvents();
 client.loadCommands();
 client.music = new Manager({
