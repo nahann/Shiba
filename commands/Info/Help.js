@@ -44,13 +44,13 @@ module.exports = {
         (category, name) =>
           `${dirEmojis[name]} **${name}: **  ${category
             .map((command) => `\`${command.name}\``)
-            .sort(sort({caseInsensitive: true}).join(", ")}`
+            .sort(sort({caseInsensitive: true})).join(", ")}`
       );
 
       if (!args.length) {
         embed
           .setAuthor(`Shiba Command List`, message.author.displayAvatarURL())
-          .setDescription(lines.sort(sort({caseInsensitive: true}).join("\n"))
+          .setDescription(lines.sort(sort({caseInsensitive: true})).join("\n"))
           .setThumbnail(client.user.displayAvatarURL())
           .setFooter(
             `You can send \`${prefix}help [command name]\` to get info on a specific command!`
