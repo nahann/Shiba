@@ -119,6 +119,7 @@ module.exports = {
            embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild.name}\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]
               })
     //For the error event
+    message.command = command
     client.cmdmsg = message
     if (doc)
       return message.reply({
