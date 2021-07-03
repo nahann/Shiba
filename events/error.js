@@ -7,6 +7,6 @@ module.exports={
       error = require("util").inspect(error)
     }
     const message = client.cmdmsg
-    message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\``},message).setColor("RED")] })
+    message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\`\nCommand: ${message.command?.name || "idk"}`},message).setColor("RED")] })
   }
 }
