@@ -223,7 +223,9 @@ module.exports = {
         }, 3000);
       }
     } catch (error) {
-      client.emit("error",error)
+      return message.channel.send({
+        embeds: [client.embed({ title: "Error", description: `\`\`\`js\n${error}\`\`\`` }, message)],
+      });
     }
   },
 };
