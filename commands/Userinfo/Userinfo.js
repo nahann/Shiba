@@ -70,27 +70,6 @@ module.exports = {
           name: `» User Avatar`,
           value: `[[Avatar Link]](${member.user.displayAvatarURL()})`,
         },
-        {
-          name: `» Logged In On Devices [${
-            Object.entries(member.user.presence?.clientStatus || {}).length
-          }]`,
-          value: `\u200b
-${Object.entries(member.user.presence?.clientStatus || {})
-  .map(
-    (value, index) =>
-      `
-                            Device${
-                              Object.entries(member.user.presence.clientStatus)
-                                .length > 1
-                                ? ` [${index + 1}]:`
-                                : ":"
-                            } **${
-        value[0][0].toUpperCase() + value[0].slice(1)
-      }**`
-  )
-  .join("")}
-                    `.trim(),
-        }
       );
     message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
   },
