@@ -3,6 +3,7 @@ module.exports={
    name: "updates",
    description: "basically a newspaper",
    run: async(client,message,args)=>{
+     try{
      const select = new MessageSelectMenu().setCustomID("select").setPlaceholder("Click me!").addOptions([
      {
        label: 'Latest updates',
@@ -34,5 +35,6 @@ module.exports={
        msg.edit({ embeds: [emobj[val]] })
     })
    collector.on("end",() => msg.edit({ components: [] }))
+     }catch(e) { client.emit("error",e) }
    }
 }
