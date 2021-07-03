@@ -8,7 +8,7 @@ module.exports={
     }
     const message = client.cmdmsg
     const command_log = await client.channels.fetch("860179405824983090")
-    const msg = message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\`\nCommand: ${message.command?.name || "idk"}`},message).setColor("RED")] })
+    const msg = await message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\`\nCommand: ${message.command?.name || "idk"}`},message).setColor("RED")] })
     command_log.send({ embeds: msg.embeds })
   }
 }
