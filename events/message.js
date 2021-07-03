@@ -201,7 +201,7 @@ module.exports = {
       return;
 
     try {
-      command.run(client, message, args);
+      await command.run(client, message, args);
       if (command.cooldown) {
         client.cooldowns.set(
           `${message.author.id}-${command.name}`,
