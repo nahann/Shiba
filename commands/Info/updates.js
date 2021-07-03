@@ -13,11 +13,17 @@ module.exports={
        label: "Upcoming",
        description: "Upcoming updates of the bot",
        value: "upcoming"
+     },
+     {
+       label: "Sponsors",
+       description: "The boosters of our support server",
+       value: "sponsors"
      }
     ])
     const emobj = {
      updates: client.embed({description: "Update 9b85249\nRemoved `Devices logged in` field from `userinfo` command because it caused bugs"},message),
-     upcoming: client.embed({description: "Nothing determined to be upcoming yet"},message)
+     upcoming: client.embed({description: "Nothing determined to be upcoming yet"},message),
+     sponsors: client.embed({description: "No sponsors yet\nBoost our [support server](https://discord.gg/f5BSdbFUNW) to get an advert on here!"})
     }
     const row = new MessageActionRow().addComponents([select])
     const msg = await message.reply({embeds: [client.embed({description: "Choose an option in the select menu to get started!\n**Be aware the select menus only work for a minute.**"},message)],components: [row]})
