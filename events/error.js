@@ -7,6 +7,8 @@ module.exports={
       error = require("util").inspect(error)
     }
     const message = client.cmdmsg
-    message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\`\nCommand: ${message.command?.name || "idk"}`},message).setColor("RED")] })
+    const command_log = await client.channels.fetch("860179405824983090")
+    const msg = message.reply({ embeds: [client.embed({title: "Error!",description: `\`\`\`\n${error}\`\`\`\nCommand: ${message.command?.name || "idk"}`},message).setColor("RED")] })
+    command_log.send({ embeds: msg.embeds })
   }
 }
