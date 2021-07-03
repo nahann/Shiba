@@ -16,7 +16,7 @@ module.exports={
      }
     ])
     const emobj = {
-     updates: client.embed({description: "No updates yet!"},message),
+     updates: client.embed({description: "Update 9b85249\nRemoved `Devices logged in` field from `userinfo` command because it caused bugs"},message),
      upcoming: client.embed({description: "Nothing determined to be upcoming yet"},message)
     }
     const row = new MessageActionRow().addComponents([select])
