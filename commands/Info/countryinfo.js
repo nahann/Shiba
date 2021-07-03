@@ -18,7 +18,7 @@ module.exports = {
       if(!result){
       const results = await fetched
           .slice(0, max)
-          .map((country) => { i++; return`**${i}** ${country.name} `})
+          .map((country) => { e++; return`**${i}** ${country.name} `})
           .join("\n");
         const b1 = new MessageButton().setLabel('1️⃣').setCustomID("b1").setStyle("PRIMARY")
         const b2 = new MessageButton().setLabel('2️⃣').setCustomID("b2").setStyle("SECONDARY")
