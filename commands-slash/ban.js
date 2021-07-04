@@ -23,13 +23,13 @@ module.exports = {
     const reason = command.options.get("reason").value || "No reason provided";
     const member = await guild.members.fetch(user);
     member.send({
-      embed: client.embed(
+      embeds: [client.embed(
         {
           title: `You have been banned from ${guild.name}!`,
           description: `Reason: **${reason}**`,
         },
         command
-      ),
+      )],
     });
     guild.members.ban(user).then(() =>
       command.reply({
