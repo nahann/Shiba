@@ -7,10 +7,11 @@ const config = require("./config.json")
 class ShibaClient extends Client{
   constructor(options){
     super(options)
+    this.config = config;
     this.db = new Database({
-  mongoURI: config.mongouri,
-  schemas: [
-    {
+     mongoURI: config.mongouri,
+     schemas: [
+     {
       name: "userEcos",
       data: {
         userId: String,
