@@ -24,9 +24,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    console.log("Connected to database.");
-  });
+  .then(() => console.log("Connected to database."));
 String.prototype.splitEvery = function(n){
   return this.match(new RegExp('.{1,' + n + '}', 'g'));
 }
