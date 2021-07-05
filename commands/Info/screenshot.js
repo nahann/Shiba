@@ -6,6 +6,6 @@ module.exports = {
         message.channel.startTyping()
        const res = await Screenshotter.screenshot(args[0])
        console.log(res)
-        message.reply({ attachments: [res] }).then(()=> message.channel.stopTyping())
+        message.reply({ files: [res] }).then(()=> message.channel.stopTyping())
     }
 }
