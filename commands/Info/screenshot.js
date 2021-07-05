@@ -1,5 +1,5 @@
   const Screenshotter = require("discord-screenshot");
-  const ShibaError = require("../../uti/ShibaError")
+  const ShibaError = require("../../util/ShibaError")
 module.exports = {
     name: "screenshot",
     args: true,
