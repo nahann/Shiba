@@ -8,6 +8,7 @@ class ShibaClient extends Client{
   constructor(options){
     super(options)
     this.config = config;
+    this.error = function(err){ return client.emit("error",err) }
     this.db = new Database({
      mongoURI: config.mongouri,
      schemas: [
