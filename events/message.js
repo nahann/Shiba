@@ -128,18 +128,13 @@ module.exports = {
       });
     //Obviusly checking for cooldowns
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
-      return message.reply({
-        embeds: [
-          client.embed(
-            {
-              description: `Try this command in ${ms(
+      return client.error(new ShibaError(`Try this command in ${ms(
                 client.cooldowns.get(`${message.author.id}-${command.name}`) -
                   Date.now(),
                 { long: true }
-              )}`,
-            },
-            message
+              )}`)
           ),
+          }
         ],
       });
     }
