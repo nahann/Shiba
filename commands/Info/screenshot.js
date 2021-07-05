@@ -4,6 +4,6 @@ module.exports = {
     args: true,
     run: async(client, message, args) => {
         message.channel.startTyping()
-        message.reply(} attachments: [await Screenshotter.screenshot(args[0])] }).then(()=> message.channel.stopTyping())
+        message.reply({ attachments: [await Screenshotter.screenshot(args[0])] }).then(()=> message.channel.stopTyping())
     }
 }
