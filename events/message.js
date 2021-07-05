@@ -1,7 +1,6 @@
 const ms = require("ms"),
       UserConfig = require("./../database/UserConfig"),
       { mongouri } = require("../config.json"),
-      ShibaError = require("../util/ShibaError")
       Levels = require("discord-xp");
 Levels.setURL(mongouri);
 
@@ -123,18 +122,25 @@ module.exports = {
     message.command = command
     client.cmdmsg = message
     if (doc)
-      return client.emit("error",new ShibaError("You're blacklisted lmao")),
+      return message.reply({
+        embeds: [
+          client.embed({ description: "You're blacklisted lmao" }, message),
         ],
       });
     //Obviusly checking for cooldowns
     if (client.cooldowns.has(`${message.author.id}-${command.name}`)) {
-      return client.error(new ShibaError(`Try this command in ${ms(
+      return message.reply({
+        embeds: [
+          client.embed(
+            {
+              description: `Try this command in ${ms(
                 client.cooldowns.get(`${message.author.id}-${command.name}`) -
                   Date.now(),
                 { long: true }
-              )}`)
+              )}`,
+            },
+            message
           ),
-          }
         ],
       });
     }
