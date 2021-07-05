@@ -14,7 +14,8 @@
     "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1",
     "sharp": "^0.28.3",
-    "zapmongo": "^2.1.0"
+    "zapmongo": "^2.1.0",
+    "discord-screenshot": "^1.0.0"
   },
   "name": "Shiba",
   "description": "- [0] Fork the repo",
