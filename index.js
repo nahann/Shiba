@@ -5,7 +5,7 @@ const { Manager } = require("erela.js"),
       Discord = require("discord.js"),
       client = new Client({
           ws: { properties: { $browser: "Discord iOS" } },
-          intents: require("discord.js").Intents.ALL,
+          intents: 32767,
           allowedMentions: {
             repliedUser: false,
             parse: ["users", "roles"],
