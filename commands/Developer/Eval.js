@@ -20,7 +20,7 @@ module.exports = {
       .replace(reg, "you thought");
     try {
       const evaled = await eval(result);
-      const spl = inspect(evaled, { depth: 0 }).splitEvery(3000)
+      const spl = Util.splitMessage(inspect(evaled, { depth: 0 }))
       const split = spl.shift()
       const obj = {
         embeds: [
@@ -36,7 +36,7 @@ module.exports = {
          obj.embeds.push(client.embed({ description: `\`\`\`\n${result}\`\`\``},message))
         })
       }
-      console.log(obj.embeds)
+      console.log(obj.embeds[0].description.length)
       message.reply(obj);
      
     } catch (err) {
