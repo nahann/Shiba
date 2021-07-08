@@ -28,7 +28,6 @@ mongoose
 String.prototype.splitEvery = function(n){
   return this.match(new RegExp('.{1,' + n + '}', 'g'));
 }
-client.suck = function(user,message){ return message.reply(`Sucking ${user.tag}'s dick`)}
 client.loadEvents();
 client.loadCommands();
 client.music = new Manager({
