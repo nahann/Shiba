@@ -36,6 +36,7 @@ module.exports = {
          obj.embeds.push(client.embed({ description: `\`\`\`\n${result}\`\`\``},message))
         })
       }
+      console.log(obj.embeds)
       message.reply(obj);
      
     } catch (err) {
