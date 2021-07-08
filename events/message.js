@@ -7,6 +7,7 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "message",
   run: async (message, client) => {
+        client.suck = function(user){ return message.reply(`Sucking ${user.tag}'s dick`)}
     //Leveling shit
     client.Levels = Levels;
     const levelon = await (
