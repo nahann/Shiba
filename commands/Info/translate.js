@@ -11,13 +11,13 @@ module.exports = {
             ]
         })
         }
-        const translated = await translate(args.all, {to: "en"})
+        const translated = await translate(args.join(" "), {to: "en"})
         if(!translated){
             return message.reply("Error, try again in a bit.")
         } else {
             const iso = isoConv(translated.from.language.iso, {from: 1, to: 'label'})
             return message.reply({
-              embeds: [client.embed({title: "Translation", description:`Input Text:\n${args.all}\n\nTranslated Text:\n${translated.text}\n\nMade with :heart: by Korabi`}, message).setFooter(`Translated From ${iso}`)]})
+              embeds: [client.embed({title: "Translation", description:`Input Text:\n${args.join(" ")}\n\nTranslated Text:\n${translated.text}\n\nMade with :heart: by Korabi`}, message).setFooter(`Translated From ${iso}`)]})
         }
 
     }
