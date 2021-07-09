@@ -9,6 +9,7 @@ module.exports = {
             return message.reply({embeds: [
               client.embed({title:"Error", description: "Please provide something to translate."}, message)
             ]
+        })
         }
         const translated = await translate(args.all, {to: "en"})
         if(!translated){
