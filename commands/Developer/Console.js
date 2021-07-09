@@ -15,7 +15,7 @@ module.exports = {
     exec(`cd /root/Shiba && ${args.join(" ")}`, (error, stdout) => {
       const response = error || stdout;
       try {
-        message.reply({ content: `.response`, code: true });
+        message.reply({ content: `.${response}`, code: true });
       } catch {
         message.reply({
           embeds: [
