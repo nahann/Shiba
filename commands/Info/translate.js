@@ -17,7 +17,7 @@ module.exports = {
         } else {
             const iso = isoConv(translated.from.language.iso, {from: 1, to: 'label'})
             return message.reply({
-              embeds: [client.embed({title: "Translation", description:`Input Text:\n${args.join(" ")}\n\nTranslated Text:\n${translated.text}\n\nMade with :heart: by Korabi`}, message).setFooter(`Translated From ${iso}`)]})
+              embeds: [client.embed({title: "Translation", description:`Input Text:\n\`\`\`\n${args.join(" ")}\`\`\`\n\nTranslated Text:\n\`\`\`\n${translated.text}\`\`\`\n\nMade with :heart: by Korabi`}, message).setFooter(`Translated From ${iso}`)]})
         }
 
     }
