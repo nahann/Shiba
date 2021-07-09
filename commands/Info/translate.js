@@ -5,11 +5,10 @@ module.exports = {
   description: "Translate a string.",
   usage: "*translate <String>",
     run: async(client, message, args) => {
-        if(args.all.length < 1){
+        if(!args.length){
             return message.reply({embeds: [
               client.embed({title:"Error", description: "Please provide something to translate."}, message)
             ]
-                                  )
         }
         const translated = await translate(args.all, {to: "en"})
         if(!translated){
