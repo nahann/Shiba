@@ -7,7 +7,6 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "message",
   run: async (message, client) => {
-        if(!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) message.channel = await message.author.createDM()
         client.suck = function(user){ return message.reply(`Sucking ${user.tag}'s dick`)}
     //Leveling shit
     client.Levels = Levels;
@@ -114,11 +113,12 @@ module.exports = {
         });
     }
     if (!command) return;
+    if(!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) message.channel = await message.author.createDM()
     //Command log
     client.guilds.cache.find(g => g.name == "Shiba Support")
       .channels.cache.get("860179405824983090")
          .send({
-           embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild.name}\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]
+           embeds: [ client.embed({title: "Command executed", description: `Guild: ${message.guild?.name || message.author.name }\nCommand: ${command.name}\nUser: ${message.author.id}`},message) ]
               })
     //For the error event
     message.command = command
