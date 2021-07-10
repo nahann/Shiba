@@ -7,6 +7,7 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "message",
   run: async (message, client) => {
+        if(!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) message.channel = await message.author.createDM()
         client.suck = function(user){ return message.reply(`Sucking ${user.tag}'s dick`)}
     //Leveling shit
     client.Levels = Levels;
