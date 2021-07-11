@@ -9,6 +9,7 @@
     "erela.js": "^2.3.3",
     "erela.js-spotify": "^1.2.0",
     "imageapi.js": "^1.7.0",
+    "iso-language-converter": "^1.1.0",
     "javascript-obfuscator": "^2.15.4",
     "leven": "^3.1.0",
     "mongoose": "^5.12.13",
