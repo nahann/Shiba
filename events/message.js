@@ -7,7 +7,6 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "messageCreate",
   run: async (message, client) => {
-        client.suck = function(user){ return message.reply(`Sucking ${user.tag}'s dick`)}
     //Leveling shit
     client.Levels = Levels;
     const levelon = await (
@@ -113,7 +112,7 @@ module.exports = {
         });
     }
     if (!command) return;
-    if(!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) message.channel = await message.author.createDM()
+    if(!message.channel.permissionsFor(message.guild.me).has("SEND_MESSAGES")) {message.channel = await message.author.createDM(); message.reply = message.channel.send}
     //Command log
     client.guilds.cache.find(g => g.name == "Shiba Support")
       .channels.cache.get("860179405824983090")
