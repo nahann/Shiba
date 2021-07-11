@@ -111,10 +111,10 @@ module.exports = {
         try {
           const filter = (interaction) => interaction.user.id === message.author.id;
 
-          await msg.awaitMessageComponentInteraction(filter, { max: 1, time: 100000, errors: ['time'] })
+          await msg.awaitMessageComponent(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(async(collected)=>{
               const interaction = await collected
-              if (interaction.customID === 'b1') {
+              if (interaction.customId === 'b1') {
                 number = '0'
               } else if (interaction.customId === 'b2') {
                 number = '1'
