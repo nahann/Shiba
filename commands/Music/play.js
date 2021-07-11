@@ -93,11 +93,11 @@ module.exports = {
           .slice(0, max)
           .map((track, index) => `**${++index}** - [${track.title}](${track.uri}) by ${track.author}`)
           .join("\n");
-        const b1 = new MessageButton().setLabel('1️⃣').setCustomId("b1").setStyle("PRIMARY")
-        const b2 = new MessageButton().setLabel('2️⃣').setCustomId("b2").setStyle("SECONDARY")
-        const b3 = new MessageButton().setLabel('3️⃣').setCustomId("b3").setStyle("SUCCESS")
-        const b4 = new MessageButton().setLabel('4️⃣').setCustomId("b4").setStyle("DANGER")
-        const b5 = new MessageButton().setLabel('5️⃣').setCustomId("b5").setStyle("PRIMARY")
+        const b1 = new MessageButton().setEmoji('1️⃣').setCustomId("b1").setStyle("PRIMARY")
+        const b2 = new MessageButton().setEmoji('2️⃣').setCustomId("b2").setStyle("SECONDARY")
+        const b3 = new MessageButton().setEmoji('3️⃣').setCustomId("b3").setStyle("SUCCESS")
+        const b4 = new MessageButton().setEmoji('4️⃣').setCustomId("b4").setStyle("DANGER")
+        const b5 = new MessageButton().setEmoji('5️⃣').setCustomId("b5").setStyle("PRIMARY")
         const row = new MessageActionRow().addComponents([b1,b2,b3,b4,b5])
 
         const msg = await message.reply({
