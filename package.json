@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@iamtraction/google-translate": "^1.1.2",
     "axios": "^0.21.1",
     "discord-reply": "^0.1.2",
+    "discord-screenshot": "^1.0.0",
     "discord-xp": "^1.1.16",
     "discord.js": "github:discordjs/discord.js",
     "erela.js": "^2.3.3",
@@ -14,8 +16,7 @@
     "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1",
     "sharp": "^0.28.3",
-    "zapmongo": "^2.1.0",
-    "discord-screenshot": "^1.0.0"
+    "zapmongo": "^2.1.0"
   },
   "name": "Shiba",
   "description": "- [0] Fork the repo",
