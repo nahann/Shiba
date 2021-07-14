@@ -67,7 +67,7 @@ module.exports = {
       new MessageButton()
         .setLabel("Invite")
         .setURL(
-         client.generateInvite({ permissions: ["ADMINISTRATOR"],additionalScopes: ["applications.commands"]})
+         client.generateInvite({ permissions: ["ADMINISTRATOR"],scopes: ["applications.commands"]})
         )
         .setStyle("LINK")
         .setEmoji("<:support:854951274423910410>"),
