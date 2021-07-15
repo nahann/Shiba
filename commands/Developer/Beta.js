@@ -10,6 +10,7 @@ module.exports = {
    * @param {String[]} args
    */
   run: async (client, message, args) => {
+    if(!message.mentions.users.size) return message.reply("You need to mention someone")
     const user = message.mentions.users.first();
     const data = await UserConfig.findOne({ userId: user.id });
     if (args[0].toLowerCase() === "add") {
