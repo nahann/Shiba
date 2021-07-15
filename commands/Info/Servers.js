@@ -7,7 +7,7 @@ module.exports ={
      servers.sort((a,b)=> a.count - b.count)
      let i = 0
      const ar = servers.map(server =>{i++; return `${i}: **${server.name}** -- ${server.count} members`})
-     const str = client.trimArray(ar,20,"\n")
+     const str = client.trimArray(ar,30,"\n")
      console.log(ar)
      message.reply({ embeds: [client.embed({title: `${client.user.username}'s servers`,description: str},message)] })
    }
