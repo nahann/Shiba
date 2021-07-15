@@ -53,7 +53,7 @@ class ShibaClient extends Client{
   }
   trimArray(ar,num,join = ", "){
    const l = ar.length - num
-   return ar.length > num ? `${ar.splice(0,num).join(join)} ${join == "\n" ? "\n" : ""}...and ${l} more` : ar.join(join)
+   return ar.length > num ? `${ar.slice(0,num).join(join)} ${join == "\n" ? "\n" : ""}...and ${l} more` : ar.join(join)
   } 
   loadCommands() {
   const commandFolders = fs.readdirSync(`${__dirname}/commands`);
