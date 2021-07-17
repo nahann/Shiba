@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@chrisoakman/chessboardjs": "^1.0.0",
     "@iamtraction/google-translate": "^1.1.2",
     "axios": "^0.21.1",
+    "chessboardjs": "^0.0.1",
     "discord-reply": "^0.1.2",
     "discord-screenshot": "^1.0.0",
     "discord-xp": "^1.1.16",
