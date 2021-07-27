@@ -7,6 +7,7 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "messageCreate",
   run: async (message, client) => {
+    if(message.channel.isThread()) await message.channel.join()
     //Leveling shit
     client.Levels = Levels;
     const levelon = await (
