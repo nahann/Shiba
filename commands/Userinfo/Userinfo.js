@@ -40,12 +40,12 @@ module.exports = {
       .addFields(
         {
           name: `» Joined At`,
-          value: `${member.joinedAt.toDateString()} ${member.joinedAt.toLocaleTimeString()}`,
+          value: `${member.joinedAt.toDateString()} ${member.joinedAt.toLocaleTimeString()} (<t:${Math.floor(member.joinedTimestamp / 1000)}:R>)`,
           inline: true,
         },
         {
           name: `» Account Created`,
-          value: `${member.user.createdAt.toDateString()} ${member.user.createdAt.toLocaleTimeString()}`,
+          value: `${member.user.createdAt.toDateString()} ${member.user.createdAt.toLocaleTimeString()} (<t:${Math.floor(member.user.createdTimestamp / 1000)}:R>)`,
           inline: true,
         },
         {
@@ -60,17 +60,17 @@ module.exports = {
         },
         {
           name: `» User Bio`,
-          value: `Bio: ${bio}`,
+          value: `${bio}`,
         },
         {
           name: `» User Birthday`,
-          value: `Bday: ${bday}`,
+          value: `${bday}`,
         },
         {
           name: `» User Avatar`,
           value: `[[Avatar Link]](${member.user.displayAvatarURL()})`,
         },
       );
-    message.reply({ embeds: [embed], allowedMentions: { repliedUser: false } });
+    message.reply({ embeds: [embed] });
   },
 };
