@@ -58,6 +58,7 @@ module.exports = {
         } catch (e) { console.error(e) } 
        result = fetched[number]
      }
+     if(!result) return
       const fl1 = await sharp(
         await fetch(result.flag).then((file) => file.buffer())
       )
