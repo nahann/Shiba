@@ -54,7 +54,7 @@ module.exports = {
               } else if (interaction.customId === 'b5') {
                 number = '4'
               }
-              interaction.reply("Search done.")
+              interaction.editReply("Search done.")
             })
         } catch (e) { console.error(e) } 
        result = fetched[number]
