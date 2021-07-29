@@ -42,7 +42,7 @@ module.exports = {
           await msg.awaitMessageComponent(filter, { max: 1, time: 100000, errors: ['time'] })
             .then(async(collected)=>{
               const interaction = await collected
-              interaction.reply({ content: "Search done!", ephemeral: true})
+              await interaction.defer({ephemeral: true})
               if (interaction.customID === 'b1') {
                 number = '0'
               } else if (interaction.customID === 'b2') {
@@ -54,6 +54,7 @@ module.exports = {
               } else if (interaction.customID === 'b5') {
                 number = '4'
               }
+              interaction.reply("Search done.")
             })
         } catch (e) { console.error(e) } 
        result = fetched[number]
