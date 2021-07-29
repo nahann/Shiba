@@ -43,15 +43,15 @@ module.exports = {
             .then(async(collected)=>{
               const interaction = await collected
               await interaction.defer({ephemeral: true})
-              if (interaction.customID === 'b1') {
+              if (interaction.customId === 'b1') {
                 number = '0'
-              } else if (interaction.customID === 'b2') {
+              } else if (interaction.customId === 'b2') {
                 number = '1'
-              } else if (interaction.customID === 'b3') {
+              } else if (interaction.customId === 'b3') {
                 number = '2'
-              } else if (interaction.customID === 'b4') {
+              } else if (interaction.customId === 'b4') {
                 number = '3'
-              } else if (interaction.customID === 'b5') {
+              } else if (interaction.customId === 'b5') {
                 number = '4'
               }
               interaction.reply("Search done.")
