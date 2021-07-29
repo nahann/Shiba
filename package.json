@@ -19,13 +19,13 @@
     "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1",
     "sharp": "^0.28.3",
+    "string-progressbar": "^1.0.4",
     "zapmongo": "^2.1.0"
   },
   "name": "Shiba",
   "description": "- [0] Fork the repo",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "start": "npm i && node ."
   },
