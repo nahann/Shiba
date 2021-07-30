@@ -3,7 +3,7 @@ module.exports = {
   aliases: ["xp", "level"],
   run: async (client, message) => {
     const target = message.mentions.users.first() || message.author; // Grab the target.
-    const user = await client.Levels.fetch(target.id, message.guild.id); // Selects the target from the database.
+    const user = await client.levels.fetch(target.id, message.guild.id); // Selects the target from the database.
     if (!user) return message.reply("This user does not have any levels!");
     message.reply({
       embeds: [

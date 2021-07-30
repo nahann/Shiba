@@ -1,13 +1,13 @@
-const { DMChannel } = require("discord.js");
 const ms = require("ms"),
       UserConfig = require("./../database/UserConfig"),
       { mongouri } = require("../config.json"),
-      Levels = require("discord-xp");
-Levels.setURL(mongouri);
+      levels = require("discord-xp");
+levels.setURL(mongouri);
 
 module.exports = {
   name: "messageCreate",
   run: async (message, client) => {
+    if(message.channel.partial) message.channel.fetch()
     console.log(message.channel.type)
     if(message.channel.type == "DM"){
       console.log(message.content)
@@ -15,7 +15,7 @@ module.exports = {
     }
     if(message.channel.isThread() && !message.channel.joined) await message.channel.join()
     //Leveling shit
-    client.Levels = Levels;
+    client.levels = levels;
     const levelon = await (
       await client.db.load("levelguilds")
     ).findOne({ guild: message.guild.id });
@@ -31,13 +31,13 @@ module.exports = {
     if (message.author.bot) return;
     if (levelon?.onoff) {
       const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
-      const hasLeveledUp = await client.Levels.appendXp(
+      const hasLeveledUp = await client.levels.appendXp(
         message.author.id,
         message.guild.id,
         randomAmountOfXp
       );
       if (hasLeveledUp) {
-        const user = await client.Levels.fetch(
+        const user = await client.levels.fetch(
           message.author.id,
           message.guild.id
         );
