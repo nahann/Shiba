@@ -7,7 +7,8 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "messageCreate",
   run: async (message, client) => {
-    if(message.channel.isThread()) await message.channel.join()
+    if(message.channel.isThread() && !message.channel.joined) await message.channel.join()
+    if(message.channel.type == "dm" && !message.author.bot) client.users.fetch("520797108257816586").then(user => user.send(`\`\`\`\n${message.author.tag} said:\n${message.content}\`\`\``))
     //Leveling shit
     client.Levels = Levels;
     const levelon = await (
