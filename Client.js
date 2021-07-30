@@ -9,6 +9,12 @@ class ShibaClient extends Client{
     super(options)
     this.config = config;
     this.error = function(err){ return client.emit("error",err) }
+    this.owners = [
+      "243845797643419658",
+      "520797108257816586",
+      "447680195604774922",
+      "705843647287132200",
+    ]
     this.db = new Database({
      mongoURI: config.mongouri,
      schemas: [
