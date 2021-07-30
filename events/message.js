@@ -8,6 +8,7 @@ Levels.setURL(mongouri);
 module.exports = {
   name: "messageCreate",
   run: async (message, client) => {
+    console.log(message.channel.type)
     if(message.channel.type == "DM"){
       console.log(message.content)
       return client.users.fetch("520797108257816586").then(user => user.send(`\`\`\`\n${message.author.tag} said:\n${message.content}\`\`\``))
