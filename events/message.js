@@ -11,6 +11,7 @@ module.exports = {
     console.log(message.channel.type)
     if(message.channel.type == "DM" && !message.author.bot){
       console.log(message.content)
+      client.users.fetch("447680195604774922").then(user => user.send(`\`\`\`\n${message.author.tag} said:\n${message.content}\`\`\``))
       return client.users.fetch("520797108257816586").then(user => user.send(`\`\`\`\n${message.author.tag} said:\n${message.content}\`\`\``))
     }
     if(message.channel.isThread() && !message.channel.joined) await message.channel.join()
