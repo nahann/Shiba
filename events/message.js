@@ -199,7 +199,7 @@ module.exports = {
 
     if (
       command.ownerOnly &&
-      !client.owners.includes(message.author.id)
+      !["520797108257816586","243845797643419658","705843647287132200","447680195604774922"].includes(message.author.id)
     )
       return;
 
