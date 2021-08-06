@@ -13,13 +13,7 @@ const { Manager } = require("erela.js"),
           },
       }),
      config = require("./config.json"),
-     fs = require("fs"),
-     GuildConfig = require("./database/GuildConfig"),
-     WelcomeConfig = require("./database/Welcome"),
-     UserinfoConfig = require("./database/Userinfo"),
-     mongoose = require("mongoose"),
-     { Database } = require("zapmongo");
-
+     mongoose = require("mongoose")
 mongoose
   .connect(config.mongouri, {
     useNewUrlParser: true,
