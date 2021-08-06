@@ -69,12 +69,11 @@ module.exports = {
         ],
       });
     if (!message.content.startsWith(prefix)) return;
-    const [commandName, ...args] = message.content
+    let [commandName, ...args] = message.content
       .slice(prefix.length)
       .trim()
       .split(/ +/)
-      .map(([cmd,...arg]) => [cmd.toLowerCase(),...arg]);
-      console.log({ commandName, args})
+      commandName = commandName.toLowerCase()
     const command =
       client.commands.get(commandName) ||
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));
