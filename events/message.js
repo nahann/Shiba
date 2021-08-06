@@ -74,6 +74,7 @@ module.exports = {
       .trim()
       .split(/ +/)
       .map(([cmd,...arg]) => [cmd.toLowerCase(),...arg]);
+      console.log({ commandName, args})
     const command =
       client.commands.get(commandName) ||
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));
@@ -96,7 +97,7 @@ module.exports = {
       );
       const best = [...client.commands.map((c) => c.name), ...aliases].filter(
         (c) =>
-          require("leven")(commandName.toLowerCase(), c.toLowerCase()) <
+          require("leven")(commandName, c.toLowerCase()) <
           c.length * 0.4
       );
       const d = !best.length
