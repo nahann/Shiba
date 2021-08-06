@@ -24,8 +24,8 @@ module.exports = {
 
     player.pause(true)
 
-    let texts = ['Paused this bangar song.', 'Paused this trash song.', 'Paused this ok song.']
-    let Picker = Math.floor(Math.random() * texts.length)
+    const texts = ['Paused this banger song.', 'Paused this trash song.', 'Paused this ok song.']
+    const Picker = Math.floor(Math.random() * texts.length)
 
     message.reply({ embeds: [client.embed({ description: texts[Picker] }, message)] })
   },

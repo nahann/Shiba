@@ -59,30 +59,28 @@ client.music.on("nodeError", (node, error) =>
   )
 );
 client.music.on("queueEnd", (player) => {
-  const embed = new Discord.MessageEmbed()
-    .setDescription('The queue has ended.')
-    .setColor('RANDOM')
-    .setTimestamp()
 
   client.channels.cache
     .get(player.textChannel)
-    .send({ embeds: [embed] });
+    .send({ embeds: [new Discord.MessageEmbed()
+      .setDescription('The queue has ended.')
+      .setColor('RANDOM')
+      .setTimestamp()] });
 
   player.destroy();
 });
 client.music.on("trackStart", (player, track) => {
   const channel = client.channels.cache.get(player.textChannel);
 
-  const MusicEmbed = new Discord.MessageEmbed()
-    .setTitle(`Playing ${track.title}`)
-    .setDescription(`**Duration:** ${ms1(track.duration)}\n **Requested by:** ${track.requester.tag}\n **Author:** ${track.author}`)
-    .setThumbnail(track.thumbnail)
-    .setURL(track.uri)
-    .setColor('RANDOM')
-    .setTimestamp()
 
   channel.send({
-    embeds: [MusicEmbed]
+    embeds: [new Discord.MessageEmbed()
+      .setTitle(`Playing ${track.title}`)
+      .setDescription(`**Duration:** ${ms1(track.duration)}\n **Requested by:** ${track.requester.tag}\n **Author:** ${track.author}`)
+      .setThumbnail(track.thumbnail)
+      .setURL(track.uri)
+      .setColor('RANDOM')
+      .setTimestamp()]
   })
 })
 

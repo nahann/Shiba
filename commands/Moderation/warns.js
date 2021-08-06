@@ -4,7 +4,7 @@ module.exports = {
   aliases: ["warnings"],
   run: async (client, message, args) => {
     try {
-      let user = args.length
+      const user = args.length
         ? message.mentions.users.first() ||
           message.guild.members.cache.find((m) => m.user.tag.includes(args[0]))
             ?.user

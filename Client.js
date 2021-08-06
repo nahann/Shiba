@@ -1,20 +1,12 @@
 const { Client, MessageEmbed, Collection} = require("discord.js")
 const { Database } = require("zapmongo")
-const fs= require("fs")
-const Spotify = require("erela.js-spotify")
-const { Manager } = require("erela.js")
+const fs = require("fs")
 const config = require("./config.json")
 class ShibaClient extends Client{
   constructor(options){
     super(options)
     this.config = config;
     this.error = function(err){ return client.emit("error",err) }
-    this.owners = [
-      "243845797643419658",
-      "520797108257816586",
-      "447680195604774922",
-      "705843647287132200",
-    ]
     this.db = new Database({
      mongoURI: config.mongouri,
      schemas: [

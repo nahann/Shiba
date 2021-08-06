@@ -1,3 +1,4 @@
+const { convertToUnresolved } = require("erela.js-spotify");
 const ms = require("ms"),
       UserConfig = require("./../database/UserConfig"),
       { mongouri } = require("../config.json"),
@@ -68,12 +69,11 @@ module.exports = {
         ],
       });
     if (!message.content.startsWith(prefix)) return;
-    let [commandName, ...args] = message.content
+    const [commandName, ...args] = message.content
       .slice(prefix.length)
       .trim()
-      .split(/ +/);
-    commandName = commandName.toLowerCase();
-    args.clean = message.cleanContent.slice(prefix.length + commandName.length);
+      .split(/ +/)
+      .map(([cmd,...arg]) => [cmd.toLowerCase(),...arg]);
     const command =
       client.commands.get(commandName) ||
       client.commands.find((cmd) => cmd.aliases?.includes(commandName));

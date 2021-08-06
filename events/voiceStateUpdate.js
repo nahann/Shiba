@@ -11,16 +11,13 @@ module.exports={
 
        const channel = guild.channels.cache.get(player.textChannel)
 
-       let texts = ['Everyone left me so i left crying', 'Everyone left me so i left **poping a chocky milk**']
-       let Picker = Math.floor(Math.random() * texts.length)
-      
-       const embed = new Discord.MessageEmbed()
-       .setDescription(texts[Picker])
-       .setColor('RANDOM')
-       .setTimestamp()
-
-       
-       channel.send({ embeds: [embed] })
+       const texts = ['Everyone left me so i left crying', 'Everyone left me so i left **poping a chocky milk**']
+       const Picker = Math.floor(Math.random() * texts.length)
+           
+       channel.send({ embeds: [new Discord.MessageEmbed()
+        .setDescription(texts[Picker])
+        .setColor('RANDOM')
+        .setTimestamp()] })
 
        await player.destroy()
      }

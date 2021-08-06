@@ -5,7 +5,7 @@ module.exports={
    const player = client.music.players.get(message.guild.id)
    if(!player) return message.reply({embeds: [client.embed({title: "There is no song playing!"},message)]})
    const { queue } = player;
-   let s = [`Currently playing: **${queue.current.title}** by **${queue.current.author}**`]
+   const s = [`Currently playing: **${queue.current.title}** by **${queue.current.author}**`]
    if(queue.length){
     let i = 0
     queue.forEach(track =>{

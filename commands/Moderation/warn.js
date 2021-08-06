@@ -16,7 +16,7 @@ module.exports = {
         });
       const shift = args.shift();
       const reason = args.join(" ") || "No reason provided";
-      let user =
+      const user =
         message.mentions.users.first() ||
         message.guild.members.cache.find((m) => m.user.tag.includes(shift))
           ?.user ||
