@@ -4,7 +4,7 @@
     "axios": "^0.21.1",
     "discord-screenshot": "^1.0.0",
     "discord-xp": "^1.1.16",
-    "discord.js": "^13.0.0-dev.4f1f32f.1627517033",
+    "discord.js": "^13.0.1",
     "erela.js": "^2.3.3",
     "erela.js-spotify": "^1.2.0",
     "imageapi.js": "^1.7.0",
